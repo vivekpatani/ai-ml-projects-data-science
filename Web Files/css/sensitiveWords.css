@@ -1,0 +1,10 @@
+#cardHolder{
+display: inline-block;
+background-color:orange;
+width:20%;
+height:80px;
+text-align:center;
+margin:20px;
+padding: 20px;
+font-size:120%;
+}
