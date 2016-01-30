@@ -1,3 +1,6 @@
+import json
+import collections
+
 data = open("testdata")
 # load the data from the file
 print(data)
@@ -11,4 +14,9 @@ for line in data:
     else:
         data_dict[line_split_list[0]] = {line_split_list[1]:line_split_list[2]}
 
+od = collections.OrderedDict(sorted(data_dict.items()))        
+with open("sampleOutput.txt","w") as outfile:
+    json.dump(data_dict,outfile,indent=4)
+
+print (json.dumps(data_dict,indent=4))
 data.close()
