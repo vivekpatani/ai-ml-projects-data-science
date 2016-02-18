@@ -1,8 +1,8 @@
+#To find Pearson Correlation
 import json
 import time
-#To find Pearson Correlation
 
-#Method to iterate over each feature and find correlation
+#Method to iterate over each feature and find correlation between them
 def data_scanner(path,filename,destination):
 
     #Just to calculate time
@@ -15,6 +15,7 @@ def data_scanner(path,filename,destination):
     #Loading the data file
     with open(path+filename) as data_file:
         data = json.load(data_file)
+    data_file.close()
 
     feature_list = ["type_of_wine","alcohol","malic_acid","ash","alcalinity_of_ash","magnesium","phenols","flavanoids","nonflavanoid_phenols","proanthocyanins","color_intensity","hue","dilution","proline"]
     list1 = []
@@ -39,9 +40,48 @@ def data_scanner(path,filename,destination):
 
     with open(destination+"comparison"+".json",'w') as output:
         json.dump(computation_result,output,ensure_ascii=False,indent=4)
+    output.close()
 
     print(destination+filename+".json Generated")
+
+    list1 = []
+    list2 = []
+    computation_result.clear()
     print(time.clock() - start)
+
+def find_max(path,filename,destination):
+
+    start = time.time()
+
+    #Defining a blank dictionary to load and manipulate data
+    data = {}
+    maxmin = {}
+    
+    #Load the data file
+    with open(path+filename) as data_file:
+        data = json.load(data_file)
+    data_file.close()
+
+    maxmin.setdefault("max",{})
+    maximum = 0.0
+    minimum = 1.01
+    
+    for each in data:
+        for other in data[each]:
+            if data[each][other] > maximum:
+                maximum = data[each][other]
+                
+    maxmin["max"][each+"_"+other] = maximum;
+
+    maxmin.setdefault("min",{})
+
+    for each_min in data:
+        for other_min in data[each_min]:
+            if data[each_min][other_min] < minimum:
+                minimum = data[each_min][other_min]
+                
+    maxmin["min"][each_min+"_"+other_min] = minimum;
+    print(maxmin)
                 
 
 #Pearson Correlation Calculator
@@ -124,7 +164,8 @@ def wine_formatter(path,filename,destination):
 
 def main():
     #wine_formatter("./data/","wine.data","./results/")
-    data_scanner("./results/","wine.data.json","./results/")
+    #data_scanner("./results/","wine.data.json","./results/")
+    find_max("./results/","comparison.json","./results/")
 
 if __name__ == "__main__":
     main()
