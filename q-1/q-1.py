@@ -42,7 +42,7 @@ def data_formatter(path,filename,destination):
 
     #Closure and Clean up
     output.close()
-    data.clear();
+    data.clear()
     
 #Method to calculate the average of each feature
 def calc_avg(path,filename,feature_name):
