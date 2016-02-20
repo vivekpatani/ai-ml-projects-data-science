@@ -1,0 +1,379 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 9200.16.0204.1543                                -->
+<workbook source-platform='win' version='9.2' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='yacht_hydrodynamics.data' inline='true' name='textscan.138ab3j0f7lgn318y9ipe0pe5426' version='9.2'>
+      <connection class='textscan' directory='D:/dm-2/q-3/q-3c/dataset3/results' filename='yacht_hydrodynamics.data.txt' password='' server='' username=''>
+        <relation name='yacht_hydrodynamics.data#txt' table='[yacht_hydrodynamics.data#txt]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='real' name='Longitudnal-Position' ordinal='0' />
+            <column datatype='real' name='Prismatic-Coefficient' ordinal='1' />
+            <column datatype='real' name='Length-Displacement-Ratio' ordinal='2' />
+            <column datatype='real' name='Beam-Draught-Ratio' ordinal='3' />
+            <column datatype='real' name='Length-Beam-Ratio' ordinal='4' />
+            <column datatype='real' name='Froude-Number' ordinal='5' />
+            <column datatype='real' name='Resistance' ordinal='6' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>Longitudnal-Position</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Longitudnal-Position]</local-name>
+            <parent-name>[yacht_hydrodynamics.data#txt]</parent-name>
+            <remote-alias>Longitudnal-Position</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Prismatic-Coefficient</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Prismatic-Coefficient]</local-name>
+            <parent-name>[yacht_hydrodynamics.data#txt]</parent-name>
+            <remote-alias>Prismatic-Coefficient</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Length-Displacement-Ratio</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Length-Displacement-Ratio]</local-name>
+            <parent-name>[yacht_hydrodynamics.data#txt]</parent-name>
+            <remote-alias>Length-Displacement-Ratio</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Beam-Draught-Ratio</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Beam-Draught-Ratio]</local-name>
+            <parent-name>[yacht_hydrodynamics.data#txt]</parent-name>
+            <remote-alias>Beam-Draught-Ratio</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Length-Beam-Ratio</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Length-Beam-Ratio]</local-name>
+            <parent-name>[yacht_hydrodynamics.data#txt]</parent-name>
+            <remote-alias>Length-Beam-Ratio</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Froude-Number</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Froude-Number]</local-name>
+            <parent-name>[yacht_hydrodynamics.data#txt]</parent-name>
+            <remote-alias>Froude-Number</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Resistance</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Resistance]</local-name>
+            <parent-name>[yacht_hydrodynamics.data#txt]</parent-name>
+            <remote-alias>Resistance</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[yacht_hydrodynamics.data#txt]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <column datatype='real' name='[Froude-Number]' role='dimension' type='ordinal' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <layout dim-ordering='alphabetic' dim-percentage='0.437956' measure-ordering='alphabetic' measure-percentage='0.562044' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='DataSet 3 - yacht_hydrodynamics'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='yacht_hydrodynamics.data' name='textscan.138ab3j0f7lgn318y9ipe0pe5426' />
+          </datasources>
+          <datasource-dependencies datasource='textscan.138ab3j0f7lgn318y9ipe0pe5426'>
+            <column datatype='real' name='[Froude-Number]' role='dimension' type='ordinal' />
+            <column datatype='real' name='[Longitudnal-Position]' role='measure' type='quantitative' />
+            <column datatype='real' name='[Resistance]' role='measure' type='quantitative' />
+            <column-instance column='[Froude-Number]' derivation='None' name='[none:Froude-Number:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Longitudnal-Position]' derivation='Sum' name='[sum:Longitudnal-Position:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Resistance]' derivation='Sum' name='[sum:Resistance:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='false' />
+        </view>
+        <style>
+          <style-rule element='refline'>
+            <format attr='stroke-color' id='refline0' value='#000000' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <lod column='[textscan.138ab3j0f7lgn318y9ipe0pe5426].[none:Froude-Number:ok]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-color' value='#000000' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[textscan.138ab3j0f7lgn318y9ipe0pe5426].[sum:Longitudnal-Position:qk]</rows>
+        <cols>[textscan.138ab3j0f7lgn318y9ipe0pe5426].[sum:Resistance:qk]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows source-height='28'>
+    <window class='worksheet' maximized='true' name='DataSet 3 - yacht_hydrodynamics'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[textscan.138ab3j0f7lgn318y9ipe0pe5426].[none:Froude-Number:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='DataSet 3 - yacht_hydrodynamics' width='192'>
+      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
+      OtkAAAAASUVORK5CYII=
+    </thumbnail>
+  </thumbnails>
+</workbook>
