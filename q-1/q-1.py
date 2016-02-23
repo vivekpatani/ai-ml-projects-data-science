@@ -213,11 +213,11 @@ def main():
     #calc_avg("./result/","iris.data.json","sepal_length")
     #calc_avg("./result/","iris.data.json","sepal_width")
 
-    #In order to calculate Average, Variance and Standard Deviation
-    calc_sd("./result/","iris.data.json","petal_width")
-    calc_sd("./result/","iris.data.json","petal_length")
-    calc_sd("./result/","iris.data.json","sepal_length")
-    calc_sd("./result/","iris.data.json","sepal_width")
+    #In order to calculate Average, Variance and Standard Deviation for each feature
+    #calc_sd("./result/","iris.data.json","petal_width")
+    #calc_sd("./result/","iris.data.json","petal_length")
+    #calc_sd("./result/","iris.data.json","sepal_length")
+    #calc_sd("./result/","iris.data.json","sepal_width")
 
     #In order to calculate mean for each Flower Type with each feature
     #Setosa
@@ -240,22 +240,22 @@ def main():
 
     #In order to calculate Standard Deviation for each Flower Type with each feature
     #Setosa
-    #calc_sd_type("./result/","iris.data.json","sepal_width","Iris-setosa")
-    #calc_sd_type("./result/","iris.data.json","sepal_length","Iris-setosa")
-    #calc_sd_type("./result/","iris.data.json","petal_width","Iris-setosa")
-    #calc_sd_type("./result/","iris.data.json","petal_length","Iris-setosa")
+    calc_sd_type("./result/","iris.data.json","sepal_width","Iris-setosa")
+    calc_sd_type("./result/","iris.data.json","sepal_length","Iris-setosa")
+    calc_sd_type("./result/","iris.data.json","petal_width","Iris-setosa")
+    calc_sd_type("./result/","iris.data.json","petal_length","Iris-setosa")
 
     #Versicolor
-    #calc_sd_type("./result/","iris.data.json","sepal_width","Iris-versicolor")
-    #calc_sd_type("./result/","iris.data.json","sepal_length","Iris-versicolor")
-    #calc_sd_type("./result/","iris.data.json","petal_width","Iris-versicolor")
-    #calc_sd_type("./result/","iris.data.json","petal_length","Iris-versicolor")
+    calc_sd_type("./result/","iris.data.json","sepal_width","Iris-versicolor")
+    calc_sd_type("./result/","iris.data.json","sepal_length","Iris-versicolor")
+    calc_sd_type("./result/","iris.data.json","petal_width","Iris-versicolor")
+    calc_sd_type("./result/","iris.data.json","petal_length","Iris-versicolor")
 
     #Virginica
-    #calc_sd_type("./result/","iris.data.json","sepal_width","Iris-virginica")
-    #calc_sd_type("./result/","iris.data.json","sepal_length","Iris-virginica")
-    #calc_sd_type("./result/","iris.data.json","petal_width","Iris-virginica")
-    #calc_sd_type("./result/","iris.data.json","petal_length","Iris-virginica")
+    calc_sd_type("./result/","iris.data.json","sepal_width","Iris-virginica")
+    calc_sd_type("./result/","iris.data.json","sepal_length","Iris-virginica")
+    calc_sd_type("./result/","iris.data.json","petal_width","Iris-virginica")
+    calc_sd_type("./result/","iris.data.json","petal_length","Iris-virginica")
 
 if __name__ == "__main__":
 	main()
