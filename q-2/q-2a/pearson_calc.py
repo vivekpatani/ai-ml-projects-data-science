@@ -17,7 +17,7 @@ def data_scanner(path,filename,destination):
         data = json.load(data_file)
     data_file.close()
 
-    feature_list = ["type_of_wine","alcohol","malic_acid","ash","alcalinity_of_ash","magnesium","phenols","flavanoids","nonflavanoid_phenols","proanthocyanins","color_intensity","hue","dilution","proline"]
+    feature_list = ["alcohol","malic_acid","ash","alcalinity_of_ash","magnesium","phenols","flavanoids","nonflavanoid_phenols","proanthocyanins","color_intensity","hue","dilution","proline"]
     list1 = []
     list2 = []
     pearson_coefficient = 0.0
@@ -164,7 +164,7 @@ def wine_formatter(path,filename,destination):
 
 def main():
     #wine_formatter("./data/","wine.data","./results/")
-    #data_scanner("./results/","wine.data.json","./results/")
+    data_scanner("./results/","wine.data.json","./results/")
     find_max("./results/","comparison.json","./results/")
 
 if __name__ == "__main__":
