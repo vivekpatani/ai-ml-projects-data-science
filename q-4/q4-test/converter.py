@@ -5,7 +5,7 @@ Created on Thu Feb 24 23:05:37 2016
 @author: Vivek Patani
 """
 
-def convert(rows):	
+def convert(attr):	
 	data={}
 	final = []
 	i=0

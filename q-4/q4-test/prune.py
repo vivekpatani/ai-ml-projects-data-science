@@ -2,26 +2,26 @@ from buildtree import *
 from math import log
 
 def pessimistic_error(rows):
-    class_dict=group_by_count(rows)
-    pessimistic_error=sum([i for i in class_dict.values() if i!=max(class_dict.values())])
+    error=group_by_count(rows)
+    pessimistic_error=sum([i for i in error.values() if i!=max(error.values())])
     return pessimistic_error
 
 def  mdl_error(row1,row2): 
 
-     class_dict=group_by_count(row1+row2)
-     class_dict1=group_by_count(row1)
-     class_dict2=group_by_count(row2)
+     error=group_by_count(row1+row2)
+     higher=group_by_count(row1)
+     lower=group_by_count(row2)
 
-     no_of_classes=len(class_dict)
-     no_of_attributes=4
+     no=len(error)
+     features=4
      
-     e=sum([i for i in class_dict.values() if i!=max(class_dict.values())])
-     e1=sum([i for i in class_dict.values() if i!=max(class_dict1.values())])
-     e2=sum([i for i in class_dict.values() if i!=max(class_dict1.values())])
+     e=sum([i for i in error.values() if i!=max(error.values())])
+     e1=sum([i for i in higher.values() if i!=max(higher.values())])
+     e2=sum([i for i in lower.values() if i!=max(lower.values())])
      
      log2=lambda x:log(x)/log(2)
      
-     mdl=log2(no_of_attributes)+2*log2(no_of_classes)+(e1+e2-e)*log2(1372)
+     mdl=log2(features)+2*log2(no)+(e1+e2-e)*log2(1372)
      return mdl
 
 
@@ -46,4 +46,4 @@ def prune(tree):
     if pes_error<=0:
       tree.tb,tree.fb=None,None
       tree.results=group_by_count(tb+fb)
-  return tree 
+  return tree

@@ -1,19 +1,7 @@
 
-from divide import *
-from entropy import group_by_count
 from node import *
-
-def entropy(rows):
-    from math import log
-    log2=lambda x:log(x)/log(2)  
-    results=group_by_count(rows)
-    # Now calculate the entropy
-    ent=0.0
-    for r in results.keys():
-        # current probability of class
-        p=float(results[r])/len(rows) 
-        ent=ent-p*log2(p)
-    return ent
+from entropy import *
+from divide import *
 
 def buildtree(rows,scoref=entropy):
   if len(rows)==0: return decisionnode()
@@ -51,4 +39,4 @@ def buildtree(rows,scoref=entropy):
     return decisionnode(col=best_criteria[0],value=best_criteria[1],
                         tb=trueBranch,fb=falseBranch)
   else:
-    return decisionnode(results=group_by_count(rows)) 
+    return decisionnode(results=group_by_count(rows))      

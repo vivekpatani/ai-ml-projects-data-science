@@ -41,6 +41,7 @@ def data_formatter(path,filename,destination,header):
         data.append((line.rstrip().split(",")))
         
         for i in range(len((data))):
+            print(data[i])
             for j in range(len(data[i])-1):
                 data[i][j] = float(data[i][j])
     

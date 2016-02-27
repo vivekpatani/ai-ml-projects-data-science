@@ -9,7 +9,7 @@ def divideset(rows,column,value):
         split_function=lambda row:row[column]>=value
     # for nominal values
     else:
-        split_function=lambda row:row[column]==value
+        split_function=lambda row:row[column-1]==value
    
    # Divide the rows into two sets and return them
     set1=[row for row in rows if split_function(row)] # if split_function(row) 

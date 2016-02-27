@@ -14,8 +14,8 @@ def mdclassify(observation,tree):
         v=observation[tree.col]
         if v==None:
             tr,fr=mdclassify(observation,tree.tb),mdclassify(observation,tree.fb)
-            tcount=sum(tr.values())
-            fcount=sum(fr.values())
+            true_count=sum(tr.values())
+            false_count=sum(fr.values())
             tw=float(tcount)/(tcount+fcount)
             fw=float(fcount)/(tcount+fcount)
             result={}
@@ -25,10 +25,12 @@ def mdclassify(observation,tree):
                 else: result[k]=result.setdefault(k,0) + v*fw
             return result
         else:
+            #Checking int or float
             if isinstance(v,int) or isinstance(v,float):
                 if v>=tree.value: branch=tree.tb
                 else: branch=tree.fb
             else:
+                #Categorical
                 if v==tree.value: branch=tree.tb
                 else: branch=tree.fb
         return mdclassify(observation,branch)

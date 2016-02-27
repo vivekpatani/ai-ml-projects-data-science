@@ -28,5 +28,5 @@ def accuracy(filename):
 		test_accuracy=correct/float(comparison)
 		accuracyList.append(test_accuracy)
 	accuracy=sum(accuracyList)/float(10)
-	print("Final Accuracy:"+str(accuracy))
-	return accuracy
+	print("Final Accuracy:"+str(accuracy*100))
+	return accuracy*100

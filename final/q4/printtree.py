@@ -27,7 +27,7 @@ def drawtree(tree,jpeg='tree.jpg',colname=None):
 	w=getwidth(tree)*100
 	h=getdepth(tree)*100+  120
 
-	img=Image.new('RGB',(w,h),(255,255,255))
+	img=Image.new('RGB',(w,h),(125,125,125))
 	draw=ImageDraw.Draw(img)
 
 	drawnode(draw,tree,w/2,20,col)

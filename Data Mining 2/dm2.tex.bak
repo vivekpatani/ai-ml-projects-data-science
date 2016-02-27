@@ -193,6 +193,7 @@ The four most correlated pairs were:\\
 2.) Non Flavanoid Phenols - Proline: 0.78\\
 3.) Flavanoids - Proline: 0.69\\
 4.) Non flavanoid Phenols - Color Intensity: 0.65\\
+\includegraphics[max size={\textwidth}{\textheight}]{maxcorrelated}\\
 \includegraphics[max size={\textwidth}{\textheight}]{max_corr}\\
 
 The four least correlated pairs were:\\
@@ -200,6 +201,7 @@ The four least correlated pairs were:\\
 2.) Alcanility of Ash - Color Intensity: 0.09\\
 3.) Color Intensity - Hue: -0.02\\
 4.) Magnesium - Hue: 0.18\\
+\includegraphics[max size={\textwidth}{\textheight}]{min_corr}
 \includegraphics[max size={\textwidth}{\textheight}]{no_corr}\\
 
 \centerline{\textbf{Code in q2/a}}
@@ -209,7 +211,7 @@ The four least correlated pairs were:\\
 
 \subsection{Section 2}{
 Use Euclidean distance to find the closest example to every example available in the data set (exclude the class variable). Calculate the percentage of points whose closest neighbours have the same class label (for data set as a whole and also for each class).\\~\\
-The algorithm is straight forward and following a Brute Force method. The algorithm compares the data points to every other points in the set. This is then, checked upon each condition by keeping a count. The count is then incremented checking based on each condition whether if it lies in the same class at all or not.\\~\\
+The algorithm is straight forward and following a Brute Force method. The algorithm compares the data points to every other points in the set. This is then, checked upon each condition by keeping a count. The count is then incremented checking based on each condition whether if it lies in the same class at all or not. We find the minimum \\~\\
 Formula (Overall) = Total Matching / Total No of Computation\\~\\
 Formula (Each) = Total Of that Class / Total No of Computation for that class total.\\~\\
 \centering{Statistics}~\\
@@ -219,13 +221,47 @@ Formula (Each) = Total Of that Class / Total No of Computation for that class to
 \centerline{Class 3: 64.5 \%}~\\
 \centerline{Code in q2/b-c}~\\
 
-
 }
 %%% END SUBSECTION 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Section 3}{
-Repeat the previous step but after the data set is normalized using first 0-1 normalization and then z-score normalization. Investigate the reasons for discrepancy and provide evidence to support every one of your claims. Provide the code you used for normalizing and visualizing the data.
+Repeat the previous step but after the data set is normalized using first 0-1 normalization and then z-score normalization. Investigate the reasons for discrepancy and provide evidence to support every one of your claims. Provide the code you used for normalizing and visualizing the data.\\~\\
+
+\centerline{0 - 1 Normalization}~\\
+\[ z_i=\frac{x_i-\min(x)}{\max(x)-\min(x)} \]
 }
+
+\begin{verbatim}
+#0-1 Normalisation
+normalise  <- function(x) {
+    final_data1 <- ((x - min(x))/(max(x) -min(x)))
+  return (final_data)
+  }
+\end{verbatim}
+\centerline{Statistics}
+\centerline{Full Set Accuracy: 95\%}
+\centerline{Class 1 Set Accuracy: 100\%}
+\centerline{Class 2 Accuracy: 87.8\%}
+\centerline{Class 3 Accuracy: 100\%}
+
+\centerline{Z Score Normalization}~\\
+\[x^\prime := (x-x_{\min})/(x_{\max} -x_{\min} )\]
+\begin{verbatim}
+#Z Score Normalisation
+z_score<-function(x){
+    scale(x)
+    final_data <- ((x - mean(x)) / sd(x))
+    return (final_data)
+  }
+}
+\end{verbatim}
+\centerline{Statistics}
+\centerline{Full Set Accuracy: 95\%}
+\centerline{Class 1 Set Accuracy: 99.9\%}
+\centerline{Class 2 Accuracy: 88.3\%}
+\centerline{Class 3 Accuracy: 100\%}
+}~\\
+The idea of \textbf{Normalization} comes to data mining when we need to actually render the data in a specific range. It is used to make more sense out of the data, say when we have to actually data that is non - linear and to bring them to a linear state to form a relationship is one instance where we can use normalisation. There are a few techniques used for normalisation such min-max norm, 0-1 normalisation, Decimal Scaling etc. The drawback of normalization is that the data comes really close to each other and may sometimes cross boundaries. So if in a dataset where points have a few sparse data points, while normalising they may come really close and would give you an unclean result. Normalisation should be performed only when required.\\~\\
 %%% END SUBSECTION 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% END SECTION 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -263,7 +299,12 @@ This is the Glass ID Dataset\\
 (Link:https://archive.ics.uci.edu/ml/datasets/Glass+Identification)\\
 The scatter plot tells us that the data is pretty sparse and we can see that there is no correlation between or rather very less amount of correlation. The mean value lies about RI:1.5 and Aluminium Oxide:1.45.
 \includegraphics[max size={\textwidth}{\textheight}]{alri}\\
+This is the Glass ID Dataset\\
+(Link:https://archive.ics.uci.edu/ml/datasets/Glass+Identification)\\
+The Graph tells us that the data is pretty correlated and in a positive way, so the relation is that the data is RI increases with increase in the Caclcium Oxide Content and but is limited to a certain extent.\\
+\includegraphics[max size={\textwidth}{\textheight}]{co}\\
 \includegraphics[max size={\textwidth}{\textheight}]{q3b-yacht}\\
+
 }
 %%% END SUBSECTION 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -288,28 +329,43 @@ Bad Things:\\
 \centerline{Algorithm}~\\
 1.) The primary step is to clean up the data by putting the class variable to the right hand side column (making the class the last attribute, since I started with Iris and then have done that for datasets onwards). (code: q4-data formatter.py) - Using pickle to pull and push data since it stores data as is.\\
 2.) Defined a class Node (which contains a simple class to store the node structure). (node.py)\\
-3.) Then we need to divide the dataset by calculating Entropy or Gini Impurity, based on the atribute we split the data. For initiation we use the 0th attribute. (Code: divide.py and impurity.py)\\
+3.) Then we need to divide the dataset by calculating Entropy or Gini Impurity, based on that attribute we split the data. For initiation we use the 0th attribute. (Code: divide.py and impurity.py)\\
 4.) Then we build the tree using the division based on the attribute selection and store everything on the node.(buildtree.py)\\
 5.) Print tree is used to generate a tree picture.(printtree.py)\\
-6.) There is a main.py script which runs the complete script (This has parts of 5 running together, script has comments on running the 4th only).\\
+6.) There is a main.py script which runs the complete script (This has parts of Qustion 5 running together, script has comments on running the 4th only).\\
 References for this: http://kldavenport.com/pure-python-decision-trees/ - This is my basic tutorial what I started off with.\\~\\
 }
 \subsection{Section 2}{
 Implement 10-fold cross-validation to evaluate the accuracy of your algorithm on 10 different data sets from the UCI Machine Learning Repository. Select only those data sets where all features are numerical. In certain cases you can convert categorical features into numerical by encoding them using sparse binary representation. That is, if feature values belong to a set {blue, yellow,red, green}, encode this feature using 4-dimensional binary vectors such that if the feature value is blue, the encoding is (1, 0, 0, 0), if the feature value is yellow, the encoding is (0, 1, 0, 0), etc. You can also transform regression problems from the repository into classification problems by using the mean of the target variable to dichotomize the continuous target into binary class labels\\~\\
+
 1.) The ten folding is done with the help of dividing strata of data using Stratified K folding. Pythons Scikit has a library to do this. Say you have 150 values so it splits 150/K sets of test and train. Our K = 10(genkfolds.py)\\
+
 2.) In this the conversion of categorical attributes is performed to make them numeric. We check in the condition for a numeric (float or int) value or non numeric value.\\
+
 3.) Classification is applied using all test data points generated and then checking for accuracy. The accuracy (accuracy.py) is checked for the number of false and true predictions.\\ Accuracy = Correctly Predicted Instances / Total Predictions made\\~\\
 
-Accuracy for Iris: 99\% on an average.\\~\\
+Accuracy for Iris: 99\% on an average.\\
+Accuracy for Haberman: 76\% on an average.\\
+Accuracy for Wine: 97\% on an average.\\
+Accuracy for Banknote: 95\% on an average.\\
+Accuracy for Yeast: 54\% on an average.\\
+\centering
+IRIS\\
+\includegraphics[max size={\textwidth}{\textheight}]{tree-iris}\\~\\
+HABERMAN \\
+\includegraphics[max size={\textwidth}{\textheight}]{tree-haberman}\\~\\
+WINE\\
+\includegraphics[max size={\textwidth}{\textheight}]{tree-wine}\\~\\
+BANKNOTE
+\includegraphics[max size={\textwidth}{\textheight}]{tree-banknote}\\~\\
 }
 \subsection{Section 3}{
 Compare Gini and information gain as splitting criteria and discuss any observation on the
 quality of splitting.\\~\\
 1.) Gini to calculate gain is much faster as compared to Entropy since it avoids logs and lambda functions.\\
 2.) Gini is used to work on Continuous Attributes contrary to the Entropy for classes.\\
-3.) While Gini is used for minimising Misclassification whereas Entropy for Exploratory Data Analysis.\\~\\
-\centering
-\includegraphics[max size={\textwidth}{\textheight}]{tree-iris}\\
+3.) While Gini is used for minimising Misclassification whereas Entropy for Exploratory Data Analysis.\\
+4.) There is hardly any difference while you use gini or entropy. (Approximately maximum of ~5%)\\~\\
 }
 
 }
@@ -318,6 +374,9 @@ Modify your decision tree from the previous question and evaluate the overfittin
 \subsection{Section 1}{
 Use pessimistic estimates of the generalization error by adding a penalty factor 0.5 for each node in the tree.\\~\\
 1.) There are two methods which could have been chosen at this point Post and Pre Pruning, we go ahead with post pruning due to the computational limitations and code architecture limitations. Also, the pessimistic error is calculate on basis of over all training error and the number of training records keeping in mind the penalty applicable on each leaf node.\\~\\
+Few of the Pruned Trees:\\~\\
+\includegraphics[max size={\textwidth}{\textheight}]{tree-prune-iris}\\~\\
+\includegraphics[max size={\textwidth}{\textheight}]{wine}\\~\\
 }
 \subsection{Section 2}{
 Use a validation set that consists of 25\% of the training partition\\~\\
@@ -333,10 +392,20 @@ your Textbook.\\~\\
 
 \[Cost of Encoding each Attribute = log_2(m)\]
 \[Cost of Encoding each Class = log_2(k)\]
-The basic logic is to find the difference between the parent and the child node as cost of encoding class and attribute is constant and we need to calculate the cost for the penalty incurred.
+The basic logic is to find the difference between the parent and the child node as cost of encoding class and attribute is constant and we need to calculate the cost for the penalty incurred.\\~\\
 }
+}
+
+\section{Question 6 Solution}{
+Beyond greedy: combining beam search and classification tree construction. Extend the greedy algorithm for tree learning developed in the previous two questions to find a better classification tree as follows: At each step of node splitting, instead of picking the single best attribute to find the successor tree, keep top m successor trees based on the splits according to the top m attributes. For each of the trees in the list, generate the successor tree by splitting according to the next attribute. Then, keep top m successor trees (from all generated trees) for the next step and drop all the others. Continue the process until the stoppage criteria are fulfilled and select the best remaining tree as your model. Compare this algorithm with the greedy classification tree learning algorithm (m = 1) and comment on what you observe. Feel free to adjust this algorithm and experiment with different m’s and other parameters to see whether there is improvement in accuracy.\\~\\
+\includegraphics[max size={\textwidth}{\textheight}]{beam1}\\~\\
+
+Here we implement the Beam Search Algorithm in combination with the Breadth First Search Tree. We need to maintain M trees and select the best resulting atributes from each tree. The worst case will be that the attributes will be spread over m trees while the best cases will be when all the best attributes will be found in one place.\\~\\
+
+
 }
 \section{References}{
+Discussed with Krish Mahajan.
 1.) https://www.quora.com/How-is-the-market-for-BI-tool-Tableau-What-is-its-future-Is-it-a-good-career-choice\\
 2.) https://www.quora.com/Is-Tableau-good-from-a-career-point-of-view\\
 3.) http://stats.stackexchange.com/questions/94886/what-is-the-relationship-between-the-gini-score-and-the-log-likelihood-ratio \\
