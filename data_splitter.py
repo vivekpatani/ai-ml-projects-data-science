@@ -82,7 +82,7 @@ def json_data_list(path,filename):
 
     #File Loading Command
     with open(path+filename,encoding="iso-8859-1") as file:
-        data = json.load(file)
+    data = json.load(file)
 
     
 def main():
