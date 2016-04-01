@@ -39,8 +39,16 @@ Thumbs.db
 
 # XML
 #######################
-.xml
+*.xml
+
+# CSV
+#######################
+*.csv
 
 # DATA
 #######################
 enwikiquote-20160203-pages-articles-multistream.xml
+
+# TEST
+#######################
+wiki_thread.py
