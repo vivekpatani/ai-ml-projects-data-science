@@ -19,4 +19,4 @@ terminado==0.5
 tornado==4.1
 virtualenv==15.0.1
 graphlab==1.8.5
-pip install --upgrade --no-cache-dir https://get.dato.com/GraphLab-Create/1.8.5/vpatani@umail.iu.edu/DDC6-8855-6899-3926-9D94-CE08-1F95-EF83/GraphLab-Create-License.tar.gz
+https://get.dato.com/GraphLab-Create/1.8.5/vpatani@umail.iu.edu/DDC6-8855-6899-3926-9D94-CE08-1F95-EF83/GraphLab-Create-License.tar.gz
