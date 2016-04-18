@@ -19,4 +19,4 @@ pyzmq==14.6.0
 six==1.9.0
 terminado==0.5
 tornado==4.1
-graphlab==1.8.5
+virtualenv==15.0.1
