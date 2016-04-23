@@ -10,26 +10,38 @@ import re
 import time
 from multiprocessing import Process
 
-def read_line_by_line(path,filename,ext,destination,encoding="iso-8859-1",number_of_chunks=1):
+def read_line_by_line(path,filename,ext,destination="./result/",encoding="iso-8859-1",number_of_chunks=1):
 
-    file = open(path+filename+ext,encoding=encoding)
+    file = open(path+filename+ext)
     file_line = file.readlines()
     file.close()
 
-    output = open(destination+filename+"_output.csv","w",encoding=encoding)
+    output = open(destination+filename+"_output.csv","w")
     count = 0
     og_count = 0
     page_id = 0
     date_rev = ""
+    data_desc_frame = []
+    data_single_desc_frame = ""
+    flag = False
 
     for each_line in iter(file_line):
+
+        if "<text xml:space=\"preserve\">" in each_line:
+            flag = True
+        if "</text>" in each_line:
+            data_desc_frame.append(data_single_desc_frame)
+            data_single_desc_frame = ""
+            flag = False
         
         start = time.clock()
         #print(each_line)
 
         if "</page>" in each_line:
+            #print(data_desc_frame[0:])
             #print(page_id)
-            final_string = str(page_id) + "," + str(count) + "," + date_rev[0:-1]+"\n"
+            final_string = str(page_id) + "," + str(count) + "," + date_rev[0:] + "," + str(data_desc_frame[0:]) + "\n"
+            data_desc_frame = []
             #print(final_string)
             output.write(final_string)
             og_count = 0
@@ -51,6 +63,9 @@ def read_line_by_line(path,filename,ext,destination,encoding="iso-8859-1",number
             each_id = each_line.rstrip().replace('>',' ').replace('<',' ').split()
             page_id = int(each_id[1])
             #print(int(each_id[1]))
+
+        if flag:
+            data_single_desc_frame += each_line.rstrip()
 
     print("Output File Generated.")
     end = time.clock()
@@ -81,7 +96,7 @@ def data_gen(path,filename,encoding="iso-8859-1",destination="./data_chunks/",nu
 
     #File opening Command
     print(path+filename)
-    file = open(path+filename,encoding="iso-8859-1")
+    file = open(path+filename)
 
     #Process to break the read file and store it in chunks
     counter = 0
@@ -97,7 +112,7 @@ def data_gen(path,filename,encoding="iso-8859-1",destination="./data_chunks/",nu
         outf = "file" + str(counter) + ".xml"
 
         #Open the output file to write in it
-        outfile = open(destination+outf,"w",encoding="iso-8859-1")
+        outfile = open(destination+str(outf),"w")
         outfile.write(piece)
         print(outf + " Generated.")
         outfile.close()
@@ -116,7 +131,7 @@ def json_data_extract(path,filename):
     data = {}
 
     #File Loading Command
-    with open(path+filename,encoding="iso-8859-1") as file:
+    with open(path+filename) as file:
         data = json.load(file)
 
     print(data[0])
@@ -137,7 +152,7 @@ def json_data_list(path,filename):
     data = []
 
     #File Loading Command
-    with open(path+filename,encoding="iso-8859-1") as file:
+    with open(path+filename) as file:
         data = json.load(file)
 
     
@@ -147,7 +162,7 @@ def main():
     path = ".\data_chunks\."
     filename = "file";
     ext = ".xml"
-    for i in range(1,16):
+    for i in range(1,8):
         
 ##    p1 = Process(target = read_line_by_line("./data/","file1",".xml","./result/"))
 ##    p1.start()
@@ -160,9 +175,9 @@ def main():
 ##    p5 = Process(target = read_line_by_line("./data/","file5",".xml","./result/"))
 ##    p5.start()
     #Calling the file split chunk function
-        data_gen('E:/Downloads/enwiki-20151201-pages-meta-current.xml/','enwiki-20151201-pages-meta-current.xml',"iso-8859-1","./data_chunks/",20)
+    #data_gen('./input/','enwiki-20160305-pages-meta-history19.xml','iso-8859-1','data_chunks/',20)
     #json_data_extract("./","data.json")
-    #read_line_by_line("./","file1",".xml")
+        read_line_by_line("./data_chunks/","file"+str(i),".xml")
 
 
 #Standard Bolier Plate
