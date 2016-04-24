@@ -9,14 +9,19 @@ from datetime import date
 import re
 import time
 from multiprocessing import Process
+from os import listdir
+from os.path import isfile, join
+
+def call_read():
+    onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
 def read_line_by_line(path,filename,ext,destination="./result/",encoding="iso-8859-1",number_of_chunks=1):
 
-    file = open(path+filename+ext)
+    file = open(path+filename+ext,encoding=encoding)
     file_line = file.readlines()
     file.close()
 
-    output = open(destination+filename+"_output.csv","w")
+    output = open(destination+filename+"_output.csv","w",encoding=encoding)
     count = 0
     og_count = 0
     page_id = 0
@@ -24,6 +29,9 @@ def read_line_by_line(path,filename,ext,destination="./result/",encoding="iso-88
     data_desc_frame = []
     data_single_desc_frame = ""
     flag = False
+    class_variable = False
+    header = "page id" + "," + "Number of Revs" + "," + "last_date" + "," + "first_date" + "," + "Class" + "," + "2008" + "," + "2009" + "," + "2010" + "," + "2011" + "," + "2012" + "," + "2013" + "," + "2014" + "," + "2015" + "," + "2016" + "Upto_2012_Weights" + "," + "After_2013_Weights" + "\n"
+    output.write(header)
 
     for each_line in iter(file_line):
 
@@ -40,7 +48,45 @@ def read_line_by_line(path,filename,ext,destination="./result/",encoding="iso-88
         if "</page>" in each_line:
             #print(data_desc_frame[0:])
             #print(page_id)
-            final_string = str(page_id) + "," + str(count) + "," + date_rev[0:] + "," + str(data_desc_frame[0:]) + "\n"
+
+            if int(date_rev[:4]) >= 2008:
+                class_variable = True
+            else: class_variable = False
+
+            c2008 = 0
+            c2008 = date_rev.count('2008')
+
+            c2009 = 0
+            c2009 = date_rev.count('2009')
+
+            c2010 = 0
+            c2010 = date_rev.count('2010')
+
+            c2011 = 0
+            c2011 = date_rev.count('2011')
+
+            c2012 = 0
+            c2012 = date_rev.count('2012')
+
+            c2013 = 0
+            c2013 = date_rev.count('2013')
+
+            c2014 = 0
+            c2014 = date_rev.count('2014')
+
+            c2015 = 0
+            c2015 = date_rev.count('2015')
+
+            c2016 = 0
+            c2016 = date_rev.count('2016')
+
+            sum_upto_2012 = c2008 + c2009 + c2010 + c2011 + c2012
+            weighted_sum_2012 = sum_upto_2012 * 0.25
+            
+            sum_after_2016 = c2013 + c2014 + c2015 + c2016
+            weighted_sum_2016 = sum_after_2016 * 0.75
+
+            final_string = str(page_id) + "," + str(count) + "," + date_rev[-11:-1] + "," + date_rev[:10] + "," + str(class_variable) + "," +str(c2008) + "," +str(c2009) + "," +str(c2010) + "," +str(c2011) + "," +str(c2012) + "," +str(c2013) + "," +str(c2014) + "," +str(c2015) + "," +str(c2016) + ","+ str(weighted_sum_2012) + "," + str(weighted_sum_2016) + "\n"
             data_desc_frame = []
             #print(final_string)
             output.write(final_string)
@@ -96,7 +142,7 @@ def data_gen(path,filename,encoding="iso-8859-1",destination="./data_chunks/",nu
 
     #File opening Command
     print(path+filename)
-    file = open(path+filename)
+    file = open(path+filename,encoding=encoding)
 
     #Process to break the read file and store it in chunks
     counter = 0
@@ -112,7 +158,7 @@ def data_gen(path,filename,encoding="iso-8859-1",destination="./data_chunks/",nu
         outf = "file" + str(counter) + ".xml"
 
         #Open the output file to write in it
-        outfile = open(destination+str(outf),"w")
+        outfile = open(destination+str(outf),"w",encoding=encoding)
         outfile.write(piece)
         print(outf + " Generated.")
         outfile.close()
@@ -131,7 +177,7 @@ def json_data_extract(path,filename):
     data = {}
 
     #File Loading Command
-    with open(path+filename) as file:
+    with open(path+filename,encoding=encoding) as file:
         data = json.load(file)
 
     print(data[0])
@@ -152,7 +198,7 @@ def json_data_list(path,filename):
     data = []
 
     #File Loading Command
-    with open(path+filename) as file:
+    with open(path+filename,encoding=encoding) as file:
         data = json.load(file)
 
     
@@ -177,7 +223,7 @@ def main():
     #Calling the file split chunk function
     #data_gen('./input/','enwiki-20160305-pages-meta-history19.xml','iso-8859-1','data_chunks/',20)
     #json_data_extract("./","data.json")
-        read_line_by_line("./data_chunks/","file"+str(i),".xml")
+        read_line_by_line("./data_chunks/","file"+str(i),".xml",encoding="iso-8859-1")
 
 
 #Standard Bolier Plate
