@@ -12,16 +12,22 @@ from multiprocessing import Process
 from os import listdir
 from os.path import isfile, join
 
-def call_read():
+def call_read(filename = "bigdata",destination="./result/",encoding="iso-8859-1"):
+    output = open(destination+filename+"_output.csv","a",encoding=encoding)
+    mypath = "./data_chunks/"
+    output = open("./result/output.csv","w",encoding=encoding)
+    header = "page id" + "," + "Number of Revs" + "," + "last_date" + "," + "first_date" + "," + "second_last_date" + "," + "Class" + "," + "2008" + "," + "2009" + "," + "2010" + "," + "2011" + "," + "2012" + "," + "2013" + "," + "2014" + "," + "2015" + "," + "2016" + "," + "Upto_2012_Weights" + "," + "After_2013_Weights" + "\n"
+    output.write(header)
     onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
+    for each_file in onlyfiles:
+        read_line_by_line("./data_chunks/",each_file,".xml",encoding="iso-8859-1",output=output)
+    output.close()
 
-def read_line_by_line(path,filename,ext,destination="./result/",encoding="iso-8859-1",number_of_chunks=1):
+def read_line_by_line(path,filename,ext,destination="./result/",encoding="iso-8859-1",number_of_chunks=1,output="output.csv"):
 
-    file = open(path+filename+ext,encoding=encoding)
+    file = open(path+filename,encoding=encoding)
     file_line = file.readlines()
     file.close()
-
-    output = open(destination+filename+"_output.csv","w",encoding=encoding)
     count = 0
     og_count = 0
     page_id = 0
@@ -30,8 +36,6 @@ def read_line_by_line(path,filename,ext,destination="./result/",encoding="iso-88
     data_single_desc_frame = ""
     flag = False
     class_variable = False
-    header = "page id" + "," + "Number of Revs" + "," + "last_date" + "," + "first_date" + "," + "Class" + "," + "2008" + "," + "2009" + "," + "2010" + "," + "2011" + "," + "2012" + "," + "2013" + "," + "2014" + "," + "2015" + "," + "2016" + "Upto_2012_Weights" + "," + "After_2013_Weights" + "\n"
-    output.write(header)
 
     for each_line in iter(file_line):
 
@@ -48,10 +52,11 @@ def read_line_by_line(path,filename,ext,destination="./result/",encoding="iso-88
         if "</page>" in each_line:
             #print(data_desc_frame[0:])
             #print(page_id)
-
-            if int(date_rev[:4]) >= 2008:
-                class_variable = True
-            else: class_variable = False
+            #print(date_rev[-11:-7],page_id)
+            if int(date_rev[-11:-7]) >= 2012:
+                class_variable = 1
+                #print(class_variable,date_rev[-11:-7])
+            else: class_variable = 0
 
             c2008 = 0
             c2008 = date_rev.count('2008')
@@ -86,7 +91,7 @@ def read_line_by_line(path,filename,ext,destination="./result/",encoding="iso-88
             sum_after_2016 = c2013 + c2014 + c2015 + c2016
             weighted_sum_2016 = sum_after_2016 * 0.75
 
-            final_string = str(page_id) + "," + str(count) + "," + date_rev[-11:-1] + "," + date_rev[:10] + "," + str(class_variable) + "," +str(c2008) + "," +str(c2009) + "," +str(c2010) + "," +str(c2011) + "," +str(c2012) + "," +str(c2013) + "," +str(c2014) + "," +str(c2015) + "," +str(c2016) + ","+ str(weighted_sum_2012) + "," + str(weighted_sum_2016) + "\n"
+            final_string = str(page_id) + "," + str(count) + "," + date_rev[-11:-1] + "," + date_rev[:10] + "," + date_rev[-22:-12] + "," + str(class_variable) + "," +str(c2008) + "," +str(c2009) + "," +str(c2010) + "," +str(c2011) + "," +str(c2012) + "," +str(c2013) + "," +str(c2014) + "," +str(c2015) + "," +str(c2016) + ","+ str(weighted_sum_2012) + "," + str(weighted_sum_2016) + "\n"
             data_desc_frame = []
             #print(final_string)
             output.write(final_string)
@@ -208,22 +213,23 @@ def main():
     path = ".\data_chunks\."
     filename = "file";
     ext = ".xml"
-    for i in range(1,8):
-        
-##    p1 = Process(target = read_line_by_line("./data/","file1",".xml","./result/"))
-##    p1.start()
-##    p2 = Process(target = read_line_by_line("./data/","file2",".xml","./result/"))
-##    p2.start()
-##    p3 = Process(target = read_line_by_line("./data/","file3",".xml","./result/"))
-##    p3.start()
-##    p4 = Process(target = read_line_by_line("./data/","file4",".xml","./result/"))
-##    p4.start()
-##    p5 = Process(target = read_line_by_line("./data/","file5",".xml","./result/"))
-##    p5.start()
-    #Calling the file split chunk function
-    #data_gen('./input/','enwiki-20160305-pages-meta-history19.xml','iso-8859-1','data_chunks/',20)
-    #json_data_extract("./","data.json")
-        read_line_by_line("./data_chunks/","file"+str(i),".xml",encoding="iso-8859-1")
+    call_read()
+##    for i in range(1,8):
+##        
+####    p1 = Process(target = read_line_by_line("./data/","file1",".xml","./result/"))
+####    p1.start()
+####    p2 = Process(target = read_line_by_line("./data/","file2",".xml","./result/"))
+####    p2.start()
+####    p3 = Process(target = read_line_by_line("./data/","file3",".xml","./result/"))
+####    p3.start()
+####    p4 = Process(target = read_line_by_line("./data/","file4",".xml","./result/"))
+####    p4.start()
+####    p5 = Process(target = read_line_by_line("./data/","file5",".xml","./result/"))
+####    p5.start()
+##    #Calling the file split chunk function
+##    #data_gen('./input/','enwiki-20160305-pages-meta-history19.xml','iso-8859-1','data_chunks/',20)
+##    #json_data_extract("./","data.json")
+##        read_line_by_line("./data_chunks/","file"+str(i),".xml",encoding="iso-8859-1")
 
 
 #Standard Bolier Plate
