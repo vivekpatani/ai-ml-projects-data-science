@@ -88,7 +88,7 @@
 \newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
 \renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
 \subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
-\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
 }{
 \enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
 }
@@ -156,7 +156,6 @@ How? They could assign more resources to a page having more edits and lesser to 
 %----------------------------------------------------------------------------------------
 %	Dependencies
 %----------------------------------------------------------------------------------------
-\clearpage
 
 \begin{homeworkProblem}[Dependencies] % Custom section title
 We used an array of technologies during the course in order to achieve a superior model.
@@ -173,13 +172,6 @@ Data Formats:
 \item Pickle
 \end{itemize}
 
-\end{homeworkProblem}
-
-%----------------------------------------------------------------------------------------
-%	Files
-%----------------------------------------------------------------------------------------
-\clearpage
-\begin{homeworkProblem}[Files]
 \end{homeworkProblem}
 
 %----------------------------------------------------------------------------------------
@@ -227,7 +219,6 @@ Revision ID).
 %----------------------------------------------------------------------------------------
 %	Feature Construction
 %----------------------------------------------------------------------------------------
-\clearpage
 \begin{homeworkProblem}[Feature Construction]
 Since the Xml data that we got is extremely large, to process the data we break this large XML into small chunks of XML. For every page in the XML,  we select certain features and write our feature for every page. Page id is the main index of our generated CSV. Using all of these edit dates for each page we generate more features for prediction of our model. The list of features added to the csv file -
 \begin{itemize}
@@ -251,7 +242,7 @@ Our idea is to identify the editing pattern of individual pages in wikipedia. We
 \begin{homeworkSection}{Approach I}
 We try to predict if a particular page would be edited in the next three months. We begin with targeting only those pages with multiple revisions. Timestamps(Date) is a key feature for our model. Every time a page is edited, we have a revision id and date for that revision.We use all of these edit dates in our model. Page id, revision count, previous edit date are some of the significant features we incorporate in this feature. We also generate another feature in this approach, called as a weighted revision factor. The way we do this is - we calculate the no of edits per page in every year since its creation. We give more weights to the edits that occurred post 2012 because the editing pattern is high in the recent years and this factor will greatly enhances our model prediction. Our accuracy increased by around 10-12 \% after adding this feature.\\ 
 For evaluation, we test with by providing a choice of our date and we check for the all the pages if there would be an edit in the next 90 days from the provided date. We do this with a logistic regression and predict for the pages in our test data if they will be edited in next 90 days.\\
-\includegraphics[width=0.75\columnwidth]{accuracy}
+\includegraphics[width=0.50\columnwidth]{accuracy}\\\includegraphics[width=0.75\columnwidth]{approach1}\\ % Example image
 \end{homeworkSection}
 
 \begin{homeworkSection}{Approach II}
@@ -262,7 +253,8 @@ In this approach, we try to predict the next edit date for a given page. This ma
 \item Average revision days is a feature that we calculated for this approach. It is a ratio of the difference of days with respect to first and last edit date to the total number of revisions. This feature gives us as an idea about the frequency of the page being edited.
 \end{itemize}~\\
 With the available features and generated features we predict the month of our next edit. We keep the second last date as a reference and using the average revision days, next edit month is predicted. When we run this on test data, our predicted month and actual month of next edit are compared in our logistic model to evaluate the accuracy.\\
-\includegraphics[width=0.75\columnwidth]{accuracy2}
+\includegraphics[width=0.50\columnwidth]{accuracy2}\\
+\includegraphics[width=0.75\columnwidth]{approach2}\\ % Example image
 \end{homeworkSection}
 
 \begin{homeworkSection}{Additional Approach}
@@ -326,10 +318,15 @@ Weighted edits for each page would be\\
 %----------------------------------------------------------------------------------------
 %	Conclusions and Interpretation
 %----------------------------------------------------------------------------------------
-\clearpage
 \begin{homeworkProblem}[Conclusions and Interpretation]
 \begin{itemize}
-The objective of this project is to quantitively understand what factors determine editing behavior. We hope to be able to answer questions, using these predictive models, why people stop editing or increase their pace of editing.
+\item The objective of this project is to quantitively understand what factors determine editing behavior. We hope to be able to answer questions, using these predictive models, why people stop editing or increase their pace of editing.
+
+\item We thank Professor Liu, Professor Miao Chen and Zheng Gao for your support. We have really learned a lot through this project and will continue to pursue this project. Wikipedia has been a great challenge and has given us experience in Big Data Domain.
+
+Final Project Git Link:\\
+\url{https://github.com/vivekpatani/wiki-dataset}
+
 \end{itemize}
 \end{homeworkProblem}
 
