@@ -3,9 +3,10 @@
 \BOOKMARK [1][-]{section*.4}{Files}{}% 3
 \BOOKMARK [1][-]{section*.5}{Raw Data}{}% 4
 \BOOKMARK [1][-]{section*.6}{Indexing}{}% 5
-\BOOKMARK [1][-]{section*.7}{Training Set Construction}{}% 6
-\BOOKMARK [1][-]{section*.8}{Feature Construction}{}% 7
-\BOOKMARK [1][-]{section*.9}{Model Learning/Training}{}% 8
-\BOOKMARK [2][-]{section*.10}{Logistic Regression}{section*.9}% 9
-\BOOKMARK [2][-]{section*.11}{Future Edits Learning Algorithm}{section*.9}% 10
-\BOOKMARK [1][-]{section*.12}{Conclusions and Interpretation}{}% 11
+\BOOKMARK [1][-]{section*.7}{Feature Construction}{}% 6
+\BOOKMARK [1][-]{section*.8}{Model Learning/Training}{}% 7
+\BOOKMARK [2][-]{section*.9}{Approach I}{section*.8}% 8
+\BOOKMARK [2][-]{section*.10}{Approach II}{section*.8}% 9
+\BOOKMARK [2][-]{section*.11}{Additional Approach}{section*.8}% 10
+\BOOKMARK [1][-]{section*.12}{Future Edit Learning Algorithm}{}% 11
+\BOOKMARK [1][-]{section*.13}{Conclusions and Interpretation}{}% 12

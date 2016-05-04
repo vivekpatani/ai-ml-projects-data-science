@@ -1,11 +1,12 @@
 \contentsline {section}{About the Problem}{3}{section*.2}
-\contentsline {section}{Dependencies}{3}{section*.3}
-\contentsline {section}{Files}{3}{section*.4}
-\contentsline {section}{Raw Data}{3}{section*.5}
-\contentsline {section}{Indexing}{3}{section*.6}
-\contentsline {section}{Training Set Construction}{3}{section*.7}
-\contentsline {section}{Feature Construction}{3}{section*.8}
-\contentsline {section}{Model Learning/Training}{3}{section*.9}
-\contentsline {subsection}{Logistic Regression}{3}{section*.10}
-\contentsline {subsection}{Future Edits Learning Algorithm}{3}{section*.11}
-\contentsline {section}{Conclusions and Interpretation}{3}{section*.12}
+\contentsline {section}{Dependencies}{4}{section*.3}
+\contentsline {section}{Files}{5}{section*.4}
+\contentsline {section}{Raw Data}{6}{section*.5}
+\contentsline {section}{Indexing}{7}{section*.6}
+\contentsline {section}{Feature Construction}{8}{section*.7}
+\contentsline {section}{Model Learning/Training}{9}{section*.8}
+\contentsline {subsection}{Approach I}{9}{section*.9}
+\contentsline {subsection}{Approach II}{10}{section*.10}
+\contentsline {subsection}{Additional Approach}{12}{section*.11}
+\contentsline {section}{Future Edit Learning Algorithm}{12}{section*.12}
+\contentsline {section}{Conclusions and Interpretation}{16}{section*.13}
