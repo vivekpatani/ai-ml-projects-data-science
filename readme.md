@@ -1,8 +1,8 @@
 #README file  
-Summer 2016, Bitly Data Science Internship- Data Analysis- Chirag Bhupendra Chheda  
-Two important aspects:
-1.) Folder Structure
-2.) Scripts
+Summer 2016, Bitly Data Science Internship - Data Analysis - Chirag Bhupendra Chheda & Vivek Patani  
+Two important aspects:  
+1.) Folder Structure  
+2.) Scripts  
 
 #Folder Structure  
 The folder structure contains three parts:  
