@@ -1,0 +1,94 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue May 17 20:27:43 2016
+
+@author: Vivek Patani
+"""
+from sklearn import preprocessing as p
+from sklearn.base import TransformerMixin
+import pandas as pd
+import numpy as np
+#from sklearn.feature_selection import RFE
+##from sklearn.ensemble.forest import RandomForestClassifier
+#from sklearn.ensemble import ExtraTreesClassifier
+from sklearn.linear_model import RandomizedLasso
+#from sklearn.linear_model import LinearRegression
+
+
+class DataFrameImputer(TransformerMixin):
+
+    def __init__(self):
+        """Impute missing values.
+
+        Columns of dtype object are imputed with the most frequent value 
+        in column.
+
+        Columns of other types are imputed with mean of column.
+
+        """
+    def fit(self, X, y=None):
+
+        self.fill = pd.Series([X[c].value_counts().index[0]
+            if X[c].dtype == np.dtype('O') else X[c].mean() for c in X],
+            index=X.columns)
+
+        return self
+
+    def transform(self, X, y=None):
+        return X.fillna(self.fill)
+
+
+
+def data_loader(path,file_name,encoding='iso-8859-1'):
+    
+    with open(path+file_name) as input_file:
+        data = pd.read_csv(input_file)
+    return data
+    
+def data_analyse(path,file_name):
+    
+    dataset = data_loader(path,file_name)
+    dataset = DataFrameImputer().fit_transform(dataset)
+    print("Done with Transform")
+    
+    Y = dataset['loan_status']
+    
+    le = p.LabelEncoder()
+    le.fit(Y)
+    
+    tr = le.transform(Y)
+    #print(tr)
+    
+    count = 0
+    X = dataset[["id","member_id","loan_amnt","funded_amnt","funded_amnt_inv","term","int_rate","installment","grade","sub_grade","emp_title","emp_length","home_ownership","annual_inc","verification_status","issue_d","pymnt_plan","url","purpose","title","zip_code","addr_state","dti","delinq_2yrs","earliest_cr_line","inq_last_6mths","mths_since_last_delinq","mths_since_last_record","open_acc","pub_rec","revol_bal","revol_util","total_acc","initial_list_status","out_prncp","out_prncp_inv","total_pymnt","total_pymnt_inv","total_rec_prncp","total_rec_int","total_rec_late_fee","recoveries","collection_recovery_fee","last_pymnt_d","last_pymnt_amnt","next_pymnt_d","last_credit_pull_d","collections_12_mths_ex_med","mths_since_last_major_derog","policy_code","application_type","acc_now_delinq","tot_coll_amt","tot_cur_bal","total_rev_hi_lim","acc_open_past_24mths","avg_cur_bal","bc_open_to_buy","bc_util","chargeoff_within_12_mths","delinq_amnt","mo_sin_old_il_acct","mo_sin_old_rev_tl_op","mo_sin_rcnt_rev_tl_op","mo_sin_rcnt_tl","mort_acc","mths_since_recent_bc","mths_since_recent_bc_dlq","mths_since_recent_inq","mths_since_recent_revol_delinq","num_accts_ever_120_pd","num_actv_bc_tl","num_actv_rev_tl","num_bc_sats","num_bc_tl","num_il_tl","num_op_rev_tl","num_rev_accts","num_rev_tl_bal_gt_0","num_sats","num_tl_120dpd_2m","num_tl_30dpd","num_tl_90g_dpd_24m","num_tl_op_past_12m","pct_tl_nvr_dlq","percent_bc_gt_75","pub_rec_bankruptcies","tax_liens","tot_hi_cred_lim","total_bal_ex_mort","total_bc_limit","total_il_high_credit_limit"]]
+    names = ["id","member_id","loan_amnt","funded_amnt","funded_amnt_inv","term","int_rate","installment","grade","sub_grade","emp_title","emp_length","home_ownership","annual_inc","verification_status","issue_d","pymnt_plan","url","purpose","title","zip_code","addr_state","dti","delinq_2yrs","earliest_cr_line","inq_last_6mths","mths_since_last_delinq","mths_since_last_record","open_acc","pub_rec","revol_bal","revol_util","total_acc","initial_list_status","out_prncp","out_prncp_inv","total_pymnt","total_pymnt_inv","total_rec_prncp","total_rec_int","total_rec_late_fee","recoveries","collection_recovery_fee","last_pymnt_d","last_pymnt_amnt","next_pymnt_d","last_credit_pull_d","collections_12_mths_ex_med","mths_since_last_major_derog","policy_code","application_type","acc_now_delinq","tot_coll_amt","tot_cur_bal","total_rev_hi_lim","acc_open_past_24mths","avg_cur_bal","bc_open_to_buy","bc_util","chargeoff_within_12_mths","delinq_amnt","mo_sin_old_il_acct","mo_sin_old_rev_tl_op","mo_sin_rcnt_rev_tl_op","mo_sin_rcnt_tl","mort_acc","mths_since_recent_bc","mths_since_recent_bc_dlq","mths_since_recent_inq","mths_since_recent_revol_delinq","num_accts_ever_120_pd","num_actv_bc_tl","num_actv_rev_tl","num_bc_sats","num_bc_tl","num_il_tl","num_op_rev_tl","num_rev_accts","num_rev_tl_bal_gt_0","num_sats","num_tl_120dpd_2m","num_tl_30dpd","num_tl_90g_dpd_24m","num_tl_op_past_12m","pct_tl_nvr_dlq","percent_bc_gt_75","pub_rec_bankruptcies","tax_liens","tot_hi_cred_lim","total_bal_ex_mort","total_bc_limit","total_il_high_credit_limit"]
+    
+    for x in X:
+        try:
+            print(str(x) + str(type(x)))
+            le = p.LabelEncoder()
+            le.fit(dataset[x])
+            dataset[x] = le.transform(dataset[x])
+        except Exception:
+            count += 1
+    
+    print(count)
+    dataset.to_csv('./data_chunks/output.csv')
+    
+    X = dataset[["id","member_id","loan_amnt","funded_amnt","funded_amnt_inv","term","int_rate","installment","grade","sub_grade","emp_title","emp_length","home_ownership","annual_inc","verification_status","issue_d","pymnt_plan","url","purpose","title","zip_code","addr_state","dti","delinq_2yrs","earliest_cr_line","inq_last_6mths","mths_since_last_delinq","mths_since_last_record","open_acc","pub_rec","revol_bal","revol_util","total_acc","initial_list_status","out_prncp","out_prncp_inv","total_pymnt","total_pymnt_inv","total_rec_prncp","total_rec_int","total_rec_late_fee","recoveries","collection_recovery_fee","last_pymnt_d","last_pymnt_amnt","next_pymnt_d","last_credit_pull_d","collections_12_mths_ex_med","mths_since_last_major_derog","policy_code","application_type","acc_now_delinq","tot_coll_amt","tot_cur_bal","total_rev_hi_lim","acc_open_past_24mths","avg_cur_bal","bc_open_to_buy","bc_util","chargeoff_within_12_mths","delinq_amnt","mo_sin_old_il_acct","mo_sin_old_rev_tl_op","mo_sin_rcnt_rev_tl_op","mo_sin_rcnt_tl","mort_acc","mths_since_recent_bc","mths_since_recent_bc_dlq","mths_since_recent_inq","mths_since_recent_revol_delinq","num_accts_ever_120_pd","num_actv_bc_tl","num_actv_rev_tl","num_bc_sats","num_bc_tl","num_il_tl","num_op_rev_tl","num_rev_accts","num_rev_tl_bal_gt_0","num_sats","num_tl_120dpd_2m","num_tl_30dpd","num_tl_90g_dpd_24m","num_tl_op_past_12m","pct_tl_nvr_dlq","percent_bc_gt_75","pub_rec_bankruptcies","tax_liens","tot_hi_cred_lim","total_bal_ex_mort","total_bc_limit","total_il_high_credit_limit"]]
+
+    print("LASSO")        
+    rlasso = RandomizedLasso(alpha=0.0001)
+    print("LASSO FITTING")    
+    rlasso.fit(X, tr)
+    
+    print (sorted(zip(map(lambda x: round(x, 4), rlasso.scores_), 
+                 names), reverse=True))
+    
+def main():
+    
+    data_analyse('./input/','lc2015.csv')
+#    data_analyse('./input/','test.csv')
+
+if __name__ == "__main__":
+    main()
