@@ -8,9 +8,9 @@ The Outlier(outlier.py) script is used to detect outliers for each of the featur
 #How to run it?  
 ##Maintain the Foler Structure:  
 Make three folders in the root directory of the project namely:  
-1.) input
-2.) output
-3.) data_chunks
+1.) input  
+2.) output  
+3.) data_chunks  
 
 Then place outlier.py and script.py in the root directory.  
 
