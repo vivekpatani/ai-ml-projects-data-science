@@ -1,0 +1,15 @@
+Alpha = 0.00
+'total_rec_late_fee','total_rec_int','last_pymnt_amnt','recoveries','acc_open_past_24mths'
+Coefficients:
+ [  1.42198429e-03  -6.71579809e-06   3.04515661e-05  -1.67330796e-03
+   2.28599690e-02]
+Residual sum of squares: 0.59
+Variance score: 0.23
+
+Alpha = 0.001
+'last_pymnt_amnt','out_prncp','total_rec_late_fee','recoveries','int_rate','collection_recovery_fee'
+Coefficients:
+ [  2.70101739e-05  -7.82766166e-06   1.35738392e-03  -8.44078455e-04
+   3.44427218e-03  -1.08504724e-03]
+Residual sum of squares: 0.55
+Variance score: 0.28
