@@ -1,0 +1,10 @@
+data = read.csv2('D:\\junkyard\\lending_club\\input\\lc2015.csv', header = TRUE, sep = ",")
+clean_data = na.omit(data)
+df = clean_data[,c(6,8,15,75)]
+library(ggplot2)
+library(GGally)
+ggcorr(data)
+ggcorr(df)
+sapply(df,is.numeric)
+df$int_rate = as.numeric(df$int_rate)
+df$annual_inc = as.numeric(df$annual_inc)
