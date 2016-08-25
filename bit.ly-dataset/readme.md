@@ -1,4 +1,5 @@
-#README file  
+#Bit.ly Data Analysis  
+
 Summer 2016, Bitly Data Science Internship - Data Analysis - Chirag Bhupendra Chheda & Vivek Patani  
 Two important aspects:  
 1.) Folder Structure  
@@ -19,12 +20,12 @@ We perform various functions here such as:
 4.) Feature Domain Extract - This primarily is used to find out the Domain/Company name and it's popularity among the others.  
 5.) Feature Browser OS - This primarily helps us to obtain statistics on the OS, Devices used and Browsers used while accessing bit.ly links.  
 6.) Top Level Domain Extraction - Step used to devise links most visited with respect to their User Hash Values.  
-
+  
 #How to Run the code:
 
-Script.py is the file containing all the code.
+Script.py is the file containing all the code.  
 1.) Just place raw input files into the input folder and create two empty folders in the same directory as the one with the input folder named output and data_chunks.  
-2.) Go to script.py and simply manipulate the read_data in the main method. Everything else will run automatically giving you statistics in sorted and unsorted manner.
-3.) All interim output will be stored in data_chunks, named appropriately. It is mentioned in step form and all the data manipulations are stored for you to see.
-
-#THANK YOU
+2.) Go to script.py and simply manipulate the read_data in the main method. Everything else will run automatically giving you statistics in sorted and unsorted manner.  
+3.) All interim output will be stored in data_chunks, named appropriately. It is mentioned in step form and all the data manipulations are stored for you to see.  
+  
+#THANK YOU  
