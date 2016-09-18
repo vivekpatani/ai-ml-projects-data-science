@@ -14,7 +14,7 @@ import cv2
 
 # load the puzzle and waldo images
 puzzle = cv2.imread("image/puzzle.jpg")
-waldo = cv2.imread("image/waldo.jpg")
+waldo = cv2.imread("image/waldo.png")
 print(waldo.shape)
 (waldoHeight, waldoWidth) = waldo.shape[:2]
 
