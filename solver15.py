@@ -4,8 +4,10 @@ import sys
 import os
 import copy
 import heapq
+import math
+import numpy as np
 
-class State:
+class State(object):
 
 	def __init__ (self, puzzle, link, cost):
 		self.puzzle = puzzle
@@ -25,7 +27,7 @@ class State:
 Declaring all the variables needed throughout.
 """
 n = 4
-goal_state = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 0]]
+goal_state = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 0]])
 
 def get_puzzle():
 
@@ -43,7 +45,7 @@ def get_puzzle():
 	reader = file.read()
 	file.close()
 	reader = get_list(reader)
-	origin = State (reader, '', 0)
+	origin = State (np.array(reader), '', 0)
 	return origin
 
 def get_list(reader, n=4):
@@ -82,9 +84,7 @@ def calc_manhattan (puzzle):
 	Returns Manhattan distance between goal state and current state.
 	Manhattan distance is the distance of each tile from its original position
 	"""
-	total = 0
-
-	return total
+	return calc_hamming(puzzle)
 
 def get_successor (state):
 
@@ -96,18 +96,22 @@ def get_successor (state):
 	row, column = find_empty_space(state.puzzle)
 	successor_object = []
 	
+	# To Get Up Successor
 	successor1, cost1 = move_up (state.puzzle, row, column)
 	successor11 = State(successor1, state.link + 'U', cost1 + state.cost)
 	successor_object.append(successor11)
 
+	# To Get Down Successor
 	successor2, cost2 = move_down (state.puzzle, row, column)
 	successor21 = State(successor2, state.link + 'D', cost2 + state.cost)
 	successor_object.append(successor21)
 	
+	# To Get Left Successor
 	successor3, cost3 = move_left (state.puzzle, row, column)
 	successor31 = State(successor3, state.link + 'L', cost3 + state.cost)
 	successor_object.append(successor31)
 
+	# To Get Right Successor
 	successor4, cost4 = move_right (state.puzzle, row, column)
 	successor41 = State(successor4, state.link + 'R', cost4 + state.cost)
 	successor_object.append(successor41)
@@ -128,7 +132,7 @@ def move_up(state, row, column):
 	else:
 		newstate[row][column] = newstate[row-1][column]
 		newstate[row-1][column] = temp
-	return newstate, calc_hamming(newstate)
+	return newstate, calc_manhattan(newstate)
 
 def move_down(state, row, column):
 
@@ -144,7 +148,7 @@ def move_down(state, row, column):
 	else:
 		newstate[row][column] = newstate[row+1][column]
 		newstate[row+1][column] = temp
-	return newstate, calc_hamming(newstate)
+	return newstate, calc_manhattan(newstate)
 
 def move_left(state, row, column):
 
@@ -160,7 +164,7 @@ def move_left(state, row, column):
 	else:
 		newstate[row][column] = newstate[row][column-1]
 		newstate[row][column-1] = temp
-	return newstate, calc_hamming(newstate)
+	return newstate, calc_manhattan(newstate)
 
 def move_right(state, row, column):
 
@@ -176,7 +180,7 @@ def move_right(state, row, column):
 	else:
 		newstate[row][column] = newstate[row][column+1]
 		newstate[row][column+1] = temp
-	return newstate, calc_hamming(newstate)
+	return newstate, calc_manhattan(newstate)
 
 def find_empty_space (state):
 
@@ -191,14 +195,13 @@ def find_empty_space (state):
 def main():
 	heap = []
 	puzzle = get_puzzle()
-	print(puzzle.puzzle)
 	visited = set()
 	heapq.heappush(heap, (1,puzzle))
 	while (len(heap) > 0):
-		print("Visited: " + str(len(visited)) + " Queue Size: " + str(len(heap)))
 		current = heapq.heappop(heap)[1]
+		print("Visited: " + str(len(visited)) + " Queue Size: " + str(len(heap)) + " Heuristic: " + str(current.cost) + " Type: " + str(type(current.puzzle)))
 		visited.add(str(current))
-		if (current.puzzle == goal_state): 
+		if (np.array_equal(current.puzzle,goal_state)): 
 			print(current.puzzle)
 			print(current.link)
 			print(current.cost)
