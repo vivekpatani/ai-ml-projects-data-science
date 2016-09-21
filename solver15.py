@@ -5,9 +5,19 @@ import heapq
 
 class State:
 
-	def __init__ (self, puzzle, link):
+	def __init__ (self, puzzle, link, cost):
 		self.puzzle = puzzle
 		self.link = link
+		self.cost = cost
+
+	def __eq__ (self, other):
+		return self.cost == other.cost
+
+	def __lt__ (self, other):
+		return self.cost < other.cost
+
+	def __gt__ (self, other):
+		return self.cost > other.cost
 
 """
 Declaring all the variables needed throughout.
@@ -31,7 +41,8 @@ def get_puzzle():
 	reader = file.read()
 	file.close()
 	reader = get_list(reader)
-	return reader
+	origin = State (reader, '', 0)
+	return origin
 
 def get_list(reader, n=4):
 	"""
@@ -63,33 +74,43 @@ def calc_hamming (puzzle):
 				total += 1
 	return total
 
+def calc_manhattan (puzzle):
+
+	"""
+	Returns Manhattan distance between goal state and current state.
+	Manhattan distance is the distance of each tile from its original position
+	"""
+	total = 0
+
+	return total
+
 def get_successor (state):
 
 	"""
 	Returns a valid successor from the current state
 	"""
 
-	row, column = find_empty_space(state)
-	successors = []
+	# Getting the location of empty tile
+	row, column = find_empty_space(state.puzzle)
 	successor_object = []
-	successor1, cost1 = move_up (state, row, column)
-	successors.append(successor1)
-	successor11 = State(successor1, cost1)
+	
+	successor1, cost1 = move_up (state.puzzle, row, column)
+	successor11 = State(successor1, state.link + 'U', cost1 + state.cost)
 	successor_object.append(successor11)
-	successor2, cost2 = move_down (state, row, column)
-	successors.append(successor2)
-	successor21 = State(successor2, cost2)
+
+	successor2, cost2 = move_down (state.puzzle, row, column)
+	successor21 = State(successor2, state.link + 'D', cost2 + state.cost)
 	successor_object.append(successor21)
-	successor3, cost3 = move_left (state, row, column)
-	successors.append(successor3)
-	successor31 = State(successor3, cost3)
+	
+	successor3, cost3 = move_left (state.puzzle, row, column)
+	successor31 = State(successor3, state.link + 'L', cost3 + state.cost)
 	successor_object.append(successor31)
-	successor4, cost4 = move_right (state, row, column)
-	successors.append(successor4)
-	successor41 = State(successor4, cost4)
+
+	successor4, cost4 = move_right (state.puzzle, row, column)
+	successor41 = State(successor4, state.link + 'R', cost4 + state.cost)
 	successor_object.append(successor41)
 
-	return successors, successor_object
+	return successor_object
 
 def move_up(state, row, column):
 
@@ -168,25 +189,24 @@ def find_empty_space (state):
 def main():
 	heap = []
 	puzzle = get_puzzle()
+	print(puzzle.puzzle)
 	visited = set()
 	heapq.heappush(heap, (1,puzzle))
 	while (len(heap) > 0):
 		print("Visited: " + str(len(visited)) + " Queue Size: " + str(len(heap)))
 		current = heapq.heappop(heap)[1]
 		visited.add(str(current))
-		if (current == goal_state): 
-			print(current)
+		if (current.puzzle == goal_state): 
+			print(current.puzzle)
+			print(current.link)
+			print(current.cost)
 			print("END")
 			break
 		
-		successors,successor_list = get_successor(current)
+		successor_list = get_successor(current)
 		for each_successor in successor_list:
-			print(each_successor.puzzle,puzzle.link)
-
-		for each_successor in successors:
-			if (str(each_successor) not in str(visited)):
-				heapq.heappush(heap, (1,each_successor))
-
+			if (str(each_successor.puzzle) not in str(visited)):
+				heapq.heappush(heap, (each_successor.cost, each_successor))
 		
 
 if __name__ == "__main__":
