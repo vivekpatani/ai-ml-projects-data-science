@@ -180,6 +180,9 @@ def main():
 			break
 		
 		successors,successor_list = get_successor(current)
+		for each_successor in successor_list:
+			print(each_successor.puzzle,puzzle.link)
+
 		for each_successor in successors:
 			if (str(each_successor) not in str(visited)):
 				heapq.heappush(heap, (1,each_successor))
