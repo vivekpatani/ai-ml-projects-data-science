@@ -1,0 +1,57 @@
+#top-line{
+width:100%;
+background-color:#000000;
+color:#ffffff;
+}
+#hi_name{
+display: inline-block;
+padding:0px;
+margin:0px;
+margin-right:20px;
+font-size:150%;
+float:right;
+}
+#logout_button{
+float:right; 
+display:inline-block;
+padding:0px;
+margin:0px;
+margin-right:20px;
+font-size:150%;
+}
+h1{
+color:#000000;
+font-size:300%;
+padding:20px;
+margin:0px;
+}
+#top-line ul {
+    list-style-type: none;
+	margin:0;
+	margin-left: 0px;
+    margin-right: 20px;
+    padding: 0;
+    overflow: hidden;
+	color:#696969;
+	display: inline-block;
+}
+#top-line li {
+    float: left;
+	display: inline-block;
+}
+
+#top-line a {
+    display: block;
+    width: 150px;
+	color:white;
+	font-size:140%;
+	text-decoration: none;
+}
+
+a:link {
+color:white;
+}
+
+a:visited {
+color:white;
+}

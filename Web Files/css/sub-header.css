@@ -1,0 +1,36 @@
+#sub-menu{
+background-color: #000000;
+width:100%;
+color: #696969;
+}
+#sub-menu ul {
+	border-color: #ffffff;
+    list-style-type: none;
+	margin:0;
+	margin-left: 0px;
+    margin-right: 20px;
+    padding: 0;
+    overflow: hidden;
+	color: #696969;
+	display: inline;
+}
+#sub-menu li {
+	display: inline-block;
+}
+
+#sub-menu a {
+    display: inline-block;
+    width: 200px;
+	color:white;
+	font-size:150%;
+	text-decoration: none;
+}
+#sub-menu a:hover {
+    text-decoration: underline;
+	color: #00ffff;
+}
+
+#sub-menu a:active {
+    text-decoration: underline;
+	color: #00ffff;
+}
