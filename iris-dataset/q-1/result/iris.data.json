@@ -1,0 +1,1052 @@
+{
+    "1": {
+        "petal_length": 1.4,
+        "sepal_length": 5.1,
+        "sepal_width": 3.5,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "2": {
+        "petal_length": 1.4,
+        "sepal_length": 4.9,
+        "sepal_width": 3.0,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "3": {
+        "petal_length": 1.3,
+        "sepal_length": 4.7,
+        "sepal_width": 3.2,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "4": {
+        "petal_length": 1.5,
+        "sepal_length": 4.6,
+        "sepal_width": 3.1,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "5": {
+        "petal_length": 1.4,
+        "sepal_length": 5.0,
+        "sepal_width": 3.6,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "6": {
+        "petal_length": 1.7,
+        "sepal_length": 5.4,
+        "sepal_width": 3.9,
+        "type": "Iris-setosa",
+        "petal_width": 0.4
+    },
+    "7": {
+        "petal_length": 1.4,
+        "sepal_length": 4.6,
+        "sepal_width": 3.4,
+        "type": "Iris-setosa",
+        "petal_width": 0.3
+    },
+    "8": {
+        "petal_length": 1.5,
+        "sepal_length": 5.0,
+        "sepal_width": 3.4,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "9": {
+        "petal_length": 1.4,
+        "sepal_length": 4.4,
+        "sepal_width": 2.9,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "10": {
+        "petal_length": 1.5,
+        "sepal_length": 4.9,
+        "sepal_width": 3.1,
+        "type": "Iris-setosa",
+        "petal_width": 0.1
+    },
+    "11": {
+        "petal_length": 1.5,
+        "sepal_length": 5.4,
+        "sepal_width": 3.7,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "12": {
+        "petal_length": 1.6,
+        "sepal_length": 4.8,
+        "sepal_width": 3.4,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "13": {
+        "petal_length": 1.4,
+        "sepal_length": 4.8,
+        "sepal_width": 3.0,
+        "type": "Iris-setosa",
+        "petal_width": 0.1
+    },
+    "14": {
+        "petal_length": 1.1,
+        "sepal_length": 4.3,
+        "sepal_width": 3.0,
+        "type": "Iris-setosa",
+        "petal_width": 0.1
+    },
+    "15": {
+        "petal_length": 1.2,
+        "sepal_length": 5.8,
+        "sepal_width": 4.0,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "16": {
+        "petal_length": 1.5,
+        "sepal_length": 5.7,
+        "sepal_width": 4.4,
+        "type": "Iris-setosa",
+        "petal_width": 0.4
+    },
+    "17": {
+        "petal_length": 1.3,
+        "sepal_length": 5.4,
+        "sepal_width": 3.9,
+        "type": "Iris-setosa",
+        "petal_width": 0.4
+    },
+    "18": {
+        "petal_length": 1.4,
+        "sepal_length": 5.1,
+        "sepal_width": 3.5,
+        "type": "Iris-setosa",
+        "petal_width": 0.3
+    },
+    "19": {
+        "petal_length": 1.7,
+        "sepal_length": 5.7,
+        "sepal_width": 3.8,
+        "type": "Iris-setosa",
+        "petal_width": 0.3
+    },
+    "20": {
+        "petal_length": 1.5,
+        "sepal_length": 5.1,
+        "sepal_width": 3.8,
+        "type": "Iris-setosa",
+        "petal_width": 0.3
+    },
+    "21": {
+        "petal_length": 1.7,
+        "sepal_length": 5.4,
+        "sepal_width": 3.4,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "22": {
+        "petal_length": 1.5,
+        "sepal_length": 5.1,
+        "sepal_width": 3.7,
+        "type": "Iris-setosa",
+        "petal_width": 0.4
+    },
+    "23": {
+        "petal_length": 1.0,
+        "sepal_length": 4.6,
+        "sepal_width": 3.6,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "24": {
+        "petal_length": 1.7,
+        "sepal_length": 5.1,
+        "sepal_width": 3.3,
+        "type": "Iris-setosa",
+        "petal_width": 0.5
+    },
+    "25": {
+        "petal_length": 1.9,
+        "sepal_length": 4.8,
+        "sepal_width": 3.4,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "26": {
+        "petal_length": 1.6,
+        "sepal_length": 5.0,
+        "sepal_width": 3.0,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "27": {
+        "petal_length": 1.6,
+        "sepal_length": 5.0,
+        "sepal_width": 3.4,
+        "type": "Iris-setosa",
+        "petal_width": 0.4
+    },
+    "28": {
+        "petal_length": 1.5,
+        "sepal_length": 5.2,
+        "sepal_width": 3.5,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "29": {
+        "petal_length": 1.4,
+        "sepal_length": 5.2,
+        "sepal_width": 3.4,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "30": {
+        "petal_length": 1.6,
+        "sepal_length": 4.7,
+        "sepal_width": 3.2,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "31": {
+        "petal_length": 1.6,
+        "sepal_length": 4.8,
+        "sepal_width": 3.1,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "32": {
+        "petal_length": 1.5,
+        "sepal_length": 5.4,
+        "sepal_width": 3.4,
+        "type": "Iris-setosa",
+        "petal_width": 0.4
+    },
+    "33": {
+        "petal_length": 1.5,
+        "sepal_length": 5.2,
+        "sepal_width": 4.1,
+        "type": "Iris-setosa",
+        "petal_width": 0.1
+    },
+    "34": {
+        "petal_length": 1.4,
+        "sepal_length": 5.5,
+        "sepal_width": 4.2,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "35": {
+        "petal_length": 1.5,
+        "sepal_length": 4.9,
+        "sepal_width": 3.1,
+        "type": "Iris-setosa",
+        "petal_width": 0.1
+    },
+    "36": {
+        "petal_length": 1.2,
+        "sepal_length": 5.0,
+        "sepal_width": 3.2,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "37": {
+        "petal_length": 1.3,
+        "sepal_length": 5.5,
+        "sepal_width": 3.5,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "38": {
+        "petal_length": 1.5,
+        "sepal_length": 4.9,
+        "sepal_width": 3.1,
+        "type": "Iris-setosa",
+        "petal_width": 0.1
+    },
+    "39": {
+        "petal_length": 1.3,
+        "sepal_length": 4.4,
+        "sepal_width": 3.0,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "40": {
+        "petal_length": 1.5,
+        "sepal_length": 5.1,
+        "sepal_width": 3.4,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "41": {
+        "petal_length": 1.3,
+        "sepal_length": 5.0,
+        "sepal_width": 3.5,
+        "type": "Iris-setosa",
+        "petal_width": 0.3
+    },
+    "42": {
+        "petal_length": 1.3,
+        "sepal_length": 4.5,
+        "sepal_width": 2.3,
+        "type": "Iris-setosa",
+        "petal_width": 0.3
+    },
+    "43": {
+        "petal_length": 1.3,
+        "sepal_length": 4.4,
+        "sepal_width": 3.2,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "44": {
+        "petal_length": 1.6,
+        "sepal_length": 5.0,
+        "sepal_width": 3.5,
+        "type": "Iris-setosa",
+        "petal_width": 0.6
+    },
+    "45": {
+        "petal_length": 1.9,
+        "sepal_length": 5.1,
+        "sepal_width": 3.8,
+        "type": "Iris-setosa",
+        "petal_width": 0.4
+    },
+    "46": {
+        "petal_length": 1.4,
+        "sepal_length": 4.8,
+        "sepal_width": 3.0,
+        "type": "Iris-setosa",
+        "petal_width": 0.3
+    },
+    "47": {
+        "petal_length": 1.6,
+        "sepal_length": 5.1,
+        "sepal_width": 3.8,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "48": {
+        "petal_length": 1.4,
+        "sepal_length": 4.6,
+        "sepal_width": 3.2,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "49": {
+        "petal_length": 1.5,
+        "sepal_length": 5.3,
+        "sepal_width": 3.7,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "50": {
+        "petal_length": 1.4,
+        "sepal_length": 5.0,
+        "sepal_width": 3.3,
+        "type": "Iris-setosa",
+        "petal_width": 0.2
+    },
+    "51": {
+        "petal_length": 4.7,
+        "sepal_length": 7.0,
+        "sepal_width": 3.2,
+        "type": "Iris-versicolor",
+        "petal_width": 1.4
+    },
+    "52": {
+        "petal_length": 4.5,
+        "sepal_length": 6.4,
+        "sepal_width": 3.2,
+        "type": "Iris-versicolor",
+        "petal_width": 1.5
+    },
+    "53": {
+        "petal_length": 4.9,
+        "sepal_length": 6.9,
+        "sepal_width": 3.1,
+        "type": "Iris-versicolor",
+        "petal_width": 1.5
+    },
+    "54": {
+        "petal_length": 4.0,
+        "sepal_length": 5.5,
+        "sepal_width": 2.3,
+        "type": "Iris-versicolor",
+        "petal_width": 1.3
+    },
+    "55": {
+        "petal_length": 4.6,
+        "sepal_length": 6.5,
+        "sepal_width": 2.8,
+        "type": "Iris-versicolor",
+        "petal_width": 1.5
+    },
+    "56": {
+        "petal_length": 4.5,
+        "sepal_length": 5.7,
+        "sepal_width": 2.8,
+        "type": "Iris-versicolor",
+        "petal_width": 1.3
+    },
+    "57": {
+        "petal_length": 4.7,
+        "sepal_length": 6.3,
+        "sepal_width": 3.3,
+        "type": "Iris-versicolor",
+        "petal_width": 1.6
+    },
+    "58": {
+        "petal_length": 3.3,
+        "sepal_length": 4.9,
+        "sepal_width": 2.4,
+        "type": "Iris-versicolor",
+        "petal_width": 1.0
+    },
+    "59": {
+        "petal_length": 4.6,
+        "sepal_length": 6.6,
+        "sepal_width": 2.9,
+        "type": "Iris-versicolor",
+        "petal_width": 1.3
+    },
+    "60": {
+        "petal_length": 3.9,
+        "sepal_length": 5.2,
+        "sepal_width": 2.7,
+        "type": "Iris-versicolor",
+        "petal_width": 1.4
+    },
+    "61": {
+        "petal_length": 3.5,
+        "sepal_length": 5.0,
+        "sepal_width": 2.0,
+        "type": "Iris-versicolor",
+        "petal_width": 1.0
+    },
+    "62": {
+        "petal_length": 4.2,
+        "sepal_length": 5.9,
+        "sepal_width": 3.0,
+        "type": "Iris-versicolor",
+        "petal_width": 1.5
+    },
+    "63": {
+        "petal_length": 4.0,
+        "sepal_length": 6.0,
+        "sepal_width": 2.2,
+        "type": "Iris-versicolor",
+        "petal_width": 1.0
+    },
+    "64": {
+        "petal_length": 4.7,
+        "sepal_length": 6.1,
+        "sepal_width": 2.9,
+        "type": "Iris-versicolor",
+        "petal_width": 1.4
+    },
+    "65": {
+        "petal_length": 3.6,
+        "sepal_length": 5.6,
+        "sepal_width": 2.9,
+        "type": "Iris-versicolor",
+        "petal_width": 1.3
+    },
+    "66": {
+        "petal_length": 4.4,
+        "sepal_length": 6.7,
+        "sepal_width": 3.1,
+        "type": "Iris-versicolor",
+        "petal_width": 1.4
+    },
+    "67": {
+        "petal_length": 4.5,
+        "sepal_length": 5.6,
+        "sepal_width": 3.0,
+        "type": "Iris-versicolor",
+        "petal_width": 1.5
+    },
+    "68": {
+        "petal_length": 4.1,
+        "sepal_length": 5.8,
+        "sepal_width": 2.7,
+        "type": "Iris-versicolor",
+        "petal_width": 1.0
+    },
+    "69": {
+        "petal_length": 4.5,
+        "sepal_length": 6.2,
+        "sepal_width": 2.2,
+        "type": "Iris-versicolor",
+        "petal_width": 1.5
+    },
+    "70": {
+        "petal_length": 3.9,
+        "sepal_length": 5.6,
+        "sepal_width": 2.5,
+        "type": "Iris-versicolor",
+        "petal_width": 1.1
+    },
+    "71": {
+        "petal_length": 4.8,
+        "sepal_length": 5.9,
+        "sepal_width": 3.2,
+        "type": "Iris-versicolor",
+        "petal_width": 1.8
+    },
+    "72": {
+        "petal_length": 4.0,
+        "sepal_length": 6.1,
+        "sepal_width": 2.8,
+        "type": "Iris-versicolor",
+        "petal_width": 1.3
+    },
+    "73": {
+        "petal_length": 4.9,
+        "sepal_length": 6.3,
+        "sepal_width": 2.5,
+        "type": "Iris-versicolor",
+        "petal_width": 1.5
+    },
+    "74": {
+        "petal_length": 4.7,
+        "sepal_length": 6.1,
+        "sepal_width": 2.8,
+        "type": "Iris-versicolor",
+        "petal_width": 1.2
+    },
+    "75": {
+        "petal_length": 4.3,
+        "sepal_length": 6.4,
+        "sepal_width": 2.9,
+        "type": "Iris-versicolor",
+        "petal_width": 1.3
+    },
+    "76": {
+        "petal_length": 4.4,
+        "sepal_length": 6.6,
+        "sepal_width": 3.0,
+        "type": "Iris-versicolor",
+        "petal_width": 1.4
+    },
+    "77": {
+        "petal_length": 4.8,
+        "sepal_length": 6.8,
+        "sepal_width": 2.8,
+        "type": "Iris-versicolor",
+        "petal_width": 1.4
+    },
+    "78": {
+        "petal_length": 5.0,
+        "sepal_length": 6.7,
+        "sepal_width": 3.0,
+        "type": "Iris-versicolor",
+        "petal_width": 1.7
+    },
+    "79": {
+        "petal_length": 4.5,
+        "sepal_length": 6.0,
+        "sepal_width": 2.9,
+        "type": "Iris-versicolor",
+        "petal_width": 1.5
+    },
+    "80": {
+        "petal_length": 3.5,
+        "sepal_length": 5.7,
+        "sepal_width": 2.6,
+        "type": "Iris-versicolor",
+        "petal_width": 1.0
+    },
+    "81": {
+        "petal_length": 3.8,
+        "sepal_length": 5.5,
+        "sepal_width": 2.4,
+        "type": "Iris-versicolor",
+        "petal_width": 1.1
+    },
+    "82": {
+        "petal_length": 3.7,
+        "sepal_length": 5.5,
+        "sepal_width": 2.4,
+        "type": "Iris-versicolor",
+        "petal_width": 1.0
+    },
+    "83": {
+        "petal_length": 3.9,
+        "sepal_length": 5.8,
+        "sepal_width": 2.7,
+        "type": "Iris-versicolor",
+        "petal_width": 1.2
+    },
+    "84": {
+        "petal_length": 5.1,
+        "sepal_length": 6.0,
+        "sepal_width": 2.7,
+        "type": "Iris-versicolor",
+        "petal_width": 1.6
+    },
+    "85": {
+        "petal_length": 4.5,
+        "sepal_length": 5.4,
+        "sepal_width": 3.0,
+        "type": "Iris-versicolor",
+        "petal_width": 1.5
+    },
+    "86": {
+        "petal_length": 4.5,
+        "sepal_length": 6.0,
+        "sepal_width": 3.4,
+        "type": "Iris-versicolor",
+        "petal_width": 1.6
+    },
+    "87": {
+        "petal_length": 4.7,
+        "sepal_length": 6.7,
+        "sepal_width": 3.1,
+        "type": "Iris-versicolor",
+        "petal_width": 1.5
+    },
+    "88": {
+        "petal_length": 4.4,
+        "sepal_length": 6.3,
+        "sepal_width": 2.3,
+        "type": "Iris-versicolor",
+        "petal_width": 1.3
+    },
+    "89": {
+        "petal_length": 4.1,
+        "sepal_length": 5.6,
+        "sepal_width": 3.0,
+        "type": "Iris-versicolor",
+        "petal_width": 1.3
+    },
+    "90": {
+        "petal_length": 4.0,
+        "sepal_length": 5.5,
+        "sepal_width": 2.5,
+        "type": "Iris-versicolor",
+        "petal_width": 1.3
+    },
+    "91": {
+        "petal_length": 4.4,
+        "sepal_length": 5.5,
+        "sepal_width": 2.6,
+        "type": "Iris-versicolor",
+        "petal_width": 1.2
+    },
+    "92": {
+        "petal_length": 4.6,
+        "sepal_length": 6.1,
+        "sepal_width": 3.0,
+        "type": "Iris-versicolor",
+        "petal_width": 1.4
+    },
+    "93": {
+        "petal_length": 4.0,
+        "sepal_length": 5.8,
+        "sepal_width": 2.6,
+        "type": "Iris-versicolor",
+        "petal_width": 1.2
+    },
+    "94": {
+        "petal_length": 3.3,
+        "sepal_length": 5.0,
+        "sepal_width": 2.3,
+        "type": "Iris-versicolor",
+        "petal_width": 1.0
+    },
+    "95": {
+        "petal_length": 4.2,
+        "sepal_length": 5.6,
+        "sepal_width": 2.7,
+        "type": "Iris-versicolor",
+        "petal_width": 1.3
+    },
+    "96": {
+        "petal_length": 4.2,
+        "sepal_length": 5.7,
+        "sepal_width": 3.0,
+        "type": "Iris-versicolor",
+        "petal_width": 1.2
+    },
+    "97": {
+        "petal_length": 4.2,
+        "sepal_length": 5.7,
+        "sepal_width": 2.9,
+        "type": "Iris-versicolor",
+        "petal_width": 1.3
+    },
+    "98": {
+        "petal_length": 4.3,
+        "sepal_length": 6.2,
+        "sepal_width": 2.9,
+        "type": "Iris-versicolor",
+        "petal_width": 1.3
+    },
+    "99": {
+        "petal_length": 3.0,
+        "sepal_length": 5.1,
+        "sepal_width": 2.5,
+        "type": "Iris-versicolor",
+        "petal_width": 1.1
+    },
+    "100": {
+        "petal_length": 4.1,
+        "sepal_length": 5.7,
+        "sepal_width": 2.8,
+        "type": "Iris-versicolor",
+        "petal_width": 1.3
+    },
+    "101": {
+        "petal_length": 6.0,
+        "sepal_length": 6.3,
+        "sepal_width": 3.3,
+        "type": "Iris-virginica",
+        "petal_width": 2.5
+    },
+    "102": {
+        "petal_length": 5.1,
+        "sepal_length": 5.8,
+        "sepal_width": 2.7,
+        "type": "Iris-virginica",
+        "petal_width": 1.9
+    },
+    "103": {
+        "petal_length": 5.9,
+        "sepal_length": 7.1,
+        "sepal_width": 3.0,
+        "type": "Iris-virginica",
+        "petal_width": 2.1
+    },
+    "104": {
+        "petal_length": 5.6,
+        "sepal_length": 6.3,
+        "sepal_width": 2.9,
+        "type": "Iris-virginica",
+        "petal_width": 1.8
+    },
+    "105": {
+        "petal_length": 5.8,
+        "sepal_length": 6.5,
+        "sepal_width": 3.0,
+        "type": "Iris-virginica",
+        "petal_width": 2.2
+    },
+    "106": {
+        "petal_length": 6.6,
+        "sepal_length": 7.6,
+        "sepal_width": 3.0,
+        "type": "Iris-virginica",
+        "petal_width": 2.1
+    },
+    "107": {
+        "petal_length": 4.5,
+        "sepal_length": 4.9,
+        "sepal_width": 2.5,
+        "type": "Iris-virginica",
+        "petal_width": 1.7
+    },
+    "108": {
+        "petal_length": 6.3,
+        "sepal_length": 7.3,
+        "sepal_width": 2.9,
+        "type": "Iris-virginica",
+        "petal_width": 1.8
+    },
+    "109": {
+        "petal_length": 5.8,
+        "sepal_length": 6.7,
+        "sepal_width": 2.5,
+        "type": "Iris-virginica",
+        "petal_width": 1.8
+    },
+    "110": {
+        "petal_length": 6.1,
+        "sepal_length": 7.2,
+        "sepal_width": 3.6,
+        "type": "Iris-virginica",
+        "petal_width": 2.5
+    },
+    "111": {
+        "petal_length": 5.1,
+        "sepal_length": 6.5,
+        "sepal_width": 3.2,
+        "type": "Iris-virginica",
+        "petal_width": 2.0
+    },
+    "112": {
+        "petal_length": 5.3,
+        "sepal_length": 6.4,
+        "sepal_width": 2.7,
+        "type": "Iris-virginica",
+        "petal_width": 1.9
+    },
+    "113": {
+        "petal_length": 5.5,
+        "sepal_length": 6.8,
+        "sepal_width": 3.0,
+        "type": "Iris-virginica",
+        "petal_width": 2.1
+    },
+    "114": {
+        "petal_length": 5.0,
+        "sepal_length": 5.7,
+        "sepal_width": 2.5,
+        "type": "Iris-virginica",
+        "petal_width": 2.0
+    },
+    "115": {
+        "petal_length": 5.1,
+        "sepal_length": 5.8,
+        "sepal_width": 2.8,
+        "type": "Iris-virginica",
+        "petal_width": 2.4
+    },
+    "116": {
+        "petal_length": 5.3,
+        "sepal_length": 6.4,
+        "sepal_width": 3.2,
+        "type": "Iris-virginica",
+        "petal_width": 2.3
+    },
+    "117": {
+        "petal_length": 5.5,
+        "sepal_length": 6.5,
+        "sepal_width": 3.0,
+        "type": "Iris-virginica",
+        "petal_width": 1.8
+    },
+    "118": {
+        "petal_length": 6.7,
+        "sepal_length": 7.7,
+        "sepal_width": 3.8,
+        "type": "Iris-virginica",
+        "petal_width": 2.2
+    },
+    "119": {
+        "petal_length": 6.9,
+        "sepal_length": 7.7,
+        "sepal_width": 2.6,
+        "type": "Iris-virginica",
+        "petal_width": 2.3
+    },
+    "120": {
+        "petal_length": 5.0,
+        "sepal_length": 6.0,
+        "sepal_width": 2.2,
+        "type": "Iris-virginica",
+        "petal_width": 1.5
+    },
+    "121": {
+        "petal_length": 5.7,
+        "sepal_length": 6.9,
+        "sepal_width": 3.2,
+        "type": "Iris-virginica",
+        "petal_width": 2.3
+    },
+    "122": {
+        "petal_length": 4.9,
+        "sepal_length": 5.6,
+        "sepal_width": 2.8,
+        "type": "Iris-virginica",
+        "petal_width": 2.0
+    },
+    "123": {
+        "petal_length": 6.7,
+        "sepal_length": 7.7,
+        "sepal_width": 2.8,
+        "type": "Iris-virginica",
+        "petal_width": 2.0
+    },
+    "124": {
+        "petal_length": 4.9,
+        "sepal_length": 6.3,
+        "sepal_width": 2.7,
+        "type": "Iris-virginica",
+        "petal_width": 1.8
+    },
+    "125": {
+        "petal_length": 5.7,
+        "sepal_length": 6.7,
+        "sepal_width": 3.3,
+        "type": "Iris-virginica",
+        "petal_width": 2.1
+    },
+    "126": {
+        "petal_length": 6.0,
+        "sepal_length": 7.2,
+        "sepal_width": 3.2,
+        "type": "Iris-virginica",
+        "petal_width": 1.8
+    },
+    "127": {
+        "petal_length": 4.8,
+        "sepal_length": 6.2,
+        "sepal_width": 2.8,
+        "type": "Iris-virginica",
+        "petal_width": 1.8
+    },
+    "128": {
+        "petal_length": 4.9,
+        "sepal_length": 6.1,
+        "sepal_width": 3.0,
+        "type": "Iris-virginica",
+        "petal_width": 1.8
+    },
+    "129": {
+        "petal_length": 5.6,
+        "sepal_length": 6.4,
+        "sepal_width": 2.8,
+        "type": "Iris-virginica",
+        "petal_width": 2.1
+    },
+    "130": {
+        "petal_length": 5.8,
+        "sepal_length": 7.2,
+        "sepal_width": 3.0,
+        "type": "Iris-virginica",
+        "petal_width": 1.6
+    },
+    "131": {
+        "petal_length": 6.1,
+        "sepal_length": 7.4,
+        "sepal_width": 2.8,
+        "type": "Iris-virginica",
+        "petal_width": 1.9
+    },
+    "132": {
+        "petal_length": 6.4,
+        "sepal_length": 7.9,
+        "sepal_width": 3.8,
+        "type": "Iris-virginica",
+        "petal_width": 2.0
+    },
+    "133": {
+        "petal_length": 5.6,
+        "sepal_length": 6.4,
+        "sepal_width": 2.8,
+        "type": "Iris-virginica",
+        "petal_width": 2.2
+    },
+    "134": {
+        "petal_length": 5.1,
+        "sepal_length": 6.3,
+        "sepal_width": 2.8,
+        "type": "Iris-virginica",
+        "petal_width": 1.5
+    },
+    "135": {
+        "petal_length": 5.6,
+        "sepal_length": 6.1,
+        "sepal_width": 2.6,
+        "type": "Iris-virginica",
+        "petal_width": 1.4
+    },
+    "136": {
+        "petal_length": 6.1,
+        "sepal_length": 7.7,
+        "sepal_width": 3.0,
+        "type": "Iris-virginica",
+        "petal_width": 2.3
+    },
+    "137": {
+        "petal_length": 5.6,
+        "sepal_length": 6.3,
+        "sepal_width": 3.4,
+        "type": "Iris-virginica",
+        "petal_width": 2.4
+    },
+    "138": {
+        "petal_length": 5.5,
+        "sepal_length": 6.4,
+        "sepal_width": 3.1,
+        "type": "Iris-virginica",
+        "petal_width": 1.8
+    },
+    "139": {
+        "petal_length": 4.8,
+        "sepal_length": 6.0,
+        "sepal_width": 3.0,
+        "type": "Iris-virginica",
+        "petal_width": 1.8
+    },
+    "140": {
+        "petal_length": 5.4,
+        "sepal_length": 6.9,
+        "sepal_width": 3.1,
+        "type": "Iris-virginica",
+        "petal_width": 2.1
+    },
+    "141": {
+        "petal_length": 5.6,
+        "sepal_length": 6.7,
+        "sepal_width": 3.1,
+        "type": "Iris-virginica",
+        "petal_width": 2.4
+    },
+    "142": {
+        "petal_length": 5.1,
+        "sepal_length": 6.9,
+        "sepal_width": 3.1,
+        "type": "Iris-virginica",
+        "petal_width": 2.3
+    },
+    "143": {
+        "petal_length": 5.1,
+        "sepal_length": 5.8,
+        "sepal_width": 2.7,
+        "type": "Iris-virginica",
+        "petal_width": 1.9
+    },
+    "144": {
+        "petal_length": 5.9,
+        "sepal_length": 6.8,
+        "sepal_width": 3.2,
+        "type": "Iris-virginica",
+        "petal_width": 2.3
+    },
+    "145": {
+        "petal_length": 5.7,
+        "sepal_length": 6.7,
+        "sepal_width": 3.3,
+        "type": "Iris-virginica",
+        "petal_width": 2.5
+    },
+    "146": {
+        "petal_length": 5.2,
+        "sepal_length": 6.7,
+        "sepal_width": 3.0,
+        "type": "Iris-virginica",
+        "petal_width": 2.3
+    },
+    "147": {
+        "petal_length": 5.0,
+        "sepal_length": 6.3,
+        "sepal_width": 2.5,
+        "type": "Iris-virginica",
+        "petal_width": 1.9
+    },
+    "148": {
+        "petal_length": 5.2,
+        "sepal_length": 6.5,
+        "sepal_width": 3.0,
+        "type": "Iris-virginica",
+        "petal_width": 2.0
+    },
+    "149": {
+        "petal_length": 5.4,
+        "sepal_length": 6.2,
+        "sepal_width": 3.4,
+        "type": "Iris-virginica",
+        "petal_width": 2.3
+    },
+    "150": {
+        "petal_length": 5.1,
+        "sepal_length": 5.9,
+        "sepal_width": 3.0,
+        "type": "Iris-virginica",
+        "petal_width": 1.8
+    }
+}

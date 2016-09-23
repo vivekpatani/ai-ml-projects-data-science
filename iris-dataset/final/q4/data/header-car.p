@@ -1,0 +1,10 @@
+(lp0
+S'acc'
+p1
+aS'unacc'
+p2
+aS'good'
+p3
+aS'vgood'
+p4
+a.
