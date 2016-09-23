@@ -1,0 +1,8 @@
+# Ignoring Zip Files
+*.zip
+
+#Ignoring Attributes as it is more than 100MB
+attributes.csv
+
+#Ignoring Product Description
+product_descriptions.csv
