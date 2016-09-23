@@ -1,0 +1,10 @@
+{
+  "name": "Instant IPython",
+  "description": "IPython Notebook packaged for Heroku",
+  "repository": "https://github.com/mietek/instant-ipython",
+  "env": {
+    "IPYTHON_PASSWORD": {
+      "required": false
+    }
+  }
+}
