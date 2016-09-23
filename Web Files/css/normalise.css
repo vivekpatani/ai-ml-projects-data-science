@@ -1,0 +1,30 @@
+body{
+background-color: #696969;
+padding:0px;
+margin:0px;
+font-family: 'Oswald', sans-serif;
+}
+#sub-header{
+padding:0px;
+margin:0px;
+}
+li {
+	display: inline-block;
+}
+
+a {
+    display: inline-block;
+    width: 200px;
+	color:white;
+	font-size:150%;
+	text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+	color: #00ffff;
+}
+
+a:active {
+    text-decoration: underline;
+	color: #00ffff;
+}
