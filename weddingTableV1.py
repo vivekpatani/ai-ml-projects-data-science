@@ -14,7 +14,7 @@ class tables_guests:
     def __init__(self, ini_max_table_index, ini_tables, ini_guests):
         self.max_table_index = ini_max_table_index
         self.tables = ini_tables
-        self. guests = ini_guests
+        self.guests = ini_guests
 
 def create_dictionary(file_path):
     count = 0
