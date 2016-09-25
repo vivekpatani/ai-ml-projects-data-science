@@ -115,9 +115,9 @@ def calc_manhattan (puzzle):
 			x = abs(a[0] - b[0])
 			y = abs(a[1] - b[1])
 			if x >= 3:
-				x = (x%3) + 1
+				x = 1
 			if y >= 3:
-				y = (y%3) + 1
+				y = 1
 			cost = x + y
 			total += cost
 	
