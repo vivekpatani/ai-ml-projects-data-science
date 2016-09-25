@@ -1,7 +1,10 @@
 '''
 Created on 2016.9.19
 
-@author: zehzhang
+@author: Zehua Zhang
+
+I wrote the report as a separate document. You will see a document named WeddingTable.docx which is my report. 
+Thanks for checking that!
 '''
 
 import sys
@@ -160,8 +163,8 @@ initial_tables_guests = tables_guests(initial_max_table_index, initial_tables, i
 
 possible_table_assignment = assign_table_monte_carlo(initial_tables_guests)
 '''
-If you want to use A star searching algorithm rather than Monte Carlo Descent, please comment out the 
-above statement and use the following statement. Thanks!
+If you want to use A star searching algorithm rather than Monte Carlo Descent, though I strongly do not suggest so,
+please comment out the above statement and use the following statement. Thanks!
 '''
 #possible_table_assignment = assign_table_a_star(initial_tables_guests)
 if possible_table_assignment:
