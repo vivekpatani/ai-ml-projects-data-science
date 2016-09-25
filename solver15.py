@@ -3,281 +3,239 @@
 import sys
 import os
 import copy
-import heapq
 import math
 import numpy as np
 import datetime
+from operator import itemgetter
+
+n = 4
 
 class State(object):
-
-	puzzle = None
-	link = None
-	cost = None
-	heuristic_cost = None
-
-	def __init__ (self, puzzle, link, cost, heuristic_cost):
+	
+	puzzle = tuple()
+	link = ''
+	total = 0
+	"""
+	Constructor
+	"""
+	def __init__(self, puzzle, cost, link):
 		self.puzzle = puzzle
-		self.link = link
+		self.heuristic = self.manhattan()
 		self.cost = cost
-		self.heuristic_cost = heuristic_cost
+		self.link = link
 
 	def __eq__ (self, other):
-	 	return self.cost == other.cost
+		return self.puzzle == other.puzzle
 
-	def __lt__ (self, other):
-		return self.cost < other.cost
+	def __ne__ (self, other):
+		return self.puzzle != other.puzzle
 
-	def __gt__ (self, other):
-		return self.cost > other.cost
+	def __hash__ (self):
+		return hash(self.puzzle)
 
-"""
-Declaring all the variables needed throughout.
-"""
-n = 4
-goal_state = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 0]])
+	def successors(self):
 
-def get_puzzle():
+		# Obtain coordinates of 0
+		conv = np.asarray(self.puzzle)
+		blank = np.where(conv == 0)
+		x = blank[0][0]
+		y = blank[1][0]
 
-	"""
-	Get puzzle, returns the default state board,
-	if no input is found then a default input is provided
-	"""
+		successor_list = []
 
-	if (sys.argv[1] and os.path.isfile(sys.argv[1])):
-		file = open(sys.argv[1])
-	else:
-		print("No file found, using default file!")
-		file = open('input.txt','r',encoding='utf-8')
+		if (self.link[-1] != 'U'):
+			successor_list.append(self.move_down(np.asarray(copy.deepcopy(self.puzzle)), x, y, x-1, y)) # Move Down
+		if (self.link[-1] != 'D'):
+			successor_list.append(self.move_up(np.asarray(copy.deepcopy(self.puzzle)), x, y, x+1, y)) # Move Up
+		if (self.link[-1] != 'R'):
+			successor_list.append(self.move_left(np.asarray(copy.deepcopy(self.puzzle)), x, y, x, y+1)) # Move Left
+		if (self.link[-1] != 'L'):
+			successor_list.append(self.move_right(np.asarray(copy.deepcopy(self.puzzle)), x, y, x, y-1)) # Move right
 
-	reader = file.read()
-	file.close()
-	reader = get_list(reader)
-	origin = State (np.array(reader), '0', 0, 0)
-	return origin
+		return successor_list
 
-def get_list(reader, n=4):
-	"""
-	Returns an integer list of the input
-	"""
-	lst = reader.split()
+	def move_down(self, newstate, x0, y0, x1, y1):
 
-	#This step is done to avoid utf-8 encoding
-	lst[-1] = lst[-1].replace('\ufeff','')
+		temp = newstate[x0][y0]
+		if (x1 < 0):
+			newstate[x0][y0] = newstate[n-1][y1]
+			newstate[n-1][y1] = temp
+		else:
+			newstate[x0][y0] = newstate[x1][y1]
+			newstate[x1][y1] = temp
 
-	matrix = [[0 for x in range(n)] for y in range(n)]
-	counter = 0;
-	for each_row in range(n):
-		for each_column in range(n):
-			matrix[each_row][each_column] = int(lst[counter])
-			counter += 1;
-	return matrix
+		return State(tuple(map(tuple, newstate)), self.cost + 1, self.link + 'D')
 
-def calc_hamming (puzzle):
+	def move_up(self, newstate, x0, y0, x1, y1):
 
-	"""
-	Returns hamming distance between goal state and current state.
-	Hamming distance is when a tile is not in place the count is incremented by 1
-	"""
-	total = 0
-	for each_row in range(len(goal_state)):
-		for each_column in range(len(goal_state[each_row])):
-			if (goal_state[each_row][each_column] != puzzle[each_row][each_column]):
-				total += 1
-	return total
+		temp = newstate[x0][y0]
+		if (x1 > (n-1)):
+			newstate[x0][y0] = newstate[0][y1]
+			newstate[0][y1] = temp
+		else:
+			newstate[x0][y0] = newstate[x1][y1]
+			newstate[x1][y1] = temp
 
-def calc_manhattan (puzzle):
+		return State(tuple(map(tuple, newstate)), self.cost + 1, self.link + 'U')
 
-	"""
-	Returns Manhattan distance between goal state and current state.
-	Manhattan distance is the distance of each tile from its original position
-	"""
-	final = {0:None,
-			1:[0,0], 2:[0,1], 3:[0,2],4:[0,3],
+	def move_right(self, newstate, x0, y0, x1, y1):
+
+		temp = newstate[x0][y0]
+		if (y1 < 0):
+			newstate[x0][y0] = newstate[x1][n-1]
+			newstate[x1][n-1] = temp
+		else:
+			newstate[x0][y0] = newstate[x1][y1]
+			newstate[x1][y1] = temp
+
+		return State(tuple(map(tuple, newstate)), self.cost + 1, self.link + 'R')
+
+	def move_left(self, newstate, x0, y0, x1, y1):
+
+		temp = newstate[x0][y0]
+		if (y1 > (n-1)):
+			newstate[x0][y0] = newstate[x1][0]
+			newstate[x1][0] = temp
+		else:
+			newstate[x0][y0] = newstate[x1][y1]
+			newstate[x1][y1] = temp
+
+		return State(tuple(map(tuple, newstate)), self.cost + 1, self.link + 'L')
+
+	def manhattan (self):
+
+		goal = {0:None,
+			1:[0,0], 2:[0,1], 3:[0,2], 4:[0,3],
 			5:[1,0], 6:[1,1], 7:[1,2], 8:[1,3],
 			9:[2,0], 10:[2,1], 11:[2,2], 12:[2,3],
 			13:[3,0], 14:[3,1], 15:[3,2]}
 
-	current = {}
-	for each_row in range(len(puzzle)):
-		for each_column in range(len(puzzle[each_row])):
-			temp = []
-			output = np.where(puzzle == puzzle[each_row][each_column])
-			for each_section in output:
-				temp.append(each_section[0])
-			current[puzzle[each_row][each_column]] = temp
+		current = {}
+		conv = np.asarray(self.puzzle)
 
-	total = 0
-	for key in current:
-		a = current[key]
-		b = final[key]
-		if b:
-			#print(str(a[0]) + " - " + str(b[0]) + " = " +  str(abs(a[0] - b[0])) + " " + str(a[1]) + " - " + str(b[1]) + " = " + str(abs(a[1] - b[1])))
-			x = abs(a[0] - b[0])
-			y = abs(a[1] - b[1])
-			if x >= 3:
-				x = 1
-			if y >= 3:
-				y = 1
-			cost = x + y
-			total += cost
-	
-	# print("TOTAL")
-	# print(total)
-	# print(puzzle)
-	return total
-	#return calc_hamming(puzzle)
+		for each_row in range(len(conv)):
+			for each_column in range(len(conv[each_row])):
+				temp = []
+				output = np.where(conv == conv[each_row][each_column])
+				for each_section in output:
+					temp.append(each_section[0])
+				current[conv[each_row][each_column]] = temp
 
-def get_successor (state):
+		total = 0
+		for key in goal:
+			a = current[key]
+			b = goal[key]
+			if b:
+				x = abs(a[0] - b[0])
+				y = abs(a[1] - b[1])
+				if x >= 3: x = 1
+				if y >= 3: y = 1
+				total += (x+y)
+		print(total)
+		return total
 
-	"""
-	Returns a valid successor from the current state
-	"""
 
-	# Getting the location of empty tile
-	row, column = find_coordinates(state.puzzle)
-	successor_object = []
+def get_puzzle():
 
-	# To Get Up Successor
-	successor1, h_cost1 = move_up (state.puzzle, row, column)
-	successor11 = State(successor1, state.link + 'D', 1 + state.cost, state.heuristic_cost + h_cost1)
-	if (state.link[-1] != 'U'):
-		successor_object.append(successor11)
+    """
+    Get puzzle, returns the default state board,
+    if no input is found then a default input is provided
+    """
 
-	# To Get Down Successor
-	successor2, h_cost2 = move_down (state.puzzle, row, column)
-	successor21 = State(successor2, state.link + 'U', 1 + state.cost, state.heuristic_cost + h_cost2)
-	if (state.link[-1] != 'D'):
-		successor_object.append(successor21)
-	
-	# To Get Left Successor
-	successor3, h_cost3 = move_left (state.puzzle, row, column)
-	successor31 = State(successor3, state.link + 'R', 1 + state.cost, state.heuristic_cost + h_cost3)
-	if (state.link[-1] != 'L'):
-		successor_object.append(successor31)
+    if (sys.argv[1] and os.path.isfile(sys.argv[1])):
+        file = open(sys.argv[1])
+    else:
+        print("No file found, using default file!")
+        file = open('input.txt','r',encoding='utf-8')
 
-	# To Get Right Successor
-	successor4, h_cost4 = move_right (state.puzzle, row, column)
-	successor41 = State(successor4, state.link + 'L', 1 + state.cost, state.heuristic_cost + h_cost4)
-	if (state.link[-1] != 'R'):
-		successor_object.append(successor41)
+    reader = file.read()
+    file.close()
 
-	return successor_object
+    reader = get_list(reader)
+    return reader
 
-def move_up(state, row, column):
+def get_list(reader, n=4):
+    """
+    Returns an integer list of the input
+    """
+    lst = reader.split()
 
-	"""
-	Returns the Left movement of the blank tile in the current state
-	"""
-	newstate = copy.deepcopy(state)
-	temp = newstate[row][column]
-	if (row == 0):
-		newstate[row][column] = newstate[n-1][column]
-		newstate[n-1][column] = temp
+    #This step is done to avoid utf-8 encoding
+    lst[-1] = lst[-1].replace('\ufeff','')
 
-	else:
-		newstate[row][column] = newstate[row-1][column]
-		newstate[row-1][column] = temp
-	return newstate, calc_manhattan(newstate)
+    matrix = [[0 for x in range(n)] for y in range(n)]
+    counter = 0;
+    for each_row in range(n):
+        for each_column in range(n):
+            matrix[each_row][each_column] = int(lst[counter])
+            counter += 1;
 
-def move_down(state, row, column):
+    for each_item in range(len(matrix)):
+        matrix[each_item] = tuple(matrix[each_item])
 
-	"""
-	Returns the Left movement of the blank tile in the current state
-	"""
-	newstate = copy.deepcopy(state)
-	temp = newstate[row][column]
-	if (row == (n-1)):
-		newstate[row][column] = newstate[0][column]
-		newstate[0][column] = temp
-
-	else:
-		newstate[row][column] = newstate[row+1][column]
-		newstate[row+1][column] = temp
-	return newstate, calc_manhattan(newstate)
-
-def move_left(state, row, column):
-
-	"""
-	Returns the Left movement of the blank tile in the current state
-	"""
-	newstate = copy.deepcopy(state)
-	temp = newstate[row][column]
-	if (column == 0):
-		newstate[row][column] = newstate[row][n-1]
-		newstate[row][n-1] = temp
-
-	else:
-		newstate[row][column] = newstate[row][column-1]
-		newstate[row][column-1] = temp
-	return newstate, calc_manhattan(newstate)
-
-def move_right(state, row, column):
-
-	"""
-	Returns the Left movement of the blank tile in the current state
-	"""
-	newstate = copy.deepcopy(state)
-	temp = newstate[row][column]
-	if (column == (n-1)):
-		newstate[row][column] = newstate[row][0]
-		newstate[row][0] = temp
-
-	else:
-		newstate[row][column] = newstate[row][column+1]
-		newstate[row][column+1] = temp
-	return newstate, calc_manhattan(newstate)
-
-def find_coordinates (state, n=0):
-
-	"""
-	Find the empty tile and return its location
-	"""
-	for each_row in range(len(state)):
-		for each_column in range(len(state[each_row])):
-			if (state[each_row][each_column] == n): return each_row,each_column
-
+    return tuple(matrix)
 
 def main():
 
 	a = datetime.datetime.now()
-	heap = []
-	puzzle = get_puzzle()
+	goal_state = tuple(((1, 2, 3, 4), (5, 6, 7, 8), (9, 10, 11, 12), (13, 14, 15, 0)))
+	goal = State(goal_state, 0, '')
+
+	start_state = get_puzzle()
+	start = State(start_state, 0, '0')
+	if (start == goal):
+		print()
+		return
+	start_data = (start.heuristic, start)
+
 	visited = set()
+
+	items = []
+	fringe = {start: start_data}
+	items.append(start_data)
 	count = 0
-	heapq.heappush(heap, (calc_manhattan(puzzle.puzzle),puzzle))
-	while (len(heap) > 0):
-		count+=1
-		current = heapq.heappop(heap)[1]
-		#print(current.heuristic_cost)
-		#print("Visited: " + str(len(visited)) + " Queue Size: " + str(len(heap)) + " Heuristic: " + str(current.heuristic_cost) + " Type: " + str(type(current.puzzle)))
-		if (count == 100):
-			print(current.puzzle)
-			count = 0
-		visited.add(tuple(map(tuple,current.puzzle)))
-		temp = tuple(map(tuple,current.puzzle))
-		if (np.array_equal(current.puzzle,goal_state)): 
-			print(current.puzzle)
-			print(current.link)
-			print(current.cost)
-			print("END")
+	items = sorted(items,key=itemgetter(0))
+	while items:
+
+		#print(items)
+		current_data = items.pop(0)
+		heuristic_cost, current_state = current_data
+		#print(np.asarray(current_state.puzzle))
+		#print(items)
+
+		# if count == 3:
+		# 	break
+
+		if (current_state == goal):
+			#print(current_state.link)
+			print(current_state.link[1:])
+			print(len(current_state.link[1:]))
 			b = datetime.datetime.now()
 			print(b-a)
+			print("Whoopie")
 			break
-		
-		successor_list = get_successor(current)
-		for each_successor in successor_list:
 
-			if (tuple(map(tuple,each_successor.puzzle)) not in visited):
-				heapq.heappush(heap, (each_successor.heuristic_cost, each_successor))
+		del fringe[current_state]
+		visited.add(current_state.puzzle)
 
-			for current_obj in heap:
-				if (np.array_equal(each_successor.puzzle,current_obj[1].puzzle)):
-					if (each_successor.heuristic_cost < current_obj[1].heuristic_cost):
-						print("Init Cost: " + str(current_obj[1].heuristic_cost) + "   Final Cost: " + str(each_successor.heuristic_cost))
-						heap.remove(current_obj)
-						heapq.heappush(heap, (each_successor.heuristic_cost, each_successor))
+		for successor in current_state.successors():
 
+			if successor.puzzle in visited:
+				continue
 
+			successor.total = successor.cost + successor.heuristic
+			successor_data = (successor.total, successor)
+			
+			if successor not in fringe:
+				fringe[successor] = successor_data
+				items.append(successor_data)
+			else:
+				previous = fringe[successor]
+				if successor.total < previous[1].total:
+					previous = successor_data
+			items = sorted(items,key=itemgetter(0))
+					
+		count += 1
 
 if __name__ == "__main__":
-	main()
+	main
