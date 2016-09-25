@@ -133,7 +133,7 @@ def assign_table_monte_carlo(initial_tables_guests):
             if get_signature(one_possible_successor.guests) in visited_states_dictionary:
                 continue
             if 0 not in one_possible_successor.guests.values():
-                if one_possible_successor.max_table_index < temp_solution.max_table_index:
+                if one_possible_successor.max_table_index <= temp_solution.max_table_index:
                     temp_solution = one_possible_successor
                 break
             visited_states_dictionary[get_signature(one_possible_successor.guests)] = True
