@@ -131,7 +131,7 @@ class State(object):
 				if x >= 3: x = 1
 				if y >= 3: y = 1
 				total += (x+y)
-		print(total)
+		#print(total)
 		return total
 
 
@@ -175,6 +175,33 @@ def get_list(reader, n=4):
 
     return tuple(matrix)
 
+def is_solvable(puzzle):
+
+	items = [element for tupl in puzzle for element in tupl]
+	print(items)
+	
+	count = 0
+	for item in range(len(items)-1):
+		current = items[item]
+		for each in range(item + 1, len(items)):
+			if (items[item] and items[each] and items[item] > items[each]):
+				count+=1
+
+	blank = 0
+	for row in reversed(range(len(puzzle))):
+		if 0 in puzzle[row]:
+			blank = row
+
+	if (len(puzzle) & 1):
+		print(puzzle)
+		return not (count & 1)
+
+	else:
+		if (blank & 1):
+			return not (count & 1)
+		else:
+			return count & 1
+
 def main():
 
 	a = datetime.datetime.now()
@@ -184,8 +211,12 @@ def main():
 	start_state = get_puzzle()
 	start = State(start_state, 0, '0')
 	if (start == goal):
-		print()
 		return
+
+	if not is_solvable(start.puzzle):
+		print("No solution")
+		return
+
 	start_data = (start.heuristic, start)
 
 	visited = set()
@@ -193,8 +224,7 @@ def main():
 	items = []
 	fringe = {start: start_data}
 	items.append(start_data)
-	count = 0
-	items = sorted(items,key=itemgetter(0))
+	
 	while items:
 
 		#print(items)
@@ -234,8 +264,6 @@ def main():
 				if successor.total < previous[1].total:
 					previous = successor_data
 			items = sorted(items,key=itemgetter(0))
-					
-		count += 1
 
 if __name__ == "__main__":
-	main
+	main()
