@@ -291,10 +291,57 @@ item It is represented by assigning a positive integer P to an element which is 
 h(s) = number of tables
 \end{gather*}
 
+\item \textbf{Algorithm:}
+\begin{itemize}
+\item Repeat L times (in my code, L = 10 * the number of the guests):
+\item s = initial state
+\item Repeat K times (in my code, K = 10 * the number of the guests):
+\begin{itemize}
+\item If s is our goal, then return s
+\item Pick s\textsc{\char13} from the successors of s at random
+\item If h(s\textsc{\char13}) $\leq$ h(s) (we want to find the s\textsc{\char13} that makes h(s\textsc{\char13}) as least as possible!), then s = s\textsc{\char13}
+\item Else with probability of exp(-(h(s\textsc{\char13})-h(s))/T), s = s\textsc{\char13}
+In my code, because h(s\textsc{\char13}) is either equal to h(s) or 1 $\geq$ h(s), so in this case I can directly replace $h(s\textsc{\char13})-h(s)$ by 1. And $T = MAX_TEMPERATURE *(1 – the times we repeat 2)/K)$, which makes T decrease as the times we repeat 2) increases.
+
+\item After repeating Step 1 and 2 L times, L results will be got. Then the algorithm compares the results with each other based on the number of the tables and chooses the result with the least number of tables as the final result.
 \end{itemize}
+\item The problem I met is though Monte Carlo is much faster, it struggles to get the best result sometimes when just running it once. Therefore I repeat it several times and choose the best result as the final result.
+\end{itemize}
+\end{itemize}
+
 \item \textbf{A\* Search}
+The Abstract is similar to Monte Carlo
+\begin{itemize}
+\item \textbf{State Space: } Represented by an M-element vector, where the index of each element corresponds to a certain guest, and each element has a non-negative integer as its value corresponding to the index of the table where the guest are seated. M is the total number of the guests.
+\item \textbf{Initial State: } No guests have been seated in any table, represented by an m-element vector where each element is set to 0, which means that the corresponding guest has not been seated in any table yet.
+\item \textbf{Goal State: } Every guest has been seated in a table and the number of the tables is as least as possible, represented by an m-element vector where no elements are 0 and the maximum element is as least as possible.
+\item \textbf{Cost Function :} It equals to the number of the tables.
+\item \textbf{Successor Function: } Assign a table to a guest who has not been seated yet, given the condition that 1) this new state is never visited before, 2) after assigning, the number of guests in the assigned table will not exceed a given number N, and 3) guests in that table do not know each other before. It is represented by assigning a positive integer P to an element which is currently 0, and making sure that after assigning, 1) the new state is not in our visited state records, 2) the number of P in the vector will not exceed N, and 3) guests with the index that has an element of P do not know each other.
+
+\item \textbf{Edge Weights: } It will equal 0 or 1. If after assigning, there will be one more table, then edge weight equals to 1. Otherwise, if the number of tables do not change, the edge weight equals to 0.
+
+\item \textbf{Heuristic Function: } t equals to the number of the tables,. Since we directly take the cost function as the heuristic function, it must be admissible.
+\begin{gather*}
+h(s) = number of tables
+\end{gather*}
+
+\item \textbf{Algorithm: }
+\begin{itemize}
+\item Add initial state to the fringe. The fringe is implemented by using a priority queue (in Python, it’s called heapq). The priority is generated first based on the number of the tables in the state. If there are two states with the same total number of the tables, then they will be compared based on the order they are added to the fringe.
+\item Repeated while fringe is not empty:
+\begin{itemize}
+\item Pop the head h of the fringe
+\item If h is our goal, return h
+\item Push the successors of h into the fringe
+\end{itemize}
+\item Return False
+
+\end{itemize}
+\end{itemize}
 \end{itemize}
 \end{homeworkProblem}
+
+
 
 \clearpage
 
@@ -305,8 +352,12 @@ h(s) = number of tables
 \begin{homeworkProblem}[References]
 \begin{enumerate}
 \item \href{https://en.wikipedia.org/wiki/15_puzzle#/media/File:15-puzzle.svg}{15 Puzzle solved image}
-\item \href{http://www.sharelatex.com}{Something Linky}
-\item \href{http://www.sharelatex.com}{Something Linky}
+\item \href{http://mathworld.wolfram.com/PermutationInversion.html}{Wolfram}
+\item \href{http://www.jaapsch.net/puzzles/javascript/fifteenj.htm}{Puzzle Generator}
+\item \href{http://www.geeksforgeeks.org/check-instance-15-puzzle-solvable/}{Solvability Test}
+\item \href{https://www.cs.princeton.edu/courses/archive/fall12/cos226/assignments/8puzzle.html}{Solvability}
+\item \href{http://codereview.stackexchange.com/questions/33473/solving-15-puzzle}{Stack Exchange}
+\item \href{http://codegolf.stackexchange.com/questions/6884/solve-the-15-puzzle-the-tile-sliding-puzzle}{Stack Exchange}
 \end{enumerate}
 \clearpage
 \end{homeworkProblem}
