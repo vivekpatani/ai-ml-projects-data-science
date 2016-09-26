@@ -1,10 +1,101 @@
 '''
-Created on 2016.9.19
+The Marriage Problem Abstraction:
+• Monte Carlo Descent
 
-@author: Zehua Zhang
+– State Space: Represented by an M-element vector, where the index of each element corresponds
+to a certain guest, and each element has a non-negative integer as its value corresponding to the
+index of the table where the guest are seated. M is the total number of the guests.
 
-I wrote the report as a separate document. You will see a document named WeddingTable.docx which is my report. 
-Thanks for checking that!
+– Initial State: No guests have been seated in any table, represented by an m-element vector
+where each element is set to 0, which means that the corresponding guest has not been seated in
+any table yet.
+
+– Goal State: Every guest has been seated in a table and the number of the tables is as least as
+possible, represented by an m-element vector where no elements are 0 and the maximum element
+is as least as possible.
+
+– Cost Function: It equals to the number of the tables.
+
+– Successor function: Assign a table to a guest who has not been seated yet, given the condition
+that
+
+    1. This new state is never visited before
+    2. After assigning, the number of guests in the assigned table will not exceed a given number
+    N, and
+    3. Guests in that table do not know each other before. item It is represented by assigning a
+    positive integer P to an element which is currently 0, and making sure that after assigning
+        ∗ The new state is not in our visited state records.
+        ∗ The number of P in the vector will not exceed N.
+        ∗ Guests with the index that has an element of P do not know each other.
+
+– Edge Weights: It will equal 0 or 1. If after assigning, there will be one more table, then edge
+weight equals to 1. Otherwise, if the number of tables do not change, the edge weight equals to 0.
+
+– Heuristic Function: It equals to the number of the tables,. Since we directly take the cost
+    function as the heuristic function, it must be admissible.
+                h(s) = numberof tables
+
+– Algorithm:
+∗ Repeat L times (in my code, L = 10 * the number of the guests):
+∗ s = initial state
+∗ Repeat K times (in my code, K = 10 * the number of the guests):
+    · If s is our goal, then return s
+    · Pick s' from the successors of s at random
+    · If h(s') ≤ h(s) (we want to find the s' that makes h(s') as least as possible!), then s = s'
+    · Else with probability of exp(-(h(s')-h(s))/T), s = s' In my code, because h(s') is either
+        equal to h(s) or 1 ≥ h(s), so in this case I can directly replace h(s') − h(s) by 1. And
+        T = M AX T EM P ERAT U RE ∗ (1thetimeswerepeat2)/K), which makes T decrease as
+        the times we repeat 2) increases.
+    · After repeating Step 1 and 2 L times, L results will be got. Then the algorithm compares
+        the results with each other based on the number of the tables and chooses the result with
+        the least number of tables as the final result.
+
+∗ The problem I met is though Monte Carlo is much faster, it struggles to get the best result
+sometimes when just running it once. Therefore I repeat it several times and choose the best
+result as the final result.
+
+• A* Search Approach
+The Abstract is similar to Monte Carlo
+
+– State Space: Represented by an M-element vector, where the index of each element corresponds
+to a certain guest, and each element has a non-negative integer as its value corresponding to the
+index of the table where the guest are seated. M is the total number of the guests.
+
+– Initial State: No guests have been seated in any table, represented by an m-element vector
+where each element is set to 0, which means that the corresponding guest has not been seated in
+any table yet.
+
+– Goal State: Every guest has been seated in a table and the number of the tables is as least as
+possible, represented by an m-element vector where no elements are 0 and the maximum element
+is as least as possible.
+
+– Cost Function : It equals to the number of the tables.
+
+– Successor Function: Assign a table to a guest who has not been seated yet, given the condition
+that 1) this new state is never visited before, 2) after assigning, the number of guests in the assigned
+table will not exceed a given number N, and 3) guests in that table do not know each other before.
+It is represented by assigning a positive integer P to an element which is currently 0, and making
+sure that after assigning, 1) the new state is not in our visited state records, 2) the number of
+P in the vector will not exceed N, and 3) guests with the index that has an element of P do not
+know each other.
+
+– Edge Weights: It will equal 0 or 1. If after assigning, there will be one more table, then edge
+weight equals to 1. Otherwise, if the number of tables do not change, the edge weight equals to 0.
+
+– Heuristic Function: t equals to the number of the tables,. Since we directly take the cost
+function as the heuristic function, it must be admissible.
+h(s) = numberof tables
+
+– Algorithm:
+∗ Add initial state to the fringe. The fringe is implemented by using a priority queue (in
+    Python, its called heapq). The priority is generated first based on the number of the tables
+    in the state. If there are two states with the same total number of the tables, then they will
+    be compared based on the order they are added to the fringe.
+∗ Repeated while fringe is not empty:
+    · Pop the head h of the fringe
+    · If h is our goal, return h
+    · Push the successors of h into the fringe
+∗ Return False
 '''
 
 import sys
