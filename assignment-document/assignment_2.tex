@@ -288,7 +288,7 @@ Repeat until fringe is empty:
 
 \item \textbf{Initial State: } No guests have been seated in any table, represented by an m-element vector where each element is set to 0, which means that the corresponding guest has not been seated in any table yet.
 
-\item \textbf{Goal State: } Every guest has been seated in a table and the number of the tables is as least as possible, represented by an m-element vector where no elements are 0 and the maximum element is as least as possible.
+\item \textbf{Goal State: } Every guest has been seated in a table and the number of the tables is as least as possible, represented by an M-element vector where no elements are 0 and the maximum element is as least as possible.
 
 \item \textbf{Cost Function: } It equals to the number of the tables.
 
@@ -297,7 +297,7 @@ Repeat until fringe is empty:
 \item This new state is never visited before
 \item After assigning, the number of guests in the assigned table will not exceed a given number N, and
 \item Guests in that table do not know each other before.
-item It is represented by assigning a positive integer P to an element which is currently 0, and making sure that after assigning
+\item It is represented by assigning a positive integer P to an element which is currently 0, and making sure that after assigning
 \begin{itemize}
 \item The new state is not in our visited state records.
 \item The number of P in the vector will not exceed N.
@@ -305,29 +305,30 @@ item It is represented by assigning a positive integer P to an element which is 
 \end{itemize}
 \end{enumerate}
 
-\item \textbf{Edge Weights: } It will equal 0 or 1. If after assigning, there will be one more table, then edge weight equals to 1. Otherwise, if the number of tables do not change, the edge weight equals to 0.
+\item \textbf{Edge Weights: } It will equal to 0 or 1. If after assigning, there will be one more table, then edge weight equals to 1. Otherwise, if the number of tables do not change, the edge weight equals to 0.
 
 \item \textbf{Heuristic Function: } It equals to the number of the tables,. Since we directly take the cost function as the heuristic function, it must be admissible.
 \begin{gather*}
-h(s) = number of tables
+h(s) = the number of tables
 \end{gather*}
 
+
 \item \textbf{Algorithm:}
-\begin{itemize}
+\begin{enumerate}
 \item Repeat L times (in my code, L = 10 * the number of the guests):
 \item s = initial state
 \item Repeat K times (in my code, K = 10 * the number of the guests):
-\begin{itemize}
+\begin{enumerate}
 \item If s is our goal, then return s
 \item Pick s\textsc{\char13} from the successors of s at random
 \item If h(s\textsc{\char13}) $\leq$ h(s) (we want to find the s\textsc{\char13} that makes h(s\textsc{\char13}) as least as possible!), then s = s\textsc{\char13}
 \item Else with probability of exp(-(h(s\textsc{\char13})-h(s))/T), s = s\textsc{\char13}
-In my code, because h(s\textsc{\char13}) is either equal to h(s) or 1 $\geq$ h(s), so in this case I can directly replace $h(s\textsc{\char13})-h(s)$ by 1. And $T = MAX_TEMPERATURE *(1 – the times we repeat 2)/K)$, which makes T decrease as the times we repeat 2) increases.
+In my code, because h(s\textsc{\char13}) is either equal to h(s) or 1 $\geq$ h(s), so in this case I can directly replace $h(s\textsc{\char13})-h(s)$ by 1. And $T = MAX\_TEMPERATURE$ * (1 – the times we repeat 2)/K), which makes T decrease as the times we repeat 2) increases.
 
 \item After repeating Step 1 and 2 L times, L results will be got. Then the algorithm compares the results with each other based on the number of the tables and chooses the result with the least number of tables as the final result.
-\end{itemize}
+\end{enumerate}
 \item The problem I met is though Monte Carlo is much faster, it struggles to get the best result sometimes when just running it once. Therefore I repeat it several times and choose the best result as the final result.
-\end{itemize}
+\end{enumerate}
 \end{itemize}
 
 \item \textbf{A\* Search}
@@ -343,7 +344,7 @@ The Abstract is similar to Monte Carlo
 
 \item \textbf{Heuristic Function: } t equals to the number of the tables,. Since we directly take the cost function as the heuristic function, it must be admissible.
 \begin{gather*}
-h(s) = number of tables
+h(s) = the number of tables
 \end{gather*}
 
 \item \textbf{Algorithm: }
