@@ -37,17 +37,17 @@ weight equals to 1. Otherwise, if the number of tables do not change, the edge w
                 h(s) = numberof tables
 
 – Algorithm:
-∗ Repeat L times (in my code, L = 10 * the number of the guests):
-∗ s = initial state
-∗ Repeat K times (in my code, K = 10 * the number of the guests):
-    · If s is our goal, then return s
-    · Pick s' from the successors of s at random
-    · If h(s') ≤ h(s) (we want to find the s' that makes h(s') as least as possible!), then s = s'
-    · Else with probability of exp(-(h(s')-h(s))/T), s = s' In my code, because h(s') is either
+1 Repeat L times (in my code, L = 10 * the number of the guests):
+2 s = initial state
+3 Repeat K times (in my code, K = 10 * the number of the guests):
+    1 If s is our goal, then return s
+    2 Pick s' from the successors of s at random
+    3 If h(s') ≤ h(s) (we want to find the s' that makes h(s') as least as possible!), then s = s'
+    4 Else with probability of exp(-(h(s')-h(s))/T), s = s' In my code, because h(s') is either
         equal to h(s) or 1 ≥ h(s), so in this case I can directly replace h(s') − h(s) by 1. And
-        T = M AX T EM P ERAT U RE ∗ (1thetimeswerepeat2)/K), which makes T decrease as
+        T = M AX T EM P ERAT U RE ∗ (1 the times we repeat 2)/K), which makes T decrease as
         the times we repeat 2) increases.
-    · After repeating Step 1 and 2 L times, L results will be got. Then the algorithm compares
+    5 After repeating Step 1 and 2 L times, L results will be got. Then the algorithm compares
         the results with each other based on the number of the tables and chooses the result with
         the least number of tables as the final result.
 
