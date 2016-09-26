@@ -47,12 +47,29 @@ Page 4 of 8bansalro/vpatani/zehzhang
 
 – Manhattan Distance: This heuristic calculates the steps for each tile to reach its correct
 position when no other tiles is on the table. This is the best of the three, since it does not over
-estimate but also gives us a fair amount of idea as to how far are we from the solution.
+estimate but also gives us a fair amount of idea as to how far are we from the solution. Also, the 
+cases for edge movements have been handled for the flip tile moves otherwise it would have been over
+estimated because we can travel 3 moves in the x direction, but with the flip tile movement if at all
+you have to travel 3 steps, you could always do it one step and the same goes for y.
 
 • We implemented A* search algorithm to find the optimal path to the solution, code would be present
-in the problem2 folder.
+in the problem2 folder. We have used tuples to enhance efficiency and also because it can be easily 
+hashed which in turn reduces the access times to check visited states and storing the elements in the fringe set.
 
+Algorithm:
 
+if (current_state is goal_state) return initial state
+fringe.add (initial_state)
+Repeat until fringe is empty:
+	fringe.pop() <- current
+	visited.add (current)
+	if current == goal: return path
+	for each_successor in successor_list(s):
+		if successor in visited: ignore
+		calc_heuristic()
+		if successor in fringe: old_successor = fringe.pop()
+			compare successors and insert smaller one
+		if not in fringe, insert.
 
 
 • Tests carried for professors input, we obtain a path of 24 steps (LLUURULULDRDRDRRULDRUUUL)
@@ -331,7 +348,7 @@ def main():
 
 	# If the input is goal! That would be awesome!
 	if (start == goal):
-		return
+		return start
 
 	# Check for solvability
 	if not is_solvable(start.puzzle):
