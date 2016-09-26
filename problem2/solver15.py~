@@ -47,11 +47,10 @@ Page 4 of 8bansalro/vpatani/zehzhang
 
 – Manhattan Distance: This heuristic calculates the steps for each tile to reach its correct
 position when no other tiles is on the table. This is the best of the three, since it does not over
-estimate (admissible) but also gives us a fair amount of idea as to how far are we from the solution.
-Manhattan distance is also consistent because it generates a heuristic better than the current state for, 
-its neighbours. Also, the cases for edge movements have been handled for the flip tile moves otherwise
-it would have been over estimated because we can travel 3 moves in the x direction, but with the flip tile
-movement if at all you have to travel 3 steps, you could always do it one step and the same goes for y.
+estimate but also gives us a fair amount of idea as to how far are we from the solution. Also, the 
+cases for edge movements have been handled for the flip tile moves otherwise it would have been over
+estimated because we can travel 3 moves in the x direction, but with the flip tile movement if at all
+you have to travel 3 steps, you could always do it one step and the same goes for y.
 
 • We implemented A* search algorithm to find the optimal path to the solution, code would be present
 in the problem2 folder. We have used tuples to enhance efficiency and also because it can be easily 
