@@ -40,7 +40,7 @@ class TetrisGame:
   # print out current state to the screen
   @staticmethod
   def print_state((board, score)):
-    print "\n" * 3 + ("Score: %d \n" % score) + "|\n".join(board) + "|\n" + "-" * TetrisGame.BOARD_WIDTH
+    print ("\n" * 3 + ("Score: %d \n" % score) + "|\n".join(board) + "|\n" + "-" * TetrisGame.BOARD_WIDTH)
 
   # return true if placing a piece at the given row and column would overwrite an existing piece
   @staticmethod
@@ -88,7 +88,7 @@ class TetrisGame:
 
   def print_board(self, clear_screen):
     if clear_screen: print "\n"*80
-    print "Next piece:\n" + "\n".join(self.next_piece)
+    print ("Next piece:\n" + "\n".join(self.next_piece))
     TetrisGame.print_state(TetrisGame.place_piece(self.state, self.piece, self.row, self.col))
 
   ######

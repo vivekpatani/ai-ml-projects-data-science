@@ -8,7 +8,7 @@ import time, sys
 
 class HumanPlayer:
     def get_moves(self, piece, board):
-        print "Type a sequence of moves using: \n  b for move left \n  m for move right \n  n for rotation\nThen press enter. E.g.: bbbnn\n"
+        print ("Type a sequence of moves using: \n  b for move left \n  m for move right \n  n for rotation\nThen press enter. E.g.: bbbnn\n")
         moves = raw_input()
         return moves
 
@@ -70,19 +70,19 @@ try:
     elif player_opt == "computer":
         player = ComputerPlayer()
     else:
-        print "unknown player!"
+        print ("unknown player!")
 
     if interface_opt == "simple":
         tetris = SimpleTetris()
     elif interface_opt == "animated":
         tetris = AnimatedTetris()
     else:
-        print "unknown interface!"
+        print ("unknown interface!")
 
     tetris.start_game(player)
 
 except EndOfGame as s:
-    print "\n\n\n", s
+    print ("\n\n\n", s)
 
 
 
