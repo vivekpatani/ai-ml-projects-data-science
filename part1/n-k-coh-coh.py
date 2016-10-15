@@ -32,6 +32,14 @@ class State(object):
 			current_col = self.board[:,each_column]
 			cost += self.row_cost(current_col, playing_for)
 
+		# To help myself with extracting all diagonals from top-left corner to bottom right corner
+		# http://stackoverflow.com/questions/6313308/get-all-the-diagonals-in-a-matrix-list-of-lists-in-python
+		
+		# Making a deep copy to make sure shape function does not mess around with the original board
+		copy_board = copy.deepcopy(self.board)
+		for each_diagonal in range(copy_board.shape[1] - 1, -copy_board.shape[0], -1):
+			cost += self.row_cost(copy_board.diagonal(each_diagonal), playing_for)
+
 		return cost
 
 	def row_cost(self, current_row, playing_for):
