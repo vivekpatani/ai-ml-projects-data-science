@@ -3,7 +3,7 @@ import numpy as np
 import copy
 
 # Global Variable h for height of tree
-h = 25
+h = 6
 
 # Global Variable terminals for the terminal nodes for backtracking
 terminals = []
@@ -55,13 +55,16 @@ class State(object):
 		
 		# Making a deep copy to make sure shape function does not mess around with the original board
 		copy_board = copy.deepcopy(self.board)
-		for each_diagonal in range(copy_board.shape[1] - 1, -copy_board.shape[0], -1):
+
+		diags = [copy_board[::-1,:].diagonal(i) for i in range(-copy_board.shape[0]+1,copy_board.shape[1])]
+		diags.extend(copy_board.diagonal(i) for i in range(copy_board.shape[1]-1,-copy_board.shape[0],-1))
+		for each_diagonal in range(len(diags)):
 			cost += self.row_cost(copy_board.diagonal(each_diagonal), playing_for)
 
 		if (playa == "max"):
-			return -cost
+			return cost
 		
-		return cost
+		return -cost
 
 	def row_cost(self, current_row, playing_for):
 		"""
@@ -74,6 +77,8 @@ class State(object):
 			if (current_row[element_iterator] == playing_for and current_row[element_iterator + 1] == playing_for):
 				power = 1
 				penalty = 1
+
+				# While next element and so on is the same, keep penalising it more and more.
 				while (element_iterator < (len(current_row) - 1) and (current_row[element_iterator] == current_row[element_iterator + 1])):
 					penalty = 10**power
 					power += 1
@@ -143,6 +148,7 @@ def get_input():
 def build_tree(current_state, height, playing_for):
 	"""
 	Build the tree recursively.
+	Old way to build tree, minimax is the new way.
 	"""
 	if (current_state.game_over()):
 		current_state.evaluation_val = current_state.evaluation(playing_for)
@@ -238,8 +244,16 @@ def main():
 	"""
 	This is where all the action happens!
 	"""
-	# Get Details about the board
 	n, k, board_state_string, board_state, time = get_input()
+	global h
+
+	# Updating Height
+	if (n > 8): h = 2
+	elif (n > 4 and n <= 8):
+		h = 5
+	else: h = 10
+	
+	# Get Details about the board
 	start = State(board_state,"max")
 
 	# If the player is white
