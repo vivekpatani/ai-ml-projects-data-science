@@ -28,7 +28,7 @@ def edge_strength(input_image):
 #
 def draw_edge(image, y_coordinates, color, thickness):
     for (x, y) in enumerate(y_coordinates):
-        for t in range( max(y-thickness/2, 0), min(y+thickness/2, image.size[1]-1 ) ):
+        for t in range( max(y-thickness//2, 0), min(y+thickness//2, image.size[1]-1 ) ):
             image.putpixel((x, t), color)
     return image
 
@@ -45,7 +45,7 @@ imsave('edges.jpg', edge_strength)
 
 # You'll need to add code here to figure out the results! For now,
 # just create a horizontal centered line.
-ridge = [ edge_strength.shape[0]/2 ] * edge_strength.shape[1]
+ridge = [ edge_strength.shape[0]//2 ] * edge_strength.shape[1]
 
 # output answer
 imsave(output_filename, draw_edge(input_image, ridge, (255, 0, 0), 5))
