@@ -32,6 +32,15 @@ def draw_edge(image, y_coordinates, color, thickness):
             image.putpixel((x, t), color)
     return image
 
+
+def get_best_col_val (edge_strength):
+
+	best = []
+	no_of_cols = edge_strength.shape[1]
+	for each_col in range(no_of_cols):
+		best.append(argmax(edge_strength[:,each_col]))
+	return best
+
 # main program
 #
 (input_filename, output_filename, gt_row, gt_col) = sys.argv[1:]
@@ -41,11 +50,12 @@ input_image = Image.open(input_filename)
 
 # compute edge strength mask
 edge_strength = edge_strength(input_image)
+print(edge_strength)
+best = get_best_col_val(edge_strength)
 imsave('edges.jpg', edge_strength)
 
 # You'll need to add code here to figure out the results! For now,
 # just create a horizontal centered line.
 ridge = [ edge_strength.shape[0]//2 ] * edge_strength.shape[1]
-
 # output answer
-imsave(output_filename, draw_edge(input_image, ridge, (255, 0, 0), 5))
+imsave(output_filename, draw_edge(input_image, best, (255, 0, 0), 5))
