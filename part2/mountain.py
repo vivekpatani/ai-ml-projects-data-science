@@ -34,7 +34,10 @@ def draw_edge(image, y_coordinates, color, thickness):
 
 
 def get_best_col_val (edge_strength):
-
+	"""
+	Get the best value for this column and then store the index
+	to mark that value as the best.
+	"""
 	best = []
 	no_of_cols = edge_strength.shape[1]
 	for each_col in range(no_of_cols):
