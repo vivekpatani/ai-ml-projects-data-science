@@ -4,6 +4,7 @@
 # Based on skeleton code by D. Crandall, Oct 2016
 #
 
+import math
 from PIL import Image
 from numpy import *
 from scipy.ndimage import filters
@@ -37,12 +38,43 @@ def get_best_col_val (edge_strength):
 	"""
 	Get the best value for this column and then store the index
 	to mark that value as the best.
+	1.) To Calulate Sub Part - I
 	"""
 	best = []
 	no_of_cols = edge_strength.shape[1]
 	for each_col in range(no_of_cols):
 		best.append(argmax(edge_strength[:,each_col]))
 	return best
+
+def using_mcmc (edge_strength):
+	"""
+	Get the best value for this column based on the previous decision
+	2.) To calculate Sub Part - II
+	"""
+
+	best = [argmax(edge_strength[:,0])]
+	#best = [152]
+	no_of_cols = edge_strength.shape[1]
+	print(best)
+	for each_col in range(1,no_of_cols):
+		best.append(get_best(best[each_col - 1],edge_strength[:,each_col]))
+	return best
+
+def get_best (previous_value, col_data):
+
+	maximum = col_data.max()
+	probabilities = []
+	for each_item in range(len(col_data)):
+		probabilities.append((col_data[each_item]/maximum) * distance(previous_value, each_item))
+		#print(col_data[each_item]/maximum)
+
+	return argmax(probabilities)
+
+def distance (previous_value, each_item):
+
+	simple_distance = math.fabs(previous_value - each_item)
+	if (simple_distance != 0): return 1/simple_distance
+	else: return 1
 
 # main program
 #
@@ -53,7 +85,8 @@ input_image = Image.open(input_filename)
 
 # compute edge strength mask
 edge_strength = edge_strength(input_image)
-print(edge_strength)
+mcmc = using_mcmc(edge_strength)
+print(mcmc)
 best = get_best_col_val(edge_strength)
 imsave('edges.jpg', edge_strength)
 
@@ -62,3 +95,4 @@ imsave('edges.jpg', edge_strength)
 ridge = [ edge_strength.shape[0]//2 ] * edge_strength.shape[1]
 # output answer
 imsave(output_filename, draw_edge(input_image, best, (255, 0, 0), 5))
+imsave(output_filename, draw_edge(input_image, mcmc, (0, 0, 255), 5))
