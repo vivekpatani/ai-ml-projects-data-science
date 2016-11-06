@@ -34,6 +34,7 @@ def draw_edge(image, y_coordinates, color, thickness):
 
 
 # This is where our code begins
+# ===========================================================================================================
 
 def best_edge_list (edge_strength):
 	"""
@@ -47,6 +48,8 @@ def best_edge_list (edge_strength):
 		best.append(argmax(edge_strength[:,each_col]))
 	return best
 
+# =============================================================================================================
+
 def mcmc(edge_strength):
 	"""
 	Get the best possible value for a ridge using sampling and MCMC
@@ -54,11 +57,12 @@ def mcmc(edge_strength):
 	"""
 
 	# Basic Defs
-	number_of_samples = 50
+	number_of_samples = 1000
 	no_of_cols = edge_strength.shape[1]
 
 	# Generate a random Sample
 	random_sample = best_edge_list(edge_strength)
+	#random_sample[gt_col] = gt_row
 
 	# Create a dictionary of samples
 	samples = {}
@@ -97,12 +101,16 @@ def mcmc(edge_strength):
 
 			rows = arange(lower_bound, upper_bound)
 
-			s_i = random.choice(rows, p=probability_distribution)
+			if (gt_col == i):
+				s_i = gt_row
+			else:
+				s_i = random.choice(rows, p=probability_distribution)
+			
 			current_sample.append(s_i)
 
 		samples[t] = current_sample
 
-	return samples[49]
+	return samples[number_of_samples - 1]
 
 def probability_calculator (previous_selection, lower_bound, next_selection, upper_bound, column_data):
 	"""
@@ -114,9 +122,11 @@ def probability_calculator (previous_selection, lower_bound, next_selection, upp
 	gradient_dist = []
 	col_sum = 0
 
+	#Calculate the row sum for a given column range
 	for each_item in range(lower_bound, upper_bound):
 		col_sum += column_data[each_item]
 
+	# If this is column 0
 	if (previous_selection == None):
 		for each_row in range(lower_bound, upper_bound):
 			distance_dist.append(transition(next_selection, each_row))
@@ -125,6 +135,7 @@ def probability_calculator (previous_selection, lower_bound, next_selection, upp
 		for each_item in range(len(distance_dist)):
 			distribution.append(distance_dist[each_item] * gradient_dist[each_item])
 
+	# If this is column n-1
 	elif (next_selection == None):
 		for each_row in range(lower_bound, upper_bound):
 			distance_dist.append(transition(previous_selection, each_row))
@@ -133,6 +144,7 @@ def probability_calculator (previous_selection, lower_bound, next_selection, upp
 		for each_item in range(len(distance_dist)):
 			distribution.append(distance_dist[each_item] * gradient_dist[each_item])
 
+	# Else any other row.
 	else:
 		for each_row in range(lower_bound, upper_bound):
 			distance_dist.append(transition(next_selection, each_row))
@@ -150,6 +162,7 @@ def transition (value1, value2):
 	"""
 	distance = math.fabs(value1**2 - value2**2)
 	if (distance!=0): return 1/distance
+	# When both lie on the same line.
 	else: return 1
 
 def emission (current_data, total):
@@ -175,7 +188,7 @@ def get_bounds (previous_selection, next_selection, maxsize):
 	Get the bounds for a certain row, by +n and -n
 	Handle edge cases as well.
 	"""
-	offset = 5
+	offset = 50
 
 	if (previous_selection == None):
 		lower_bound = next_selection - offset
@@ -197,6 +210,90 @@ def get_bounds (previous_selection, next_selection, maxsize):
 
 	return lower_bound, upper_bound
 
+# =================================================================================================
+
+def mcmc_alternative (edge_strength):
+	"""
+	Alternative MCMC
+	"""
+	k = 250
+	init_data = top_k_indices(edge_strength[:,0], k)
+	sample = {}
+	map_values = zeros(k)
+	sample[0] = best_edge_list(edge_strength)
+
+	# Do this k times.
+	for each_sample in range(len(init_data)):
+
+		# Select the best possible starting point.
+		best = []
+		best.append(init_data[each_sample])
+		total = 0
+
+		# Number of columns
+		number_of_cols = edge_strength.shape[1]
+		
+		# For each column, find the best row
+		for each_col in range(1, number_of_cols):
+			current, map_val = probability_calculator_alt(best[each_col - 1], edge_strength[:,each_col], each_col)
+			best.append(current)
+			total += map_val
+
+		sample[each_sample] = best
+		map_values[each_sample] = total
+
+	output = sample[argmax(map_values)]
+	print(map_values)
+
+	return output
+
+def probability_calculator_alt (previous_selection, column_data, column_number):
+	"""
+	Calculates probabilites for all rows and then returns the best selection
+	"""
+	posteriors = []
+	lower_bound, upper_bound = get_bounds_alt(previous_selection, len(column_data))
+
+	col_sum = 0
+	for each_row in range(lower_bound, upper_bound):
+		col_sum += column_data[each_row]
+
+	for each_row in range(lower_bound, upper_bound):
+
+		if (column_number == gt_col and each_row == gt_row):
+			transition_probability = 1
+			emission_probability = 1
+		else:
+			transition_probability = transition(previous_selection, column_data[each_row])
+			emission_probability = emission(column_data[each_row], col_sum)
+		
+		posteriors.append(emission_probability * transition_probability)
+
+	return argmax(posteriors) + lower_bound, max(posteriors)
+
+def get_bounds_alt (previous_selection, maxsize):
+	"""
+	Get bounds for a certain selection, to scan the current column within a range.
+	"""
+	offset = 7
+
+	lower_bound = previous_selection - offset
+	upper_bound = previous_selection + offset
+
+	if (lower_bound < 0): lower_bound = 0
+	if (upper_bound > maxsize): upper_bound = maxsize
+
+	return lower_bound, upper_bound
+
+
+def top_k_indices (init_data, k = 50):
+	"""
+	Returns the top k begining indexes based on value
+	"""
+	indices = argpartition(init_data, -k)[-k:]
+	return indices
+
+# =================================================================================================
 # This is where our code ends
 
 
@@ -216,11 +313,18 @@ imsave('edges.jpg', edge_strength)
 ridge = [ edge_strength.shape[0]//2 ] * edge_strength.shape[1]
 
 # My Calls
-part1 = best_edge_list(edge_strength)
-imsave(output_filename, draw_edge(input_image, part1, (255, 0, 0), 5))
+# part 0
+# for rows in range(len(ridge)):
+# 	ridge[rows] = 152
+
+# part1 = best_edge_list(edge_strength)
+# imsave(output_filename, draw_edge(input_image, part1, (255, 0, 0), 5))
 
 part2 = mcmc(edge_strength)
 imsave(output_filename, draw_edge(input_image, part2, (0, 0, 255), 5))
 
+# part2alt = mcmc_alternative(edge_strength)
+# imsave(output_filename, draw_edge(input_image, part2alt, (0, 0, 255), 5))
+
 # output answer
-#imsave(output_filename, draw_edge(input_image, ridge, (255, 0, 0), 5))
+# imsave(output_filename, draw_edge(input_image, ridge, (255, 0, 0), 5))
