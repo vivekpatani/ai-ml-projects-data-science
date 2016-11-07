@@ -313,7 +313,6 @@ def mcmc_alternative (edge_strength):
 		map_values[each_sample] = total
 
 	output = sample[argmax(map_values)]
-	print(map_values)
 
 	return output
 
@@ -380,7 +379,6 @@ def mcmc_given (edge_strength, gt_row, gt_col):
 	# Generate a random Sample
 	random_sample = best_edge_list(edge_strength)
 	random_sample[gt_col] = gt_row
-	print(random_sample[gt_col], gt_row)
 
 	# Create a dictionary of samples
 	samples = {}
@@ -429,7 +427,6 @@ def mcmc_given (edge_strength, gt_row, gt_col):
 		samples[t] = current_sample
 
 	output = find_mode(samples)
-	print(output)
 
 	return output
 
