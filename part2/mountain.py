@@ -70,16 +70,17 @@ DOCUMENTATION:
 5.) Misc:
 	- In order to limit our search, for each previous and next state consideration we only check a certain offset value, which can be changed.
 	- In order to limit our time, we only take 500 samples
+	- To run the alternative II, just uncomment line 549 & 550
+	- To run the initial input, just uncomment last two lines
 
 """
-
-
 
 from PIL import Image
 from numpy import *
 from scipy.ndimage import filters
 from scipy.misc import imsave
 import sys
+from multiprocessing.pool import ThreadPool
 
 # calculate "Edge strength map" of an image
 #
