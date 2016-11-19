@@ -12,6 +12,7 @@ These are projects I've worked on over time for various things such as class pro
 	- Where is Waldo?  
 
 - Kaggle and Projects:  
+	- 15 - Puzzle Solver using A*
 	- Kaggle - Home Depot Analytics
 	- Iris - Project
 	- Movie Lens Recommendation System - Project
