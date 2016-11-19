@@ -1,0 +1,570 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 9200.16.0204.1543                                -->
+<workbook source-platform='win' version='9.2' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='iris' inline='true' name='textscan.1ejmtvg0wz9hd112n09qf1pkun57' version='9.2'>
+      <connection class='textscan' directory='D:/dm-2/q-1/data' filename='iris.csv' password='' server='' username=''>
+        <relation name='iris#csv' table='[iris#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='real' name='sepal-length' ordinal='0' />
+            <column datatype='real' name='sepal-width' ordinal='1' />
+            <column datatype='real' name='petal-length' ordinal='2' />
+            <column datatype='real' name='petal-width' ordinal='3' />
+            <column datatype='string' name='class' ordinal='4' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>sepal-length</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[sepal-length]</local-name>
+            <parent-name>[iris#csv]</parent-name>
+            <remote-alias>sepal-length</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sepal-width</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[sepal-width]</local-name>
+            <parent-name>[iris#csv]</parent-name>
+            <remote-alias>sepal-width</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>petal-length</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[petal-length]</local-name>
+            <parent-name>[iris#csv]</parent-name>
+            <remote-alias>petal-length</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>petal-width</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[petal-width]</local-name>
+            <parent-name>[iris#csv]</parent-name>
+            <remote-alias>petal-width</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>class</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[class]</local-name>
+            <parent-name>[iris#csv]</parent-name>
+            <remote-alias>class</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[iris#csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Class' datatype='string' name='[class]' role='dimension' type='nominal' />
+      <column caption='Petal-Length' datatype='real' name='[petal-length]' role='measure' type='quantitative' />
+      <column caption='Petal-Width' datatype='real' name='[petal-width]' role='measure' type='quantitative' />
+      <column caption='Sepal-Length' datatype='real' name='[sepal-length]' role='measure' type='quantitative' />
+      <column caption='Sepal-Width' datatype='real' name='[sepal-width]' role='measure' type='quantitative' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.443902' measure-ordering='alphabetic' measure-percentage='0.556098' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Petal-Length'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='iris' name='textscan.1ejmtvg0wz9hd112n09qf1pkun57' />
+          </datasources>
+          <datasource-dependencies datasource='textscan.1ejmtvg0wz9hd112n09qf1pkun57'>
+            <column caption='Class' datatype='string' name='[class]' role='dimension' type='nominal' />
+            <column-instance column='[class]' derivation='None' name='[none:class:nk]' pivot='key' type='nominal' />
+            <column caption='Petal-Length' datatype='real' name='[petal-length]' role='measure' type='quantitative' />
+            <column-instance column='[petal-length]' derivation='Sum' name='[sum:petal-length:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='false' />
+        </view>
+        <style />
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <lod column='[textscan.1ejmtvg0wz9hd112n09qf1pkun57].[none:class:nk]' />
+            </encodings>
+            <reference-line axis-column='[textscan.1ejmtvg0wz9hd112n09qf1pkun57].[sum:petal-length:qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline0' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[textscan.1ejmtvg0wz9hd112n09qf1pkun57].[sum:petal-length:qk]' z-order='1' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.69165748357772827' />
+                <format attr='mark-color' value='#000000' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[textscan.1ejmtvg0wz9hd112n09qf1pkun57].[none:class:nk]</rows>
+        <cols>[textscan.1ejmtvg0wz9hd112n09qf1pkun57].[sum:petal-length:qk]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='Petal-Width'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='iris' name='textscan.1ejmtvg0wz9hd112n09qf1pkun57' />
+          </datasources>
+          <datasource-dependencies datasource='textscan.1ejmtvg0wz9hd112n09qf1pkun57'>
+            <column caption='Class' datatype='string' name='[class]' role='dimension' type='nominal' />
+            <column-instance column='[class]' derivation='None' name='[none:class:nk]' pivot='key' type='nominal' />
+            <column caption='Petal-Width' datatype='real' name='[petal-width]' role='measure' type='quantitative' />
+            <column-instance column='[petal-width]' derivation='Sum' name='[sum:petal-width:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='false' />
+        </view>
+        <style />
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <reference-line axis-column='[textscan.1ejmtvg0wz9hd112n09qf1pkun57].[sum:petal-width:qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline0' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[textscan.1ejmtvg0wz9hd112n09qf1pkun57].[sum:petal-width:qk]' z-order='1' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1.5492265224456787' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[textscan.1ejmtvg0wz9hd112n09qf1pkun57].[none:class:nk]</rows>
+        <cols>[textscan.1ejmtvg0wz9hd112n09qf1pkun57].[sum:petal-width:qk]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='Sepal-Length'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='iris' name='textscan.1ejmtvg0wz9hd112n09qf1pkun57' />
+          </datasources>
+          <datasource-dependencies datasource='textscan.1ejmtvg0wz9hd112n09qf1pkun57'>
+            <column caption='Class' datatype='string' name='[class]' role='dimension' type='nominal' />
+            <column-instance column='[class]' derivation='None' name='[none:class:nk]' pivot='key' type='nominal' />
+            <column caption='Sepal-Length' datatype='real' name='[sepal-length]' role='measure' type='quantitative' />
+            <column-instance column='[sepal-length]' derivation='Sum' name='[sum:sepal-length:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='false' />
+        </view>
+        <style />
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <reference-line axis-column='[textscan.1ejmtvg0wz9hd112n09qf1pkun57].[sum:sepal-length:qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline0' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[textscan.1ejmtvg0wz9hd112n09qf1pkun57].[sum:sepal-length:qk]' z-order='1' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.88955801725387573' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[textscan.1ejmtvg0wz9hd112n09qf1pkun57].[none:class:nk]</rows>
+        <cols>[textscan.1ejmtvg0wz9hd112n09qf1pkun57].[sum:sepal-length:qk]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='Sepal-Width'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='iris' name='textscan.1ejmtvg0wz9hd112n09qf1pkun57' />
+          </datasources>
+          <datasource-dependencies datasource='textscan.1ejmtvg0wz9hd112n09qf1pkun57'>
+            <column caption='Class' datatype='string' name='[class]' role='dimension' type='nominal' />
+            <column-instance column='[class]' derivation='None' name='[none:class:nk]' pivot='key' type='nominal' />
+            <column caption='Sepal-Width' datatype='real' name='[sepal-width]' role='measure' type='quantitative' />
+            <column-instance column='[sepal-width]' derivation='Sum' name='[sum:sepal-width:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='false' />
+        </view>
+        <style />
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <reference-line axis-column='[textscan.1ejmtvg0wz9hd112n09qf1pkun57].[sum:sepal-width:qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline0' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[textscan.1ejmtvg0wz9hd112n09qf1pkun57].[sum:sepal-width:qk]' z-order='1' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1.3073480129241943' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[textscan.1ejmtvg0wz9hd112n09qf1pkun57].[none:class:nk]</rows>
+        <cols>[textscan.1ejmtvg0wz9hd112n09qf1pkun57].[sum:sepal-width:qk]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows source-height='28'>
+    <window class='worksheet' name='Petal-Length'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[textscan.1ejmtvg0wz9hd112n09qf1pkun57].[none:class:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' name='Petal-Width'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[textscan.1ejmtvg0wz9hd112n09qf1pkun57].[:Measure Names]</field>
+            <field>[textscan.1ejmtvg0wz9hd112n09qf1pkun57].[none:class:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' name='Sepal-Length'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[textscan.1ejmtvg0wz9hd112n09qf1pkun57].[none:class:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' maximized='true' name='Sepal-Width'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[textscan.1ejmtvg0wz9hd112n09qf1pkun57].[none:class:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Petal-Length' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7EAAAOxAGVKw4b
+      AAAHmUlEQVR4nO3dTWgUaR7H8d/TVf2+sU00Gt3JMFnfhh1c8LBoZoUFL+t6XMjNu+BNQUHP
+      Hrx78iSiB1GM6CUsqJDDBiToKui+sGziLJNk1MQ46Uynu6urnj0sNtPpGA3bGWfm//2c4r/r
+      KZ4O/W3zUkWc994LMCr1sTcAfEwEANMIAKYRAEwjAJgWShI/CIJV4dsPqtVqx07aaDTkvVc6
+      ne7YOYH14Nbj9wBRFMl7r0wm0+lTAx3F9wAwjQBgGgHANAKAaQQA0wgAphEATCMAmEYAMI0A
+      YBoBwDQCgGkEANPC9x+C96nX6wrDUKnU6u8nb6+S/T7nXMu6JElWvIy8Vqspm812ZsNoIoAO
+      uHfvng4ePKiurq5VjxsfH1d1aallls/n9Ul/f/Pfs7Oz2rdvX9vaO3fuaGhoqDMbRhNfAsE0
+      AoBpBADTCACmEQBMIwCYRgAwjQBgGgHANAKAaQQA0wgAphEATHt3AD7R1PS0fNLQtwuLKx4y
+      Pz+/Xvv6UZifn1cURW2zRqPRMqtUKorjuGX2/PlzLS278nNudrZlrfdei4uLLWu995qYmFCt
+      VmvOkiTRwsJC216WS5JE09PTSpLkw54gVrkc2if661/+rPHSZ8otzes/Za+hP/5e90ZuK9/d
+      pzdVKZeUtaFUUjoM9PeJl9q7Y5Pi4if6ct/nP+BTWB/Pnj3TtWvXVCgUdObMGUnSkydPNDw8
+      rGKxqNOnT0uSRkdHdf36dY2NjenUqVOSpPv37+vixYsaGBjQ+fPnJUkjIyO6efOmvhwc1IED
+      ByRJk5OTmpub07cLC9q/f78k6cqVK3r8+LH27t2rs2fPSpKGh4d1+/ZtTU5O6ty5c+/c86VL
+      l/T06VPt2rVLx48fX59PzM/MKvcDOPV/tlOZTZ+q9vqlwsVIqTCtgV17FCujrfkNysbfqRbV
+      VfhFSQ1lFGQDlboKP9zu11EQBEqSREEQNGepVKptFgSBvPcKw7B5I0s6nW4et3zmnGs73/dn
+      QRAojuO280lSGK5++0YYhs2bc/Bh+PsAqyiXy8rn8y0vqHK5rEKh0BLBrVu3dOjQIZVKpeZs
+      ZmZGPT09LXdxjYyMKAyC5lrvvZxz+tWOHc3Zq1ev1NfXp97e3uYL33uvy5cv6+jRo6u+uJMk
+      0evXr9XT0/Peu9PwP7xVrGKlO7xWmuVyubYX3LZt29qOK5VKLXeEOeeUz+dbYnLOafv27S3r
+      nHMqFovvfWdPpVLavHnzqsegFW8TMI0AYBoBwDQCgGkEANMIAKYRAEwjAJhGADCNAGAaAcA0
+      AoBpXAzXAaVSqeWCtncpFotKL7ugLZvLtfw9gHw+v+La7u7u/2+TWBGXQ8M0vgSCaQQA0wgA
+      phEATCMAmEYAMI0AYBoBwDQCgGkEANMIAKYRAEwjAJhGADCNAGAaAcA0AoBpBADTCACmEQBM
+      IwCYRgAwjQBgGgHANAKAaQQA0wgAphEATCMAmEYAMI0AYMLU1NSKcwKACWNjYyvOCQCmEQBM
+      IwCYRgAwjQBgGgHANAKAaQQA0wgAphEATCMAmEYAMI0AYFr49oMXX/1T9fxWqbqojT0blMkW
+      5JKG4kRKkkjOBWrEsZLEq1ZdUjGfUyaX01I10jczU9q+rU9hOq1GIuUy6Y/5nPAzVKlU9ODB
+      Aw0ODiqXy61p7fz8vCYmJlSr1ZTNZlsec957L0n/ejiqu3+b056tXSp/91KFjQPaUoz18N+v
+      tcEtSHGsLQOfa/zBQ/36i51ycSwfxYrDQImX0mrom6+n9Ns//El7ftkj770ymUznPgMw7cKF
+      C+rv79eLFy907NixNa09efKkyuWydu/erSNHjrQ81gwgqi2pGnmlQ6fEezmXUi6b0eJiRUHg
+      lMSxwnRGjUZDLhXIKVGjESsIQrmU5BOvJE6UKxalJCYAdNTk5KTu3r2rw4cPq7+/f01rHz16
+      pKtXr+rEiRNta5sBdFIURQSAH5UbN25oaGiobc43wTCNAGAaAcA0AoBpBADTCACmEQBMIwCY
+      RgAwjQBgGgHANAKAaQQA0wgAJgwODq4453JomMb/ADCNAGAaAcA0AoBpBADTCACmEQBMIwCY
+      RgAwjQBgGgHANAKAaQQA0wgAphEATCMAmEYAMI0AYBoBwDQCgGkEANMIAKYRAEwjAJhGADCN
+      AGAaAcA0AoBpBADTCACmEQBMIwCYRgAwjQBgGgHANAKAaQQA0wgAphEATCMAmEYAMI0AYBoB
+      wDQCgGltAdRrNSWS6vV66wPet8yiel2Jl7xPVK9H671PYF2EywcPR0cVbexSkARy1Tca+M3v
+      VJ2bUqXRUGVuRtVwg1K1RTVcoDBbVC70iut1RS6j7kJKrtirnZ/2fYznAqxZWwCZbFZvlurq
+      zqQ1+2pGmpjQlmKkr2ZqylfmFPQUNTU1rThd0MbetJyraGGhrLC0VW9efK3cJk8A+Mlw3nu/
+      lgVxVNWzZ//QwJ4v1JVPr3hMFEXy3iuTyXRkk8B6WXMAH4IA8FPBT4FgGgHANAKAaQQA0wgA
+      phEATCMAmEYAMI0AYBoBwDQCgGkEANMIAKYRAEwjAJhGADCNAGAaAcA0AoBpBADTCACmEQBM
+      IwCY9l/nt0hKB/58TgAAAABJRU5ErkJggg==
+    </thumbnail>
+    <thumbnail height='192' name='Petal-Width' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='Sepal-Length' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7EAAAOxAGVKw4b
+      AAAEuklEQVR4nO3dy2tcVQDH8d+Z+5iXyeRBk/gqDUZSLAou3OjCpbgV/ENdiaCLLFxICa5q
+      FTFQ6SRtNE1MpsnMfR1XLdQ20uhMQ/h9P6vLfRzOWXwX597FDTHGKMBU67InAFwmAoA1AoA1
+      AoA1AoC1VJJ4EQRX6ZOD8Xg8tUGrqlKMUVmWTW1MYBbCLL4DlGWpGKPyPJ/20MBUsQeANQKA
+      NQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKA
+      NQKANQKANQKANQKANQKANQKANQKANQKAtfMDiI2Gu7uKTaW/jkcvvOXw8HBW8wJeifTcK7HR
+      j99/o9uDG+qcHer3k6gvP/9U3339lbqLazoaS53mRPODgbI00d2dfb3/zrLq/lv6+MObr3AJ
+      wH93fgAKevvGhvLl65o82lc6KtVKM62/u6lauVa782rXjzUpC/VeG6hSrqSdaDDXe3WzB/4n
+      /g8Aa2yCYY0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0A
+      YI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0A
+      YI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0A
+      YI0AYI0AYI0AYI0AYI0AYI0AYI0AYC19cvDw3i8quqvSeKSFpXnl7Z5CU6lupKYpFUKiqq7V
+      NFGT8Zn63Y7yTkdn41IP9oZ64/U1pVmmqpE6eXaZawJeWogxRkn6dXtL3/50oM3VOZ083ldv
+      YV0r/Vrbvz3SfDiW6lor6zd1+4dtvXdrQ6GuFctadZqoiVKmSg/uD/XRZ19o880lxRiV5/ll
+      rw/4V08DKCdnGpdRWRrUxKgQWuq0c41Gp0qSoKaulWa5qqpSaCUKalRVtZIkVWhJsYlq6kad
+      fl9qagLAlfA0gGkqy5IAcCWwCYY1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1
+      AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1
+      AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1
+      AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoA1AoC15wIoJhM1koqiePZCjM+cK4tCTZRi
+      bFQU5aznCcxE+s8T21tbKhfmlDSJwvhI6x98ovHBUKdVpdODPY3TebUmI1UhUdruq5NG1UWh
+      MuRa7LUU+te0cX3tMtYCXNhzAeTtto7OCi3mmf78Y0/a2dFKv9S9vYm6pwdKlvoaDndVZz0t
+      XMsUwqmOj0+UDlZ19PC+OsuRAHBlhBhjvMgDdTnWnTs/a33zlua62QvvKctSMUbleT6VSQKz
+      cuEAXgYB4KrgLRCsEQCsEQCsEQCsEQCsEQCsEQCsEQCsEQCsEQCsEQCsEQCsEQCsEQCsEQCs
+      EQCsEQCsEQCsEQCsEQCsEQCsEQCsEQCs/Q21oSwOsrCvVgAAAABJRU5ErkJggg==
+    </thumbnail>
+    <thumbnail height='192' name='Sepal-Width' width='192'>
+      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
+      YII=
+    </thumbnail>
+  </thumbnails>
+</workbook>

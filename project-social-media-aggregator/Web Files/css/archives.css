@@ -1,0 +1,40 @@
+#archiveList{
+width:100%;
+text-align:center;
+}
+#archiveList a{
+color:#000000;
+}
+#archiveList  a{
+font-size:100%;
+display: table-row;
+width:100%;
+text-decoration: underline;
+}
+#archiveList div{
+width:100%;
+}
+#archiveList p{
+color:white;
+}
+
+#archiveList a:visited{
+color:orange;
+text-align:center;
+}
+
+#archiveList a:hover {
+    text-decoration: underline;
+	color: #00ffff;
+}
+
+#archiveList a:active {
+    text-decoration: underline;
+	color: #00ffff;
+}
+table {
+border: 0px;
+}
+tr {
+color:black;
+}

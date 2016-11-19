@@ -1,0 +1,40 @@
+#wordDisplay{
+width:100%;
+text-align:center;
+}
+#wordDisplay a{
+color:#000000;
+}
+#wordDisplay  a{
+font-size:100%;
+display: table-row;
+width:100%;
+text-decoration: underline;
+}
+#wordDisplay div{
+width:100%;
+}
+#wordDisplay p{
+color:black;
+font-size:150%;
+}
+#wordDisplay a:visited{
+color:orange;
+text-align:center;
+}
+
+#wordDisplay a:hover {
+    text-decoration: underline;
+	color: #00ffff;
+}
+
+#wordDisplay a:active {
+    text-decoration: underline;
+	color: #00ffff;
+}
+table {
+border: 0px;
+}
+tr {
+color:black;
+}

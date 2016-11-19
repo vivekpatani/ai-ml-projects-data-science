@@ -1,0 +1,40 @@
+#displayBox{
+width:100%;
+text-align:center;
+}
+#displayBox a{
+color:#000000;
+}
+#displayBox  a{
+font-size:100%;
+display: table-row;
+width:100%;
+text-decoration: underline;
+}
+#displayBox div{
+width:100%;
+}
+#displayBox p{
+color:white;
+}
+
+#displayBox a:visited{
+color:orange;
+text-align:center;
+}
+
+#displayBox a:hover {
+    text-decoration: underline;
+	color: #00ffff;
+}
+
+#displayBox a:active {
+    text-decoration: underline;
+	color: #00ffff;
+}
+table {
+border: 0px;
+}
+tr {
+color:black;
+}

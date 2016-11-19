@@ -1,0 +1,7 @@
+#Input Files
+decodesaa
+decodesaa1
+
+#Interim Files
+*.json
+*.p
