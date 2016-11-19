@@ -19,3 +19,5 @@ These are projects I've worked on over time for various things such as class pro
 	- Social Media Aggregator - Final Year Project
 	- Wikipedia Data Analytics
 	- N Queens/Rooks puzzle - Project
+	- Tetris Solver
+	- Opposite Tic Tac Toe Player
