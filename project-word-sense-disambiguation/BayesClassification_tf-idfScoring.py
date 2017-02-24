@@ -77,7 +77,7 @@ result1_1 += Class1P
 result1_2 = 0.0
 for token in unknownTextTokens1:
     result1_2 += log(Class2FP.get(token, defaultClass2P), 2)
-result1_2 += Class2FP
+result1_2 += Class2P
 
 print(result1_1, result1_2)
 if max(result1_1, result1_2) == result1_1:
@@ -99,7 +99,7 @@ result2_1 += Class1P
 result2_2 = 0.0
 for token in unknownTextTokens_2:
     result2_2 += log(Class2FP.get(token, defaultClass2P), 2)
-result2_2 += Class2FP
+result2_2 += Class2P
 
 print(result2_1, result2_2)
 if max(result2_1, result2_2) == result2_1:
