@@ -1,5 +1,6 @@
 from nltk.corpus import wordnet as wn
 from nltk.stem.porter import *
+from subprocess import call
 
 def readfile(filename,location="input/"):
     """
@@ -71,7 +72,7 @@ def obtain_syns_anto(word, important_meanings):
                     dis_similar.append(lemma.antonyms()[0].name())
     return set(dis_similar)
 
-def fit(*args, vocabulary):
+def fit(*args, vocabulary, class_label=0):
     """
     Accepts multiple datasets to prepare to provide
     input to TiMBL
@@ -108,6 +109,9 @@ def dump_model (model, dir="model/", filename="output.txt"):
     output.close()
     print("Dumping is over!")
 
+def predict(test_data, vocabulary, class_label):
+    return fit(test_data, vocabulary=vocabulary, class_label=class_label)
+
 def main():
 
     # Defining word to disambiguate
@@ -118,16 +122,28 @@ def main():
     print("Reading Bag of Words...")
     bagofwords = get_bag_of_words(ambiguous)
 
-    # Loading Input Files
-    print("Loading Input Text...")
-    input_text1 = readfile("input1.txt")
-    input_text2 = readfile("input2.txt")
+    # Loading Train Files
+    print("Loading Train Text...")
+    train1 = readfile("input1.txt")
+    train2 = readfile("input2.txt")
+
+    # Loading Test Files
+    print("Loading Test Text...")
+    test1 = readfile("test1.txt")
+    test2 = readfile("test2.txt")
 
     # Preparing Train Data
     print("Preparing Train Data...")
-    model = fit(input_text1, input_text2, vocabulary=bagofwords)
+    model = fit(train1, train2, vocabulary=bagofwords)
+    dump_model(model, filename="model.txt")
 
-    dump_model(model, filename="output1.txt")
+    # Preparing Test Data
+    print("Preparing Test Data...")
+    predict1 = predict(test1, bagofwords, 0)
+    predict2 = predict(test2, bagofwords, 1)
+
+    # Training using TiMBL
+    call(["timbl", "-f", "model/model.txt"])
 
 if __name__ =="__main__":
     main()
