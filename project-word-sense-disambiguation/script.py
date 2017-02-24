@@ -84,6 +84,9 @@ def main():
 	fp1 = frequency_profile(tokens1)
 	fp2 = frequency_profile(tokens2)
 
+	print(fp1)
+	print(fp2)
+
 	# Generate model
 	model1 = generate_model(fp1)
 	model2 = generate_model(fp2)
@@ -97,8 +100,8 @@ def main():
 	getTags2 = getUniquePOSTags(posTokens2)
 
 	# Pretty Tabular Prints for Model
-	pretty_print(model1)
-	pretty_print(model2)
+	# pretty_print(model1)
+	# pretty_print(model2)
 
 	# Dump Model to output file
 	model_dump(model1, "output1.txt")
