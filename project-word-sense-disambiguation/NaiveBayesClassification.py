@@ -25,6 +25,18 @@ def generateFP(data1, data2):
     Class1FP = Counter()
     Class2FP = Counter()
 
+    Collection1 = []
+    Collection2 = []
+
+    for definition in data1:
+        tempCounter = Counter()
+        tempCounter.update(word for word in tokenizer.tokenize(definition.lower().strip()) if word not in stopw)
+        print(tempCounter)
+        if tempCounter:
+            Collection1.append(tempCounter)
+            print(Collection1)
+        print('*')
+
     for definition in data1:
         Class1FP.update(word for word in tokenizer.tokenize(definition.lower().strip()) if word not in stopw)
 
