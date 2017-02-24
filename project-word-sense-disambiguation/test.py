@@ -100,7 +100,6 @@ def dump_model (model, dir="model/", filename="output.txt"):
     Dumps Model in a given file
     Which can be used for TiMBL
     """
-
     with open(dir + filename, 'w') as output:
         for vectors in model:
             for vector in vectors:
@@ -110,7 +109,8 @@ def dump_model (model, dir="model/", filename="output.txt"):
     print("Dumping is over!")
 
 def predict(test_data, vocabulary, class_label):
-    return fit(test_data, vocabulary=vocabulary, class_label=class_label)
+    test_model = fit(test_data, vocabulary=vocabulary, class_label=class_label)
+    return test_model
 
 def main():
 
@@ -135,15 +135,18 @@ def main():
     # Preparing Train Data
     print("Preparing Train Data...")
     model = fit(train1, train2, vocabulary=bagofwords)
-    dump_model(model, filename="model.txt")
 
     # Preparing Test Data
     print("Preparing Test Data...")
-    predict1 = predict(test1, bagofwords, 0)
+    # predict1 = predict(test1, bagofwords, 0)
     predict2 = predict(test2, bagofwords, 1)
 
+    # Dumpping all models and Test Models
+    dump_model(model, filename="model.txt")
+    dump_model(predict2, filename="test_model.txt")
+
     # Training using TiMBL
-    call(["timbl", "-f", "model/model.txt"])
+    call(["timbl", "-f", "model/model.txt", "-t", "model/test_model.txt"])
 
 if __name__ =="__main__":
     main()
