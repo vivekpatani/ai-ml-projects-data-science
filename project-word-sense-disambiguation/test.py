@@ -94,6 +94,20 @@ def fit(*args, vocabulary):
 
     return model
 
+def dump_model (model, dir="model/", filename="output.txt"):
+    """
+    Dumps Model in a given file
+    Which can be used for TiMBL
+    """
+
+    with open(dir + filename, 'w') as output:
+        for vectors in model:
+            for vector in vectors:
+                output.write(str(vector) + "\t")
+            output.write("\n")
+    output.close()
+    print("Dumping is over!")
+
 def main():
 
     # Defining word to disambiguate
@@ -113,8 +127,7 @@ def main():
     print("Preparing Train Data...")
     model = fit(input_text1, input_text2, vocabulary=bagofwords)
 
-    for each_vector in model:
-        print(each_vector)
+    dump_model(model, filename="output1.txt")
 
 if __name__ =="__main__":
     main()
