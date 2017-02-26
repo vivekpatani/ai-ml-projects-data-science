@@ -1,0 +1,10 @@
+\contentsline {section}{Text Corpus Selection}{3}{section*.2}
+\contentsline {section}{Approach 1 - Bag of Words}{4}{section*.3}
+\contentsline {subsection}{Model Selection}{4}{section*.4}
+\contentsline {subsection}{Optimise Feature Extraction}{4}{section*.5}
+\contentsline {subsection}{Making the Training/Testing Model}{4}{section*.6}
+\contentsline {subsection}{Results}{4}{section*.7}
+\contentsline {section}{Approach 2 - Naive Bayes}{5}{section*.8}
+\contentsline {section}{Approach 3 - Naive Bayes - TF-IDF}{6}{section*.9}
+\contentsline {section}{Comparison}{7}{section*.10}
+\contentsline {section}{References}{8}{section*.11}
