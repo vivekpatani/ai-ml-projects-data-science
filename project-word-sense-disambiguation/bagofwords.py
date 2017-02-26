@@ -25,8 +25,6 @@ def get_bag_of_words(word, important_meanings=[0, 1, 3]):
     
     for each in bow:
         bag.append(obtain_syns_anto(each, bow[each]))
-
-    print(bag)
     return bag
 
 def stem_word (word):
@@ -143,10 +141,10 @@ def main():
 
     # Dumpping all models and Test Models
     dump_model(model, filename="model.txt")
-    dump_model(predict2, filename="test_model.txt")
+    dump_model(predict2, filename="test_model2.txt")
 
     # Training using TiMBL
-    call(["timbl", "-f", "model/model.txt", "-t", "model/test_model.txt"])
+    call(["timbl", "+v", "cm", "-f", "model/model.txt", "-t", "model/test_model.txt"])
 
 if __name__ =="__main__":
     main()
