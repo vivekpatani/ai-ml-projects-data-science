@@ -6,14 +6,14 @@ from math import log
 stopw = stopwords.words('english')
 tokenizer = RegexpTokenizer(r'\w+')
 
-
+# reads the data from given filename and returns it
 def readInputFiles(filename):
     fopen = open(filename, 'r', encoding='utf-8')
     data = fopen.readlines()
     fopen.close()
     return data
 
-
+#Calculates and generates the Frequency Profiles for each class and returns it
 def generateFP(data1, data2):
     global totalClass1, Class1P
     global totalClass2, Class2P
@@ -25,13 +25,13 @@ def generateFP(data1, data2):
     Class1FP = Counter()
     Class2FP = Counter()
 
+    #tokenize each line for the data
     for definition in data1:
         Class1FP.update(word for word in tokenizer.tokenize(definition.lower().strip()) if word not in stopw)
 
     for definition in data2:
         Class2FP.update(word for word in tokenizer.tokenize(definition.lower().strip()) if word not in stopw)
 
-    # Note: We will be using tf scoring for our Frequency Profiles.
     totalClass1 = sum(Class1FP.values()) + 1
     totalClass2 = sum(Class2FP.values()) + 1
 
@@ -39,11 +39,11 @@ def generateFP(data1, data2):
     Class2FP = Counter(dict([(token, frequency / totalClass2) for token, frequency in Class2FP.items()]))
 
     # print(Class1FP,'/n/n','-'*100,'/n/n', Class2FP)
-
     return Class1FP, Class2FP
 
-
+#Calculates the result score for each token of the unknown text against the given class
 def predict(data, ClassFP, totalClassTokens, ClassP):
+    print(totalClassTokens)
     defaultClassP = 1 / totalClassTokens
     result = 0.0
     resultTokens = []
@@ -57,7 +57,7 @@ def predict(data, ClassFP, totalClassTokens, ClassP):
     print(result)
     return result
 
-
+#Result Evaluation
 def result(testDataPrediction_1, testDataPrediction_2):
     if max(testDataPrediction_1, testDataPrediction_2) == testDataPrediction_1:
         print("The test data file belongs to Input Class 1")
@@ -76,4 +76,4 @@ if __name__ == "__main__":
     result(testData1Prediction_1, testData1Prediction_2)
     testData2Prediction_1 = predict(testData2, Class1FP, totalClass1, Class1P)
     testData2Prediction_2 = predict(testData2, Class2FP, totalClass2, Class2P)
-    result(testData1Prediction_1, testData1Prediction_2)
+    result(testData2Prediction_1, testData2Prediction_2)
