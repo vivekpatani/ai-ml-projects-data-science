@@ -107,6 +107,9 @@ def dump_model (model, dir="model/", filename="output.txt"):
     print("Dumping is over!")
 
 def predict(test_data, vocabulary, class_label):
+    """
+    Preparing Test Data
+    """
     test_model = fit(test_data, vocabulary=vocabulary, class_label=class_label)
     return test_model
 
@@ -125,26 +128,63 @@ def main():
     train1 = readfile("input1.txt")
     train2 = readfile("input2.txt")
 
-    # Loading Test Files
+    # Loading Test Files for Computer Drivers
     print("Loading Test Text...")
     test1 = readfile("test1.txt")
+    test11 = readfile("test11.txt")
+    test12 = readfile("test12.txt")
+
+    # Loading Test Files for Driver as a Profession
     test2 = readfile("test2.txt")
+    test21 = readfile("test21.txt")
+    test22 = readfile("test22.txt")
+    test23 = readfile("test23.txt")
+    test24 = readfile("test24.txt")
 
     # Preparing Train Data
     print("Preparing Train Data...")
     model = fit(train1, train2, vocabulary=bagofwords)
 
-    # Preparing Test Data
+    # Preparing Test Data for Computer Driver
     print("Preparing Test Data...")
-    # predict1 = predict(test1, bagofwords, 0)
+    predict1 = predict(test1, bagofwords, 0)
+    predict11 = predict(test11, bagofwords, 0)
+    predict12 = predict(test12, bagofwords, 0)
+
+    # Preparing Test Data for Driver as a Profession
     predict2 = predict(test2, bagofwords, 1)
+    predict21 = predict(test21, bagofwords, 1)
+    predict22 = predict(test22, bagofwords, 1)
+    predict23 = predict(test23, bagofwords, 1)
+    predict24 = predict(test24, bagofwords, 1)
 
     # Dumpping all models and Test Models
     dump_model(model, filename="model.txt")
+
+    # Dumping all test models for Computer Drivers
+    dump_model(predict1, filename="test_model1.txt")
+    dump_model(predict11, filename="test_model11.txt")
+    dump_model(predict12, filename="test_model12.txt")
+
+    # Dumping all test models for Driver as a profession
     dump_model(predict2, filename="test_model2.txt")
+    dump_model(predict21, filename="test_model21.txt")
+    dump_model(predict22, filename="test_model22.txt")
+    dump_model(predict23, filename="test_model23.txt")
+    dump_model(predict24, filename="test_model24.txt")
 
     # Training using TiMBL
-    call(["timbl", "+v", "cm", "-f", "model/model.txt", "-t", "model/test_model.txt"])
+    call(["timbl", "-f", "model/model.txt", "-t", "model/test_model1.txt", "-mC", "+v", "cm"])
+    call(["timbl", "-f", "model/model.txt", "-t", "model/test_model11.txt", "-mC", "+v", "cm"])
+    call(["timbl", "-f", "model/model.txt", "-t", "model/test_model12.txt", "-mC", "+v", "cm"])
+    call(["timbl", "-f", "model/model.txt", "-t", "model/test_model13.txt", "-mC", "+v", "cm"])
+
+    call(["timbl", "-f", "model/model.txt", "-t", "model/test_model2.txt", "-mC", "+v", "cm"])
+    call(["timbl", "-f", "model/model.txt", "-t", "model/test_model21.txt", "-mC", "+v", "cm"])
+    call(["timbl", "-f", "model/model.txt", "-t", "model/test_model22.txt", "-mC", "+v", "cm"])
+    call(["timbl", "-f", "model/model.txt", "-t", "model/test_model23.txt", "-mC", "+v", "cm"])
+    call(["timbl", "-f", "model/model.txt", "-t", "model/test_model24.txt", "-mC", "+v", "cm"])
+
 
 if __name__ =="__main__":
     main()
