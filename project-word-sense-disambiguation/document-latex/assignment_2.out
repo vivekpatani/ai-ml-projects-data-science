@@ -5,6 +5,9 @@
 \BOOKMARK [2][-]{section*.6}{Making the Training/Testing Model}{section*.3}% 5
 \BOOKMARK [2][-]{section*.7}{Results}{section*.3}% 6
 \BOOKMARK [1][-]{section*.8}{Approach 2 - Naive Bayes}{}% 7
-\BOOKMARK [1][-]{section*.9}{Approach 3 - Naive Bayes - TF-IDF}{}% 8
-\BOOKMARK [1][-]{section*.10}{Comparison}{}% 9
-\BOOKMARK [1][-]{section*.11}{References}{}% 10
+\BOOKMARK [2][-]{section*.9}{Model Selection}{section*.8}% 8
+\BOOKMARK [2][-]{section*.10}{Optimisation Feature Extraction and Modeling Data}{section*.8}% 9
+\BOOKMARK [1][-]{section*.11}{Approach 3 - Naive Bayes - TF-IDF}{}% 10
+\BOOKMARK [2][-]{section*.12}{Optimisations and improvements}{section*.11}% 11
+\BOOKMARK [1][-]{section*.13}{Comparison}{}% 12
+\BOOKMARK [1][-]{section*.14}{References}{}% 13
