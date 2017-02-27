@@ -352,19 +352,19 @@ Also, in our case, the two text files will be like two Text Collections and each
   \centering
   \caption{\textbf{Comparison of All Algorithms Used}}
   \label{tab:table1}
-  \begin{tabular}{ccc}
+  \begin{tabular}{cccc}
     \toprule
-    Method & Accuraccy & Parameters\\
+    Method & Baseline Accuraccy & Optimised Accuracy & Optimised Parameters\\
     \midrule
-    Bag Of Words & 0\% - 60\% & For IB1 - no changes, \\ & & use cosine distance for TRIBL2\\~\\
-    Collocational Features & 50\% - 98\% & IB1 - with Cosine Distance Metric\\~\\
-    Naive Bayes & Poorly classifies \\ & 4/10 times & Stemming and Lemmatisation\\~\\
-    Naive Bayes \\ with TF IDF & Poorly classifies \\ & 2/10 times & Remove Stop Words\\~\\
+    Bag Of Words & 0\% - 60\% & 35\% to 70\% & For IB1 - no changes, \\ & & use cosine distance for TRIBL2\\~\\
+    Collocational Features & 50\% - 98\% & 55\% to 92.46\% & IB1 - with Cosine Distance Metric\\~\\
+    Naive Bayes (Base and TF) & Poorly classifies \\ & 4/10 times & - & Stemming and Lemmatisation\\~\\
+    Naive Bayes \\ with TF IDF & Poorly classifies \\ & 2/10 times & - & Remove Stop Words\\~\\
     \bottomrule
   \end{tabular}
 \end{table}
 
-These are the results we obtained. In order to run the code, please refer the Readme.md file.
+\textbf{These are the results we obtained. In order to run the code, please refer the Readme.md file.}
 \end{homeworkProblem}
 
 \clearpage
