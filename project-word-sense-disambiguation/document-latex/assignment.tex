@@ -35,6 +35,7 @@
 \usepackage{hyperref} % Used for Hyper Linking
 \usepackage{amsmath} % Used for Math
 \usepackage{lstautogobble}
+\usepackage{booktabs} % For Tables
 
 
 % Margins
@@ -216,12 +217,17 @@ From the below given meanings (\textbf{NLTK}):
 ~\\
 We are only interested in the \textbf{first}, \textbf{second} and \textbf{fourth} meaning of the words for our disambiguation.
 ~\\
-We have followed 3 approaches to disambiguate the given word:
+We have followed 4 approaches to disambiguate the given word:
 \begin{itemize}
 \item Bag Of Words Approach
+\item Collocation Features Approach
 \item Naive Bayes
 \item Naive Bayes with TF - IDF
 \end{itemize}
+
+\textbf{In order to run the code, please refer the Readme.md file.}
+
+\textbf{Also, our code can be found on:} \href{https://github.com/vivekpatani/ai-ml-projects-data-science/tree/master/project-word-sense-disambiguation}{Github}
 
 \end{homeworkProblem}
 
@@ -253,10 +259,11 @@ We prepare the test set in a similar fashion.
 \end{subsection}
 
 \begin{subsection}{Results}
-Once TimBL trains and test data is given, we need to interpret the result.\\
-If on given test data, TimBL classifies the data as 0, then it has correctly classified that data point and 1 means it has incorrectly classified that data point. We had fairly variable results.
+TimBL on receiving the input trains and tests the data.\\
+We tried different algorithms and the best one it worked was for \textbf{TRIBL2} algorithm with \textbf{Overlap} distance metric.\\
+The other closest was leaving the default values for TimBL with a difference of about 5 - 10\% but it was consistent in producing results.\\
 
-As a whole test data set, it has given us an accuracy within in a range of 0\% to 60\%, due to unpredictive nature of IB1 algorithm.\\ On an average we get 5/10 results correctly classified with the correct definition of that word.
+Please check comparison for more on results.
 \end{subsection}
 
 \end{homeworkProblem}
@@ -264,12 +271,42 @@ As a whole test data set, it has given us an accuracy within in a range of 0\% t
 \clearpage
 
 %----------------------------------------------------------------------------------------
-%	A - 2 - Naive Bayes
+%	A - 2 - Collocational Features
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}[Approach 2 - Collacational Features]
+
+\begin{subsection}{Model Selection}
+The collocational feature model, simply keeps in mind the immediate neighbours and their features.\\
+More importantly we record the Part-Of-Speech tags of these neighbours and use it as a feature. We search for similar patterns and train our model. The model contains unique tags that have appeared and the more they appear the stronger is relation.\\
+Each feature is represented by the unique tags found in train and testing together. If a tag is not seen before, it is discarded.
+\end{subsection}
+
+\begin{subsection}{Optimise Feature Extraction}
+While preparing the data, we tried removing the stop words and seems like it is not a good idea. They represent a great deal of data, even though they appear in all sentences, they give you the presence of strong verbs and proper nouns. Frequency Profiles indicated they appear in large quantities. The performance difference was incremental on keeping stop words.
+\end{subsection}
+
+\begin{subsection}{Making the Training/Testing Model}
+Training is marked by each feature represented as a unique tag (from the Parts-of-Speech Tag) and everytime a sentence of training (or testing) is scanned and contains any of these, it is marked as 1. Last column is given as predicted class.
+\end{subsection}
+
+\begin{subsection}{Results}
+TimBL is interesting! The IB1 works pretty intuitevly if observed. We gave it dirty test data (i.e. it did not relate or minutely related to either of the trained data to check if we are going right) and obviously it failed horribly but still gave an accuracy of 10\% - 20\%. On the other hand, it trained well, while testing of class we applied (tested) a few of the parameters. We tried \textbf{IB1} with different distance measures and turns out \textbf{Cosine Distance} worked best for us.\\
+We tried IGTree where our accuracy by about 35\% with the same distance metric and other distance metric.\\
+Please check comparison for more on results.
+\end{subsection}
+
+\end{homeworkProblem}
+
+\clearpage
+
+%----------------------------------------------------------------------------------------
+%	A - 3 - Naive Bayes
 %----------------------------------------------------------------------------------------
 
 % To have just one problem per page, simply put a \clearpage after each problem
 
-\begin{homeworkProblem}[Approach 2 - Naive Bayes]
+\begin{homeworkProblem}[Approach 3 - Naive Bayes]
 \begin{subsection}{Model Selection}
 The Naive Bayes assumption comes with a small caveat that the independence assumption discards any relation between features (words) or such entities. We cannot strongly (or at all) represent relation between features and that may sometimes be a big problem but we have gone ahead and used it.
 \end{subsection}
@@ -288,7 +325,7 @@ The unknown text will be tokenized and for each token of the unknown text, we fi
 
 % To have just one problem per page, simply put a \clearpage after each problem
 
-\begin{homeworkProblem}[Approach 3 - Naive Bayes - TF-IDF]
+\begin{homeworkProblem}[Approach 4 - Naive Bayes - TF-IDF]
 \begin{subsection}{Optimisations and improvements}
 One way to optimize our classification is by refining how we calculate the frequency scoring. One other way to do this by using term frequency – inverse document frequency, simply put tf-idf scoring.
 \begin{gather*}
@@ -311,6 +348,23 @@ Also, in our case, the two text files will be like two Text Collections and each
 % To have just one problem per page, simply put a \clearpage after each problem
 
 \begin{homeworkProblem}[Comparison]
+\begin{table}[h!]
+  \centering
+  \caption{\textbf{Comparison of All Algorithms Used}}
+  \label{tab:table1}
+  \begin{tabular}{ccc}
+    \toprule
+    Method & Accuraccy & Parameters\\
+    \midrule
+    Bag Of Words & 0\% - 60\% & For IB1 - no changes, \\ & & use cosine distance for TRIBL2\\~\\
+    Collocational Features & 50\% - 98\% & IB1 - with Cosine Distance Metric\\~\\
+    Naive Bayes & Poorly classifies \\ & 4/10 times & Stemming and Lemmatisation\\~\\
+    Naive Bayes \\ with TF IDF & Poorly classifies \\ & 2/10 times & Remove Stop Words\\~\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+These are the results we obtained. In order to run the code, please refer the Readme.md file.
 \end{homeworkProblem}
 
 \clearpage
@@ -325,6 +379,7 @@ Also, in our case, the two text files will be like two Text Collections and each
 \item \href{https://github.com/alvations/pywsd}{PYWSD}
 \item \href{https://en.wikipedia.org/wiki/Naive_Bayes_classifier}{Wikipedia - Naive Bayes}
 \item \href{http://nlp.stanford.edu/IR-book/html/htmledition/properties-of-naive-bayes-1.html}{Stanford NLP}
+\item \href{https://github.com/dcavar/python-tutorial-for-ipython/blob/master/notebooks/Python\%20Feature\%20Extraction\%20for\%20Timbl\%20-\%20Class\%20session.ipynb}{Professor Cavars Notebook for Feature Extraction}
 \end{enumerate}
 \clearpage
 \end{homeworkProblem}
