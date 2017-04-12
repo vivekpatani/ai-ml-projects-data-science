@@ -20,6 +20,7 @@ lib64/
 parts/
 sdist/
 var/
+wheels/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -51,6 +52,14 @@ coverage.xml
 
 # Django stuff:
 *.log
+local_settings.py
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
 
 # Sphinx documentation
 docs/_build/
@@ -142,3 +151,42 @@ fabric.properties
 *.mtc1
 *.out
 *.synctex.gz
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# celery beat schedule file
+celerybeat-schedule
+
+# SageMath parsed files
+*.sage.py
+
+# dotenv
+.env
+
+# virtualenv
+.venv
+venv/
+ENV/
+
+# Spyder project settings
+.spyderproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# Parser Files
+project-text-summarizer/stanford-corenlp
+project-text-summarizer/CoreNLP-master
+project-text-summarizer/stanford-english-corenlp-models-current.jar
+project-text-summarizer/stanford-english-kbp-corenlp-models-current.jar
+project-text-summarizer/stanford-corenlp-models-current.jar
+
+# Output Files
+project-text-summarizer/input.txt.out
